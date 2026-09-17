@@ -1,0 +1,69 @@
+name: "Goemon's Great Adventure (USA)"
+sha1: 0ecc6ddcdc3bc02882ac88409188f7919e1cceac
+
+options:
+  basename: gga
+  compiler: IDO
+  platform: n64
+
+  header_encoding: ASCII
+
+  target_path: config/usa/baserom.decompressed.z64
+  ld_script_path: .splat/usa/gga.ld
+  elf_path: build/usa/gga.elf
+  base_path: ../../
+
+  undefined_funcs_auto_path: .splat/usa/undefined_funcs_auto.ld
+  undefined_syms_auto_path: .splat/usa/undefined_syms_auto.ld
+
+  asm_path: asm/usa
+  src_path: src
+  build_path: build/usa
+  asset_path: bin/usa
+
+  symbol_name_format: $VRAM_$ROM
+
+  find_file_boundaries: True
+  migrate_rodata_to_functions: True
+  rodata_string_guesser_level: 2
+  gfx_ucode: f3dex
+
+  # Emit an ELF suitable for dumping N64Recomp symbols rather than a matching build.
+  asm_nonmatching_label_macro: ""
+
+# Resident image only for this first pass. ROM 0x1000 -> VRAM 0x80000400
+# (i.e. rom = vram - 0x7FFFF400), derived from the N64 header's boot address.
+# Code runs to ~0x26628 (last `jr $ra`); RSP microcode and data follow.
+# The 2577-entry Nisitenma-Ichigo file table lives at 0x2C794; files start at 0x582530.
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: ipl3
+    type: bin
+    start: 0x40
+
+  - name: entry
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    subalign: 16
+    subsegments:
+      - [0x1000, hasm, entry]
+
+  - name: main
+    type: code
+    start: 0x1050
+    vram: 0x80000450
+    subalign: 16
+    subsegments:
+      - [0x1050, asm, main]
+
+  # RSP microcode, resident data, the file table, and all 2577 packed files.
+  # Carved into proper segments in a later pass.
+  - name: rest
+    type: bin
+    start: 0x26630
+
+  - [0x2000000]

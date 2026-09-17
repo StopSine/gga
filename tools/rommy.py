@@ -120,6 +120,18 @@ SIGNATURE_LENGTH = len(NISITENMA_SIGNATURE)
 OFFSET_MASK = 0x7FFFFFFF  # Lower 31 bits: ROM offset
 COMPRESSED_FLAG = 0x80000000  # Bit 31: Compression indicator
 
+# Compressed files begin with a 4-byte big-endian chunk header whose low 28
+# bits hold the chunk size. Bit 31 selects the codec for the chunk body:
+# Mystical Ninja Starring Goemon always stores LZKN64 and leaves it clear,
+# while Goemon's Great Adventure sets it and stores a raw zlib/DEFLATE stream
+# directly after the header. This is a distinct field from COMPRESSED_FLAG
+# above, which lives in the file *table* entry rather than the chunk header.
+CHUNK_HEADER_SIZE = 4
+CHUNK_ZLIB_FLAG = 0x80000000
+
+CODEC_LZKN64 = "lzkn64"
+CODEC_ZLIB = "zlib"
+
 # Size of each file table entry in bytes
 ENTRY_SIZE_BYTES = 4
 
@@ -303,6 +315,43 @@ def find_nisitenma_signature(data: bytes) -> int:
             "or you may need to specify the address manually with -a."
         )
     return index
+
+
+def detect_chunk_codec(data: bytes) -> str:
+    """
+    Determines which codec a compressed file's chunk body uses.
+
+    Args:
+        data: The full file slice, starting at its 4-byte chunk header.
+
+    Returns:
+        CODEC_ZLIB when bit 31 of the chunk header is set, else CODEC_LZKN64.
+    """
+    if len(data) < CHUNK_HEADER_SIZE:
+        return CODEC_LZKN64
+
+    header = struct.unpack_from(">I", data, 0)[0]
+    return CODEC_ZLIB if header & CHUNK_ZLIB_FLAG else CODEC_LZKN64
+
+
+def compress_zlib_chunk(data: bytes) -> bytes:
+    """
+    Compresses data into a zlib chunk with the appropriate chunk header.
+
+    Uses level 9 to match the FLEVEL bits observed in retail ROMs. Note that
+    a byte-identical round trip is not guaranteed: DEFLATE output depends on
+    the encoder's match finding, so a modern zlib may not reproduce the
+    original stream exactly even at the same level.
+
+    Args:
+        data: The uncompressed file data.
+
+    Returns:
+        The 4-byte chunk header followed by the zlib stream.
+    """
+    body = zlib.compress(data, 9)
+    header = (len(body) + CHUNK_HEADER_SIZE) | CHUNK_ZLIB_FLAG
+    return struct.pack(">I", header) + body
 
 
 def parse_hex_or_int(value: int | str) -> int:
@@ -594,6 +643,8 @@ class FileManifestEntry:
         original_size: Size in bytes in the original ROM (compressed if applicable).
         decompressed_size: Size in bytes after decompression.
         decompressed_crc32: CRC32 checksum of the decompressed data.
+        codec: Codec the chunk body used, or None for uncompressed files.
+            Needed to recompress with the scheme the ROM originally shipped.
     """
 
     index: int
@@ -602,6 +653,7 @@ class FileManifestEntry:
     original_size: int
     decompressed_size: int
     decompressed_crc32: int
+    codec: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         """
@@ -609,7 +661,7 @@ class FileManifestEntry:
 
         Offsets and CRC32 are formatted as hex strings for readability.
         """
-        return {
+        result: dict[str, Any] = {
             "index": self.index,
             "compressed": self.compressed,
             "original_offset": format_hex(self.original_offset),
@@ -617,6 +669,9 @@ class FileManifestEntry:
             "decompressed_size": self.decompressed_size,
             "decompressed_crc32": format_hex_padded(self.decompressed_crc32),
         }
+        if self.codec is not None:
+            result["codec"] = self.codec
+        return result
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> FileManifestEntry:
@@ -632,6 +687,7 @@ class FileManifestEntry:
             original_size=data["original_size"],
             decompressed_size=data["decompressed_size"],
             decompressed_crc32=parse_hex_or_int(data["decompressed_crc32"]),
+            codec=data.get("codec"),
         )
 
     def matches_data(self, data: bytes) -> tuple[bool, list[str]]:
@@ -1280,13 +1336,22 @@ class Rommy:
             output_data = file_info.data
             action = "Copied"
 
+            codec: str | None = None
+
             if file_info.entry.is_compressed and not file_info.is_empty:
+                codec = detect_chunk_codec(file_info.data)
                 try:
-                    output_data = lzkn64.decompress(file_info.data)
-                    action = "Decompressed"
+                    if codec == CODEC_ZLIB:
+                        output_data = zlib.decompress(
+                            file_info.data[CHUNK_HEADER_SIZE:]
+                        )
+                    else:
+                        output_data = lzkn64.decompress(file_info.data)
+                    action = f"Decompressed ({codec})"
                 except Exception as e:
                     raise CompressionError(
-                        f"Failed to decompress file {file_info.index}: {e}"
+                        f"Failed to decompress file {file_info.index} "
+                        f"as {codec}: {e}"
                     ) from e
 
             # Create manifest entry with full metadata
@@ -1297,6 +1362,7 @@ class Rommy:
                 original_size=original_size,
                 decompressed_size=len(output_data),
                 decompressed_crc32=calculate_crc32(output_data),
+                codec=codec,
             )
             manifest_entries.append(manifest_entry)
 
@@ -1369,12 +1435,18 @@ class Rommy:
             )
 
             if can_compress:
+                codec = CODEC_LZKN64
+                if manifest_entry is not None and manifest_entry.codec:
+                    codec = manifest_entry.codec
                 try:
-                    compressed = lzkn64.compress(file_info.data)
+                    if codec == CODEC_ZLIB:
+                        compressed = compress_zlib_chunk(file_info.data)
+                    else:
+                        compressed = lzkn64.compress(file_info.data)
                     # Align to 2-byte boundary for N64
                     output_data = align_to_boundary(compressed, N64_ALIGNMENT)
                     is_compressed_output = True
-                    action = "Compressed"
+                    action = f"Compressed ({codec})"
 
                     # Track compression stats
                     stats.add_compressed(
@@ -1581,6 +1653,14 @@ The manifest file preserves file metadata for round-trip processing.
         help="Enable verbose output with per-file logging.",
     )
 
+    common_parser.add_argument(
+        "--no-fix-crcs",
+        dest="fix_crcs",
+        action="store_false",
+        default=True,
+        help="Skip recalculating N64 ROM header CRCs.",
+    )
+
     # Decompress command
     subparsers.add_parser(
         "decompress",
@@ -1603,14 +1683,6 @@ The manifest file preserves file metadata for round-trip processing.
             "Warns if anything has been modified or shifted."
         ),
     )
-    common_parser.add_argument(
-        "--no-fix-crcs",
-        dest="fix_crcs",
-        action="store_false",
-        default=True,
-        help="Skip recalculating N64 ROM header CRCs.",
-    )
-
     return parser
 
 
