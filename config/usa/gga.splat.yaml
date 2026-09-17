@@ -16,6 +16,9 @@ options:
   undefined_funcs_auto_path: .splat/usa/undefined_funcs_auto.ld
   undefined_syms_auto_path: .splat/usa/undefined_syms_auto.ld
 
+  symbol_addrs_path:
+    - config/usa/symbol_addrs/symbol_addrs.txt
+
   asm_path: asm/usa
   src_path: src
   build_path: build/usa
@@ -60,10 +63,613 @@ segments:
     subsegments:
       - [0x1050, asm, main]
 
-  # RSP microcode, resident data, the file table, and all 2577 packed files.
-  # Carved into proper segments in a later pass.
-  - name: rest
+  # Everything after the resident image. The 40 relocatable overlays below were
+  # located by tools/gen_overlay_segments.py: files whose jal targets land in
+  # 0x08xxxxxx are linked at the 0x08000000 placeholder base and relocated when
+  # loaded. They all claim the same vram, so they are declared mutually
+  # exclusive in RAM via overlay/exclusive_ram_id.
+  - name: gap_0
     type: bin
     start: 0x26630
+
+  # File 15 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_15
+    type: code
+    start: 0x64C7F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x64C7F0, asm, file_15]
+      - [0x653980, data, file_15_data]
+
+  # File 16 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_16
+    type: code
+    start: 0x654C40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x654C40, asm, file_16]
+      - [0x65E930, data, file_16_data]
+
+  # File 17 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_17
+    type: code
+    start: 0x65EEA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x65EEA0, asm, file_17]
+      - [0x66A9F0, data, file_17_data]
+
+  - name: gap_1
+    type: bin
+    start: 0x66C270
+
+  # File 30 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_30
+    type: code
+    start: 0x6CBCB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6CBCB0, asm, file_30]
+      - [0x6D39F0, data, file_30_data]
+
+  # File 31 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_31
+    type: code
+    start: 0x6D4B30
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6D4B30, asm, file_31]
+      - [0x6DCDA0, data, file_31_data]
+
+  # File 32 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_32
+    type: code
+    start: 0x6DDFE0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6DDFE0, asm, file_32]
+      - [0x6EB810, data, file_32_data]
+
+  # File 33 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_33
+    type: code
+    start: 0x6ED710
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6ED710, asm, file_33]
+      - [0x6F4240, data, file_33_data]
+
+  # File 34 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_34
+    type: code
+    start: 0x6F5070
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6F5070, asm, file_34]
+      - [0x6F8080, data, file_34_data]
+
+  - name: gap_2
+    type: bin
+    start: 0x6F8D90
+
+  # File 36 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_36
+    type: code
+    start: 0x6F9620
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6F9620, asm, file_36]
+      - [0x6FF120, data, file_36_data]
+
+  # File 37 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_37
+    type: code
+    start: 0x6FF5F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6FF5F0, asm, file_37]
+      - [0x703DC0, data, file_37_data]
+
+  # File 38 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_38
+    type: code
+    start: 0x704090
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x704090, asm, file_38]
+      - [0x70CFD0, data, file_38_data]
+
+  # File 39 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_39
+    type: code
+    start: 0x70D8D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x70D8D0, asm, file_39]
+      - [0x714FB0, data, file_39_data]
+
+  # File 40 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_40
+    type: code
+    start: 0x7153E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7153E0, asm, file_40]
+      - [0x71C190, data, file_40_data]
+
+  # File 41 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_41
+    type: code
+    start: 0x71C620
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x71C620, asm, file_41]
+      - [0x724CE0, data, file_41_data]
+
+  - name: gap_3
+    type: bin
+    start: 0x7252D0
+
+  # File 47 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_47
+    type: code
+    start: 0x728360
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x728360, asm, file_47]
+      - [0x72DAC0, data, file_47_data]
+
+  - name: gap_4
+    type: bin
+    start: 0x72DD80
+
+  # File 52 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_52
+    type: code
+    start: 0x731230
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x731230, asm, file_52]
+      - [0x734750, data, file_52_data]
+
+  - name: gap_5
+    type: bin
+    start: 0x7349A0
+
+  # File 62 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_62
+    type: code
+    start: 0x73AD90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x73AD90, asm, file_62]
+      - [0x73D0B0, data, file_62_data]
+
+  - name: gap_6
+    type: bin
+    start: 0x73D160
+
+  # File 77 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_77
+    type: code
+    start: 0x746FE0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x746FE0, asm, file_77]
+      - [0x74AC10, data, file_77_data]
+
+  - name: gap_7
+    type: bin
+    start: 0x74B010
+
+  # File 96 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_96
+    type: code
+    start: 0x75DB10
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x75DB10, asm, file_96]
+      - [0x760610, data, file_96_data]
+
+  # File 97 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_97
+    type: code
+    start: 0x760840
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x760840, asm, file_97]
+      - [0x763FF0, data, file_97_data]
+
+  # File 98 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_98
+    type: code
+    start: 0x764380
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x764380, asm, file_98]
+      - [0x767770, data, file_98_data]
+
+  - name: gap_8
+    type: bin
+    start: 0x767A90
+
+  # File 102 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_102
+    type: code
+    start: 0x76AC50
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x76AC50, asm, file_102]
+      - [0x7700D0, data, file_102_data]
+
+  - name: gap_9
+    type: bin
+    start: 0x770E80
+
+  # File 104 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_104
+    type: code
+    start: 0x771A50
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x771A50, asm, file_104]
+      - [0x773000, data, file_104_data]
+
+  - name: gap_10
+    type: bin
+    start: 0x7731A0
+
+  # File 108 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_108
+    type: code
+    start: 0x775710
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x775710, asm, file_108]
+      - [0x77C120, data, file_108_data]
+
+  - name: gap_11
+    type: bin
+    start: 0x77CB40
+
+  # File 121 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_121
+    type: code
+    start: 0x7848F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7848F0, asm, file_121]
+      - [0x785E40, data, file_121_data]
+
+  # File 122 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_122
+    type: code
+    start: 0x786080
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x786080, asm, file_122]
+      - [0x787480, data, file_122_data]
+
+  # File 123 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_123
+    type: code
+    start: 0x7876A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7876A0, asm, file_123]
+      - [0x788AB0, data, file_123_data]
+
+  - name: gap_12
+    type: bin
+    start: 0x788D60
+
+  # File 126 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_126
+    type: code
+    start: 0x78D840
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x78D840, asm, file_126]
+      - [0x790DC0, data, file_126_data]
+
+  - name: gap_13
+    type: bin
+    start: 0x7914C0
+
+  # File 128 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_128
+    type: code
+    start: 0x793830
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x793830, asm, file_128]
+      - [0x797440, data, file_128_data]
+
+  - name: gap_14
+    type: bin
+    start: 0x797F00
+
+  # File 130 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_130
+    type: code
+    start: 0x79A870
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x79A870, asm, file_130]
+      - [0x7A01E0, data, file_130_data]
+
+  - name: gap_15
+    type: bin
+    start: 0x7A1A80
+
+  # File 132 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_132
+    type: code
+    start: 0x7A3860
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7A3860, asm, file_132]
+      - [0x7A6340, data, file_132_data]
+
+  # File 133 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_133
+    type: code
+    start: 0x7A6960
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7A6960, asm, file_133]
+      - [0x7AD6B0, data, file_133_data]
+
+  - name: gap_16
+    type: bin
+    start: 0x7AE790
+
+  # File 141 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_141
+    type: code
+    start: 0x7BFDB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7BFDB0, asm, file_141]
+      - [0x7C3BE0, data, file_141_data]
+
+  - name: gap_17
+    type: bin
+    start: 0x7C45A0
+
+  # File 176 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_176
+    type: code
+    start: 0x7E5B80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7E5B80, asm, file_176]
+      - [0x7E84A0, data, file_176_data]
+
+  - name: gap_18
+    type: bin
+    start: 0x7E8760
+
+  # File 178 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_178
+    type: code
+    start: 0x7E8FA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7E8FA0, asm, file_178]
+      - [0x7EB8B0, data, file_178_data]
+
+  # File 179 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_179
+    type: code
+    start: 0x7EBC80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7EBC80, asm, file_179]
+      - [0x7ED610, data, file_179_data]
+
+  - name: gap_19
+    type: bin
+    start: 0x7EDDB0
+
+  # File 323 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_323
+    type: code
+    start: 0x847E60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x847E60, asm, file_323]
+      - [0x861D10, data, file_323_data]
+
+  # File 324 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_324
+    type: code
+    start: 0x864170
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x864170, asm, file_324]
+      - [0x87BAF0, data, file_324_data]
+
+  # File 325 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_325
+    type: code
+    start: 0x87DDA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x87DDA0, asm, file_325]
+      - [0x894AC0, data, file_325_data]
+
+  # File 326 of the Nisitenma-Ichigo table. Linked at the
+  # 0x08000000 placeholder base and relocated on load.
+  - name: file_326
+    type: code
+    start: 0x895EA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x895EA0, asm, file_326]
+      - [0x8ACD50, data, file_326_data]
+
+  - name: gap_20
+    type: bin
+    start: 0x8AE3C0
 
   - [0x2000000]

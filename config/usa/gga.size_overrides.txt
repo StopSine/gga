@@ -1,0 +1,23 @@
+# Corrections to splat's function boundaries.
+#
+# splat locates function starts heuristically and sometimes splits one routine
+# into several. N64Recomp reports this as:
+#     Unhandled branch in <func> at <addr> to <target>
+# because a branch target falls outside the function's declared range.
+#
+# Format: <function> <size>. Any function starting inside the widened range is
+# absorbed automatically, so only the first function of a group needs an entry.
+#
+# Found by scanning the disassembly for branches that escape their enclosing
+# function and unioning the affected functions: 11 escaping branches across
+# 632 functions, forming the 3 groups below.
+
+# Three-way split. Both later pieces branch back to .L80001190_1D90 and the
+# routine's only `jr $ra` is at 0x8000128C, so it runs 0x80000F10..0x80001294.
+func_80000F10_1B10 0x384
+
+# Three-way split.
+func_800013F0_1FF0 0x484
+
+# Two-way split; the tail at func_80010294_10E94 branches back to 0x8001024C.
+func_8000FD50_10950 0x62C
