@@ -74,6 +74,31 @@ def check_pak(pak: bytes) -> list[str]:
     return problems
 
 
+def extract_note_data(pak: bytes, entry: int = 0) -> bytes:
+    """The contents of one note, following its page chain.
+
+    A pak is 128 pages of 256 bytes. Page 0 holds the ID blocks, pages 1 and 2
+    the inode table and its backup, pages 3 and 4 the note table, and the rest
+    is data. A note records only its first page; the inode table gives the next
+    page of each, ending at 1.
+
+    This is needed because a game whose osPfs* calls the runtime intercepts
+    never sees the pak at all -- osPfsReadWriteFile is answered straight out of
+    the save buffer, so that buffer holds the note's contents rather than an
+    image of the pak around it.
+    """
+    note = pak[0x300 + entry * 32:0x300 + entry * 32 + 32]
+    start_page = int.from_bytes(note[6:8], "big")
+    out = bytearray()
+    page = start_page
+    seen = set()
+    while 5 <= page < 128 and page not in seen:
+        seen.add(page)
+        out += pak[page * 256:(page + 1) * 256]
+        page = int.from_bytes(pak[0x100 + page * 2:0x100 + page * 2 + 2], "big")
+    return bytes(out)
+
+
 def notes(pak: bytes) -> list[str]:
     """Names of the occupied note-table entries, for identifying a pak."""
     # N64 note names use their own character set; only the ranges needed to
@@ -100,8 +125,12 @@ def notes(pak: bytes) -> list[str]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("direction", choices=("import", "export"),
-                    help="import: .srm -> runtime save; export: runtime save -> .srm")
+    ap.add_argument("direction", choices=("import", "export", "import-note"),
+                    help="import: .srm -> runtime save (raw pak, for a game that "
+                         "talks to the pak itself); export: runtime save -> .srm; "
+                         "import-note: .srm -> runtime save holding only the "
+                         "note's contents, for a game whose osPfs* calls the "
+                         "runtime answers")
     ap.add_argument("--srm", type=Path, required=True, help="RetroArch .srm")
     ap.add_argument("--save", type=Path, required=True, help="runtime saves/<game_id>.bin")
     ap.add_argument("--port", type=int, default=1, choices=(1, 2, 3, 4),
@@ -111,6 +140,33 @@ def main() -> int:
     args = ap.parse_args()
 
     pak_at = PAK_OFFSET + (args.port - 1) * PAK_SIZE
+
+    if args.direction == "import-note":
+        srm = args.srm.read_bytes()
+        if len(srm) != SRM_SIZE:
+            print(f"error: {args.srm} is {len(srm)} bytes, expected {SRM_SIZE}",
+                  file=sys.stderr)
+            return 1
+        pak = srm[pak_at:pak_at + PAK_SIZE]
+        for p in check_pak(pak):
+            print(f"warning: {p}", file=sys.stderr)
+        found = notes(pak)
+        if not found:
+            print("error: no notes in that pak", file=sys.stderr)
+            return 1
+        print(f"note: {found[0]}")
+        data = extract_note_data(pak)
+        print(f"note contents: {len(data)} bytes")
+
+        buf = bytearray(RUNTIME_SAVE_SIZE)
+        if args.save.exists():
+            existing = args.save.read_bytes()
+            buf[:len(existing)] = existing[:RUNTIME_SAVE_SIZE]
+        buf[0:len(data)] = data
+        args.save.parent.mkdir(parents=True, exist_ok=True)
+        args.save.write_bytes(bytes(buf))
+        print(f"wrote {args.save} ({len(buf)} bytes), note contents at offset 0")
+        return 0
 
     if args.direction == "import":
         srm = args.srm.read_bytes()
