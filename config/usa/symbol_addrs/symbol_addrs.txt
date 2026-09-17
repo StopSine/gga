@@ -17,6 +17,16 @@ func_800013F0_1FF0 = 0x800013F0; // size:0x484
 // Split two ways; the tail at func_80010294_10E94 branches back to 0x8001024C.
 func_8000FD50_10950 = 0x8000FD50; // size:0x62C
 
+// Split four ways (func_80001FB4_2BB4, func_80001FC8_2BC8, func_80001FD8_2BD8).
+// The escaping-branch scan above cannot find this one: the pieces are
+// straight-line code that falls through, so no branch ever leaves the declared
+// range. Found instead by the stack imbalance it causes -- the prologue
+// `addiu $sp, $sp, -0x738` is in the first piece and the matching restore is in
+// the last, so the recompiled first piece returned 0x738 below the stack it was
+// called with. 0x20 + 0x14 + 0x10 + 0x88 = 0xCC, ending at the `jr $ra` at
+// 0x80002058.
+func_80001F94_2B94 = 0x80001F94; // size:0xCC
+
 // ---------------------------------------------------------------------------
 // libultra names recovered by byte-matching against MNSG (tools/match_libultra.py).
 //
@@ -43,8 +53,8 @@ osAiGetLength = 0x8001E6B0;
 osAiSetFrequency = 0x8001BE60;
 osAiSetNextBuffer = 0x80020910;
 osCartRomInit = 0x8001D240;
-osContInit = 0x80011700;
-osContStartQuery = 0x80019360;
+// osContInit = 0x80011700;   // withheld: see note below
+// osContStartQuery = 0x80019360;   // withheld: see note below
 osCreateThread = 0x800113D0;
 osDestroyThread = 0x800106A0;
 osEPiRawStartDma = 0x8001B5B0;
@@ -203,7 +213,7 @@ strlen = 0x8001ABDC;
 
 osGetThreadPri = 0x8001B320;
 osCreateMesgQueue = 0x8001AC50;
-osContGetQuery = 0x800193E4;
+// osContGetQuery = 0x800193E4;   // withheld: see note below
 osYieldThread = 0x8001E8C0;
 osMapTLB = 0x8000FC90;
 osUnmapTLBAll = 0x8001A9A0;
@@ -232,3 +242,13 @@ __osSiRawStartDma = 0x80012C30;
 // adjacent with Curr in the lower word, matching MNSG's 0x8007A300/0x8007A304.
 osViGetCurrentFramebuffer = 0x800209F0;
 osViGetNextFramebuffer = 0x80012840;
+
+// The controller query path is deliberately NOT intercepted.
+//
+// GGA's own osContStartReadData is unnamed recompiled code, and libultra builds
+// its poll block from state that osContInit sets up (__osMaxControllers and the
+// PIF ram template). Intercepting osContInit replaced the function without
+// establishing that state, so the read routine emitted an empty command list
+// and the game never polled buttons -- it queried the controller once and then
+// sent nothing. Letting the game's own init run means the whole stack is
+// consistent, talking to the joybus implementation in the runtime.

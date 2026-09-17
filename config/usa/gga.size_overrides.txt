@@ -21,3 +21,16 @@ func_800013F0_1FF0 0x484
 
 # Two-way split; the tail at func_80010294_10E94 branches back to 0x8001024C.
 func_8000FD50_10950 0x62C
+
+# Four-way split, and one the escaping-branch scan above cannot find: these
+# pieces are straight-line code that falls through rather than branching, so no
+# branch ever leaves the declared range. It was found instead by the symptom --
+# the prologue `addiu $sp, $sp, -0x738` at 0x80001FA4 is emitted but the
+# matching `addiu $sp, $sp, 0x738` at 0x80002054 is not, so the recompiled
+# fragment returned 0x738 below the stack it was entered with and every later
+# `lw` through $sp in the caller read the wrong frame.
+#
+# 0x20 + 0x14 + 0x10 + 0x88 = 0xCC, ending at the `jr $ra` at 0x80002058.
+# Reached only once a formatted Controller Pak exists, which is why it stayed
+# hidden until a real save was loaded.
+func_80001F94_2B94 0xCC

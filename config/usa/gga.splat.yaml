@@ -182,9 +182,18 @@ segments:
       - [0x66C270, asm, file_18]
       - [0x672EB0, data, file_18_data]
 
-  - name: gap_2
-    type: bin
+  # File 19: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_19
+    type: code
     start: 0x674220
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x674220, asm, file_19]
+      - [0x679550, data, file_19_data]
 
   # File 20: relocated on load.
   # Load window from the table at 0x27700.
@@ -199,9 +208,18 @@ segments:
       - [0x67A480, asm, file_20]
       - [0x68ADA0, data, file_20_data]
 
-  - name: gap_3
-    type: bin
+  # File 21: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_21
+    type: code
     start: 0x68DBF0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x68DBF0, asm, file_21]
+      - [0x693640, data, file_21_data]
 
   # File 22: relocated on load.
   # Load window from the table at 0x27700.
@@ -216,9 +234,44 @@ segments:
       - [0x694680, asm, file_22]
       - [0x69C9A0, data, file_22_data]
 
-  - name: gap_4
-    type: bin
+  # File 23: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_23
+    type: code
     start: 0x69DCB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x69DCB0, asm, file_23]
+      - [0x6A3410, data, file_23_data]
+
+  # File 24: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_24
+    type: code
+    start: 0x6A4350
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6A4350, asm, file_24]
+      - [0x6A9AA0, data, file_24_data]
+
+  # File 25: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_25
+    type: code
+    start: 0x6AA970
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6AA970, asm, file_25]
+      - [0x6AF9E0, data, file_25_data]
 
   # File 26: relocated on load.
   # Load window from the table at 0x27700.
@@ -233,9 +286,44 @@ segments:
       - [0x6B0910, asm, file_26]
       - [0x6B8E60, data, file_26_data]
 
-  - name: gap_5
-    type: bin
+  # File 27: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_27
+    type: code
     start: 0x6B9F60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6B9F60, asm, file_27]
+      - [0x6BEB50, data, file_27_data]
+
+  # File 28: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_28
+    type: code
+    start: 0x6BFC40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6BFC40, asm, file_28]
+      - [0x6C4840, data, file_28_data]
+
+  # File 29: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_29
+    type: code
+    start: 0x6C5860
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6C5860, asm, file_29]
+      - [0x6CAD80, data, file_29_data]
 
   # File 30: relocated on load.
   # Load window from the table at 0x27700.
@@ -302,9 +390,18 @@ segments:
       - [0x6F5070, asm, file_34]
       - [0x6F8080, data, file_34_data]
 
-  - name: gap_6
-    type: bin
+  # File 35: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_35
+    type: code
     start: 0x6F8D90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x6F8D90, asm, file_35]
+      - [0x6F9550, data, file_35_data]
 
   # File 36: relocated on load.
   # Load window from the table at 0x27700.
@@ -384,9 +481,70 @@ segments:
       - [0x71C620, asm, file_41]
       - [0x724CE0, data, file_41_data]
 
-  - name: gap_7
-    type: bin
+  # File 42: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_42
+    type: code
     start: 0x7252D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7252D0, asm, file_42]
+      - [0x725980, data, file_42_data]
+
+  # File 43: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_43
+    type: code
+    start: 0x725B10
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x725B10, asm, file_43]
+      - [0x727580, data, file_43_data]
+
+  # File 44: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_44
+    type: code
+    start: 0x7276A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7276A0, asm, file_44]
+      - [0x7278E0, data, file_44_data]
+
+  # File 45: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_45
+    type: code
+    start: 0x7278F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7278F0, asm, file_45]
+      - [0x727FC0, data, file_45_data]
+
+  # File 46: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_46
+    type: code
+    start: 0x728000
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x728000, asm, file_46]
+      - [0x728320, data, file_46_data]
 
   # File 47: relocated on load.
   # Load window from the table at 0x27700.
@@ -401,9 +559,57 @@ segments:
       - [0x728360, asm, file_47]
       - [0x72DAC0, data, file_47_data]
 
-  - name: gap_8
-    type: bin
+  # File 48: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_48
+    type: code
     start: 0x72DD80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x72DD80, asm, file_48]
+      - [0x72E0A0, data, file_48_data]
+
+  # File 49: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_49
+    type: code
+    start: 0x72E0E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x72E0E0, asm, file_49]
+      - [0x730070, data, file_49_data]
+
+  # File 50: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_50
+    type: code
+    start: 0x730140
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x730140, asm, file_50]
+      - [0x730B30, data, file_50_data]
+
+  # File 51: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_51
+    type: code
+    start: 0x730B90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x730B90, asm, file_51]
+      - [0x731210, data, file_51_data]
 
   # File 52: relocated on load.
   # Load window from the table at 0x27700.
@@ -418,9 +624,122 @@ segments:
       - [0x731230, asm, file_52]
       - [0x734750, data, file_52_data]
 
-  - name: gap_9
-    type: bin
+  # File 53: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_53
+    type: code
     start: 0x7349A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7349A0, asm, file_53]
+      - [0x7350B0, data, file_53_data]
+
+  # File 54: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_54
+    type: code
+    start: 0x7350D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7350D0, asm, file_54]
+      - [0x736990, data, file_54_data]
+
+  # File 55: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_55
+    type: code
+    start: 0x736A70
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x736A70, asm, file_55]
+      - [0x737450, data, file_55_data]
+
+  # File 56: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_56
+    type: code
+    start: 0x737490
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x737490, asm, file_56]
+      - [0x737B70, data, file_56_data]
+
+  # File 57: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_57
+    type: code
+    start: 0x737BD0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x737BD0, asm, file_57]
+      - [0x737F90, data, file_57_data]
+
+  # File 58: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_58
+    type: code
+    start: 0x738010
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x738010, asm, file_58]
+      - [0x7384C0, data, file_58_data]
+
+  # File 59: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_59
+    type: code
+    start: 0x7384E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7384E0, asm, file_59]
+      - [0x739220, data, file_59_data]
+
+  # File 60: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_60
+    type: code
+    start: 0x739320
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x739320, asm, file_60]
+      - [0x739750, data, file_60_data]
+
+  # File 61: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_61
+    type: code
+    start: 0x7397B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7397B0, asm, file_61]
+      - [0x73ACC0, data, file_61_data]
 
   # File 62: relocated on load.
   # Load window from the table at 0x27700.
@@ -435,9 +754,187 @@ segments:
       - [0x73AD90, asm, file_62]
       - [0x73D0B0, data, file_62_data]
 
-  - name: gap_10
-    type: bin
+  # File 63: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_63
+    type: code
     start: 0x73D160
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x73D160, asm, file_63]
+      - [0x73E550, data, file_63_data]
+
+  # File 64: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_64
+    type: code
+    start: 0x73E610
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x73E610, asm, file_64]
+      - [0x73EBA0, data, file_64_data]
+
+  # File 65: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_65
+    type: code
+    start: 0x73EC20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x73EC20, asm, file_65]
+      - [0x73F6D0, data, file_65_data]
+
+  # File 66: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_66
+    type: code
+    start: 0x73F720
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x73F720, asm, file_66]
+      - [0x73FEF0, data, file_66_data]
+
+  # File 67: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_67
+    type: code
+    start: 0x73FF40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x73FF40, asm, file_67]
+      - [0x740440, data, file_67_data]
+
+  # File 68: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_68
+    type: code
+    start: 0x740480
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x740480, asm, file_68]
+      - [0x7419F0, data, file_68_data]
+
+  # File 69: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_69
+    type: code
+    start: 0x741B30
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x741B30, asm, file_69]
+      - [0x742D00, data, file_69_data]
+
+  # File 70: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_70
+    type: code
+    start: 0x742DC0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x742DC0, asm, file_70]
+      - [0x743F10, data, file_70_data]
+
+  # File 71: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_71
+    type: code
+    start: 0x743F80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x743F80, asm, file_71]
+      - [0x7458A0, data, file_71_data]
+
+  # File 72: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_72
+    type: code
+    start: 0x7459D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7459D0, asm, file_72]
+      - [0x7463A0, data, file_72_data]
+
+  # File 73: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_73
+    type: code
+    start: 0x746450
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x746450, asm, file_73]
+      - [0x746770, data, file_73_data]
+
+  # File 74: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_74
+    type: code
+    start: 0x7467B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7467B0, asm, file_74]
+      - [0x7468C0, data, file_74_data]
+
+  # File 75: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_75
+    type: code
+    start: 0x7468D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7468D0, asm, file_75]
+      - [0x746D90, data, file_75_data]
+
+  # File 76: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_76
+    type: code
+    start: 0x746DC0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x746DC0, asm, file_76]
+      - [0x746FD0, data, file_76_data]
 
   # File 77: relocated on load.
   # Load window from the table at 0x27700.
@@ -452,9 +949,31 @@ segments:
       - [0x746FE0, asm, file_77]
       - [0x74AC10, data, file_77_data]
 
-  - name: gap_11
-    type: bin
+  # File 78: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_78
+    type: code
     start: 0x74B010
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x74B010, asm, file_78]
+      - [0x74BFA0, data, file_78_data]
+
+  # File 79: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_79
+    type: code
+    start: 0x74C070
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x74C070, asm, file_79]
+      - [0x74D2F0, data, file_79_data]
 
   # File 80: relocated on load.
   # Load window from the table at 0x27700.
@@ -469,9 +988,57 @@ segments:
       - [0x74D4B0, asm, file_80]
       - [0x74F000, data, file_80_data]
 
-  - name: gap_12
-    type: bin
+  # File 81: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_81
+    type: code
     start: 0x74F1F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x74F1F0, asm, file_81]
+      - [0x750410, data, file_81_data]
+
+  # File 82: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_82
+    type: code
+    start: 0x750500
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x750500, asm, file_82]
+      - [0x751790, data, file_82_data]
+
+  # File 83: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_83
+    type: code
+    start: 0x751810
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x751810, asm, file_83]
+      - [0x7528C0, data, file_83_data]
+
+  # File 84: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_84
+    type: code
+    start: 0x752950
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x752950, asm, file_84]
+      - [0x753160, data, file_84_data]
 
   # File 85: relocated on load.
   # Load window from the table at 0x27700.
@@ -486,9 +1053,135 @@ segments:
       - [0x7531D0, asm, file_85]
       - [0x7550A0, data, file_85_data]
 
-  - name: gap_13
-    type: bin
+  # File 86: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_86
+    type: code
     start: 0x7551E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7551E0, asm, file_86]
+      - [0x755710, data, file_86_data]
+
+  # File 87: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_87
+    type: code
+    start: 0x7557A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7557A0, asm, file_87]
+      - [0x7561F0, data, file_87_data]
+
+  # File 88: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_88
+    type: code
+    start: 0x756260
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x756260, asm, file_88]
+      - [0x7571B0, data, file_88_data]
+
+  # File 89: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_89
+    type: code
+    start: 0x757230
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x757230, asm, file_89]
+      - [0x7585D0, data, file_89_data]
+
+  # File 90: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_90
+    type: code
+    start: 0x758720
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x758720, asm, file_90]
+      - [0x758BF0, data, file_90_data]
+
+  # File 91: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_91
+    type: code
+    start: 0x758CB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x758CB0, asm, file_91]
+      - [0x7592B0, data, file_91_data]
+
+  # File 92: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_92
+    type: code
+    start: 0x759300
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x759300, asm, file_92]
+      - [0x75A420, data, file_92_data]
+
+  # File 93: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_93
+    type: code
+    start: 0x75A640
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x75A640, asm, file_93]
+      - [0x75B8F0, data, file_93_data]
+
+  # File 94: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_94
+    type: code
+    start: 0x75B9F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x75B9F0, asm, file_94]
+      - [0x75BE50, data, file_94_data]
+
+  # File 95: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_95
+    type: code
+    start: 0x75BF30
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x75BF30, asm, file_95]
+      - [0x75D950, data, file_95_data]
 
   # File 96: relocated on load.
   # Load window from the table at 0x27700.
@@ -529,9 +1222,44 @@ segments:
       - [0x764380, asm, file_98]
       - [0x767770, data, file_98_data]
 
-  - name: gap_14
-    type: bin
+  # File 99: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_99
+    type: code
     start: 0x767A90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x767A90, asm, file_99]
+      - [0x7685F0, data, file_99_data]
+
+  # File 100: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_100
+    type: code
+    start: 0x768710
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x768710, asm, file_100]
+      - [0x769680, data, file_100_data]
+
+  # File 101: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_101
+    type: code
+    start: 0x7697A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7697A0, asm, file_101]
+      - [0x76AA70, data, file_101_data]
 
   # File 102: relocated on load.
   # Load window from the table at 0x27700.
@@ -546,9 +1274,18 @@ segments:
       - [0x76AC50, asm, file_102]
       - [0x7700D0, data, file_102_data]
 
-  - name: gap_15
-    type: bin
+  # File 103: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_103
+    type: code
     start: 0x770E80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x770E80, asm, file_103]
+      - [0x771900, data, file_103_data]
 
   # File 104: relocated on load.
   # Load window from the table at 0x27700.
@@ -563,9 +1300,44 @@ segments:
       - [0x771A50, asm, file_104]
       - [0x773000, data, file_104_data]
 
-  - name: gap_16
-    type: bin
+  # File 105: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_105
+    type: code
     start: 0x7731A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7731A0, asm, file_105]
+      - [0x7738D0, data, file_105_data]
+
+  # File 106: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_106
+    type: code
+    start: 0x7739A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7739A0, asm, file_106]
+      - [0x774710, data, file_106_data]
+
+  # File 107: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_107
+    type: code
+    start: 0x774910
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x774910, asm, file_107]
+      - [0x775500, data, file_107_data]
 
   # File 108: relocated on load.
   # Load window from the table at 0x27700.
@@ -580,9 +1352,161 @@ segments:
       - [0x775710, asm, file_108]
       - [0x77C120, data, file_108_data]
 
-  - name: gap_17
-    type: bin
+  # File 109: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_109
+    type: code
     start: 0x77CB40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x77CB40, asm, file_109]
+      - [0x77DC20, data, file_109_data]
+
+  # File 110: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_110
+    type: code
+    start: 0x77DD70
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x77DD70, asm, file_110]
+      - [0x77FFE0, data, file_110_data]
+
+  # File 111: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_111
+    type: code
+    start: 0x780270
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x780270, asm, file_111]
+      - [0x780360, data, file_111_data]
+
+  # File 112: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_112
+    type: code
+    start: 0x7803A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7803A0, asm, file_112]
+      - [0x780490, data, file_112_data]
+
+  # File 113: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_113
+    type: code
+    start: 0x7804D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7804D0, asm, file_113]
+      - [0x781560, data, file_113_data]
+
+  # File 114: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_114
+    type: code
+    start: 0x781830
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x781830, asm, file_114]
+      - [0x781920, data, file_114_data]
+
+  # File 115: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_115
+    type: code
+    start: 0x781960
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x781960, asm, file_115]
+      - [0x781A50, data, file_115_data]
+
+  # File 116: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_116
+    type: code
+    start: 0x781A90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x781A90, asm, file_116]
+      - [0x782F90, data, file_116_data]
+
+  # File 117: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_117
+    type: code
+    start: 0x783240
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x783240, asm, file_117]
+      - [0x783330, data, file_117_data]
+
+  # File 118: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_118
+    type: code
+    start: 0x783370
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x783370, asm, file_118]
+      - [0x783460, data, file_118_data]
+
+  # File 119: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_119
+    type: code
+    start: 0x7834A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7834A0, asm, file_119]
+      - [0x783590, data, file_119_data]
+
+  # File 120: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_120
+    type: code
+    start: 0x7835D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7835D0, asm, file_120]
+      - [0x7846E0, data, file_120_data]
 
   # File 121: relocated on load.
   # Load window from the table at 0x27700.
@@ -623,9 +1547,31 @@ segments:
       - [0x7876A0, asm, file_123]
       - [0x788AB0, data, file_123_data]
 
-  - name: gap_18
-    type: bin
+  # File 124: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_124
+    type: code
     start: 0x788D60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x788D60, asm, file_124]
+      - [0x789E00, data, file_124_data]
+
+  # File 125: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_125
+    type: code
+    start: 0x78A0A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x78A0A0, asm, file_125]
+      - [0x78D100, data, file_125_data]
 
   # File 126: relocated on load.
   # Load window from the table at 0x27700.
@@ -640,9 +1586,18 @@ segments:
       - [0x78D840, asm, file_126]
       - [0x790DC0, data, file_126_data]
 
-  - name: gap_19
-    type: bin
+  # File 127: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_127
+    type: code
     start: 0x7914C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7914C0, asm, file_127]
+      - [0x793320, data, file_127_data]
 
   # File 128: relocated on load.
   # Load window from the table at 0x27700.
@@ -657,9 +1612,18 @@ segments:
       - [0x793830, asm, file_128]
       - [0x797440, data, file_128_data]
 
-  - name: gap_20
-    type: bin
+  # File 129: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_129
+    type: code
     start: 0x797F00
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x797F00, asm, file_129]
+      - [0x79A2D0, data, file_129_data]
 
   # File 130: relocated on load.
   # Load window from the table at 0x27700.
@@ -674,9 +1638,18 @@ segments:
       - [0x79A870, asm, file_130]
       - [0x7A01E0, data, file_130_data]
 
-  - name: gap_21
-    type: bin
+  # File 131: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_131
+    type: code
     start: 0x7A1A80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7A1A80, asm, file_131]
+      - [0x7A32B0, data, file_131_data]
 
   # File 132: relocated on load.
   # Load window from the table at 0x27700.
@@ -704,9 +1677,96 @@ segments:
       - [0x7A6960, asm, file_133]
       - [0x7AD6B0, data, file_133_data]
 
-  - name: gap_22
-    type: bin
+  # File 134: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_134
+    type: code
     start: 0x7AE790
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7AE790, asm, file_134]
+      - [0x7B2C50, data, file_134_data]
+
+  # File 135: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_135
+    type: code
+    start: 0x7B34C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7B34C0, asm, file_135]
+      - [0x7B4560, data, file_135_data]
+
+  # File 136: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_136
+    type: code
+    start: 0x7B4760
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7B4760, asm, file_136]
+      - [0x7B73A0, data, file_136_data]
+
+  # File 137: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_137
+    type: code
+    start: 0x7B7700
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7B7700, asm, file_137]
+      - [0x7B9480, data, file_137_data]
+
+  # File 138: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_138
+    type: code
+    start: 0x7B9990
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7B9990, asm, file_138]
+      - [0x7BB920, data, file_138_data]
+
+  # File 139: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_139
+    type: code
+    start: 0x7BBA20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7BBA20, asm, file_139]
+      - [0x7BD5E0, data, file_139_data]
+
+  # File 140: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_140
+    type: code
+    start: 0x7BE070
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7BE070, asm, file_140]
+      - [0x7BFB80, data, file_140_data]
 
   # File 141: relocated on load.
   # Load window from the table at 0x27700.
@@ -721,9 +1781,447 @@ segments:
       - [0x7BFDB0, asm, file_141]
       - [0x7C3BE0, data, file_141_data]
 
-  - name: gap_23
-    type: bin
+  # File 142: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_142
+    type: code
     start: 0x7C45A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7C45A0, asm, file_142]
+      - [0x7C5890, data, file_142_data]
+
+  # File 143: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_143
+    type: code
+    start: 0x7C5C00
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7C5C00, asm, file_143]
+      - [0x7C5EA0, data, file_143_data]
+
+  # File 144: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_144
+    type: code
+    start: 0x7C5EF0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7C5EF0, asm, file_144]
+      - [0x7C6A90, data, file_144_data]
+
+  # File 145: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_145
+    type: code
+    start: 0x7C6B60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7C6B60, asm, file_145]
+      - [0x7C7BB0, data, file_145_data]
+
+  # File 146: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_146
+    type: code
+    start: 0x7C7C90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7C7C90, asm, file_146]
+      - [0x7C8B30, data, file_146_data]
+
+  # File 147: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_147
+    type: code
+    start: 0x7C8BD0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7C8BD0, asm, file_147]
+      - [0x7CA530, data, file_147_data]
+
+  # File 148: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_148
+    type: code
+    start: 0x7CA6E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CA6E0, asm, file_148]
+      - [0x7CBD20, data, file_148_data]
+
+  # File 149: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_149
+    type: code
+    start: 0x7CC0F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CC0F0, asm, file_149]
+      - [0x7CCDF0, data, file_149_data]
+
+  # File 150: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_150
+    type: code
+    start: 0x7CCE70
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CCE70, asm, file_150]
+      - [0x7CD290, data, file_150_data]
+
+  # File 151: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_151
+    type: code
+    start: 0x7CD2E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CD2E0, asm, file_151]
+      - [0x7CDFA0, data, file_151_data]
+
+  # File 152: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_152
+    type: code
+    start: 0x7CE100
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CE100, asm, file_152]
+      - [0x7CE5E0, data, file_152_data]
+
+  # File 153: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_153
+    type: code
+    start: 0x7CE620
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CE620, asm, file_153]
+      - [0x7CF7E0, data, file_153_data]
+
+  # File 154: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_154
+    type: code
+    start: 0x7CF960
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CF960, asm, file_154]
+      - [0x7CFEF0, data, file_154_data]
+
+  # File 155: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_155
+    type: code
+    start: 0x7CFF50
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7CFF50, asm, file_155]
+      - [0x7D0910, data, file_155_data]
+
+  # File 156: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_156
+    type: code
+    start: 0x7D09A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D09A0, asm, file_156]
+      - [0x7D1C00, data, file_156_data]
+
+  # File 157: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_157
+    type: code
+    start: 0x7D1CB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D1CB0, asm, file_157]
+      - [0x7D2110, data, file_157_data]
+
+  # File 158: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_158
+    type: code
+    start: 0x7D2180
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D2180, asm, file_158]
+      - [0x7D34A0, data, file_158_data]
+
+  # File 159: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_159
+    type: code
+    start: 0x7D3560
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D3560, asm, file_159]
+      - [0x7D4130, data, file_159_data]
+
+  # File 160: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_160
+    type: code
+    start: 0x7D41F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D41F0, asm, file_160]
+      - [0x7D4E20, data, file_160_data]
+
+  # File 161: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_161
+    type: code
+    start: 0x7D4F10
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D4F10, asm, file_161]
+      - [0x7D56B0, data, file_161_data]
+
+  # File 162: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_162
+    type: code
+    start: 0x7D5710
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D5710, asm, file_162]
+      - [0x7D67E0, data, file_162_data]
+
+  # File 163: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_163
+    type: code
+    start: 0x7D6840
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D6840, asm, file_163]
+      - [0x7D7EE0, data, file_163_data]
+
+  # File 164: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_164
+    type: code
+    start: 0x7D8170
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D8170, asm, file_164]
+      - [0x7D8750, data, file_164_data]
+
+  # File 165: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_165
+    type: code
+    start: 0x7D8790
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D8790, asm, file_165]
+      - [0x7D9B80, data, file_165_data]
+
+  # File 166: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_166
+    type: code
+    start: 0x7D9D20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7D9D20, asm, file_166]
+      - [0x7DA8F0, data, file_166_data]
+
+  # File 167: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_167
+    type: code
+    start: 0x7DA950
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7DA950, asm, file_167]
+      - [0x7DB870, data, file_167_data]
+
+  # File 168: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_168
+    type: code
+    start: 0x7DB960
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7DB960, asm, file_168]
+      - [0x7DD6B0, data, file_168_data]
+
+  # File 169: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_169
+    type: code
+    start: 0x7DD820
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7DD820, asm, file_169]
+      - [0x7DED00, data, file_169_data]
+
+  # File 170: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_170
+    type: code
+    start: 0x7DEEC0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7DEEC0, asm, file_170]
+      - [0x7DF850, data, file_170_data]
+
+  # File 171: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_171
+    type: code
+    start: 0x7DF950
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7DF950, asm, file_171]
+      - [0x7DFB70, data, file_171_data]
+
+  # File 172: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_172
+    type: code
+    start: 0x7DFB80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7DFB80, asm, file_172]
+      - [0x7E1B90, data, file_172_data]
+
+  # File 173: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_173
+    type: code
+    start: 0x7E1E90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7E1E90, asm, file_173]
+      - [0x7E2F50, data, file_173_data]
+
+  # File 174: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_174
+    type: code
+    start: 0x7E3130
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7E3130, asm, file_174]
+      - [0x7E4420, data, file_174_data]
+
+  # File 175: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_175
+    type: code
+    start: 0x7E4600
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7E4600, asm, file_175]
+      - [0x7E59D0, data, file_175_data]
 
   # File 176: relocated on load.
   # Load window from the table at 0x27700.
@@ -738,9 +2236,18 @@ segments:
       - [0x7E5B80, asm, file_176]
       - [0x7E84A0, data, file_176_data]
 
-  - name: gap_24
-    type: bin
+  # File 177: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_177
+    type: code
     start: 0x7E8760
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7E8760, asm, file_177]
+      - [0x7E8F70, data, file_177_data]
 
   # File 178: relocated on load.
   # Load window from the table at 0x27700.
@@ -768,16 +2275,47 @@ segments:
       - [0x7EBC80, asm, file_179]
       - [0x7ED610, data, file_179_data]
 
-  - name: gap_25
-    type: bin
+  # File 180: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_180
+    type: code
     start: 0x7EDDB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7EDDB0, asm, file_180]
+      - [0x7EEAB0, data, file_180_data]
 
-  # File 183: relocated on load, like the others, but mostly data -- only four
-  # `jr $ra` in 0x59E0 bytes, so the code-density heuristic in
-  # tools/gen_overlay_segments.py classified the whole file as data and it was
-  # never disassembled. The game loads it into the overlay window and calls
-  # offset 0, which left the window's entry resolving to whichever overlay was
-  # registered there previously.
+  # File 181: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_181
+    type: code
+    start: 0x7EEB90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7EEB90, asm, file_181]
+      - [0x7EECF0, data, file_181_data]
+
+  # File 182: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_182
+    type: code
+    start: 0x7EEFD0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7EEFD0, asm, file_182]
+      - [0x7EF070, data, file_182_data]
+
+  # File 183: relocated on load.
+  # Load window from the table at 0x27700.
   - name: file_183
     type: code
     start: 0x7EF220
@@ -789,9 +2327,1786 @@ segments:
       - [0x7EF220, asm, file_183]
       - [0x7EF720, data, file_183_data]
 
-  - name: gap_25b
-    type: bin
+  # File 184: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_184
+    type: code
     start: 0x7F4C00
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F4C00, asm, file_184]
+      - [0x7F4C50, data, file_184_data]
+
+  # File 185: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_185
+    type: code
+    start: 0x7F4C80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F4C80, asm, file_185]
+      - [0x7F4D00, data, file_185_data]
+
+  # File 186: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_186
+    type: code
+    start: 0x7F5030
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5030, asm, file_186]
+      - [0x7F50B0, data, file_186_data]
+
+  # File 187: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_187
+    type: code
+    start: 0x7F5250
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5250, asm, file_187]
+      - [0x7F52A0, data, file_187_data]
+
+  # File 188: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_188
+    type: code
+    start: 0x7F5330
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5330, asm, file_188]
+      - [0x7F53B0, data, file_188_data]
+
+  # File 189: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_189
+    type: code
+    start: 0x7F5450
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5450, asm, file_189]
+      - [0x7F54C0, data, file_189_data]
+
+  # File 190: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_190
+    type: code
+    start: 0x7F5800
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5800, asm, file_190]
+      - [0x7F5850, data, file_190_data]
+
+  # File 191: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_191
+    type: code
+    start: 0x7F5890
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5890, asm, file_191]
+      - [0x7F58F0, data, file_191_data]
+
+  # File 192: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_192
+    type: code
+    start: 0x7F5900
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5900, asm, file_192]
+      - [0x7F5960, data, file_192_data]
+
+  # File 193: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_193
+    type: code
+    start: 0x7F5970
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F5970, asm, file_193]
+      - [0x7F5B40, data, file_193_data]
+
+  # File 194: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_194
+    type: code
+    start: 0x7F6670
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F6670, asm, file_194]
+      - [0x7F6840, data, file_194_data]
+
+  # File 195: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_195
+    type: code
+    start: 0x7F73B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F73B0, asm, file_195]
+      - [0x7F7450, data, file_195_data]
+
+  # File 196: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_196
+    type: code
+    start: 0x7F8380
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F8380, asm, file_196]
+      - [0x7F84C0, data, file_196_data]
+
+  # File 197: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_197
+    type: code
+    start: 0x7F8EF0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F8EF0, asm, file_197]
+      - [0x7F9000, data, file_197_data]
+
+  # File 198: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_198
+    type: code
+    start: 0x7F94C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F94C0, asm, file_198]
+      - [0x7F96C0, data, file_198_data]
+
+  # File 199: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_199
+    type: code
+    start: 0x7F97A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7F97A0, asm, file_199]
+      - [0x7F98C0, data, file_199_data]
+
+  # File 200: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_200
+    type: code
+    start: 0x7FA3A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FA3A0, asm, file_200]
+      - [0x7FA4B0, data, file_200_data]
+
+  # File 201: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_201
+    type: code
+    start: 0x7FAB40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FAB40, asm, file_201]
+      - [0x7FAC80, data, file_201_data]
+
+  # File 202: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_202
+    type: code
+    start: 0x7FB080
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FB080, asm, file_202]
+      - [0x7FB180, data, file_202_data]
+
+  # File 203: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_203
+    type: code
+    start: 0x7FB300
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FB300, asm, file_203]
+      - [0x7FB570, data, file_203_data]
+
+  # File 204: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_204
+    type: code
+    start: 0x7FB670
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FB670, asm, file_204]
+      - [0x7FB770, data, file_204_data]
+
+  # File 205: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_205
+    type: code
+    start: 0x7FBAA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FBAA0, asm, file_205]
+      - [0x7FBB80, data, file_205_data]
+
+  # File 206: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_206
+    type: code
+    start: 0x7FBD50
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FBD50, asm, file_206]
+      - [0x7FBE50, data, file_206_data]
+
+  # File 207: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_207
+    type: code
+    start: 0x7FC080
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FC080, asm, file_207]
+      - [0x7FC190, data, file_207_data]
+
+  # File 208: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_208
+    type: code
+    start: 0x7FC2A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FC2A0, asm, file_208]
+      - [0x7FC380, data, file_208_data]
+
+  # File 209: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_209
+    type: code
+    start: 0x7FC640
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FC640, asm, file_209]
+      - [0x7FC720, data, file_209_data]
+
+  # File 210: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_210
+    type: code
+    start: 0x7FCA40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FCA40, asm, file_210]
+      - [0x7FCC70, data, file_210_data]
+
+  # File 211: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_211
+    type: code
+    start: 0x7FD870
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FD870, asm, file_211]
+      - [0x7FD960, data, file_211_data]
+
+  # File 212: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_212
+    type: code
+    start: 0x7FDB30
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FDB30, asm, file_212]
+      - [0x7FDC30, data, file_212_data]
+
+  # File 213: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_213
+    type: code
+    start: 0x7FE090
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FE090, asm, file_213]
+      - [0x7FE150, data, file_213_data]
+
+  # File 214: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_214
+    type: code
+    start: 0x7FE390
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FE390, asm, file_214]
+      - [0x7FE4D0, data, file_214_data]
+
+  # File 215: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_215
+    type: code
+    start: 0x7FEC80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FEC80, asm, file_215]
+      - [0x7FEDC0, data, file_215_data]
+
+  # File 216: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_216
+    type: code
+    start: 0x7FF8E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FF8E0, asm, file_216]
+      - [0x7FF9A0, data, file_216_data]
+
+  # File 217: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_217
+    type: code
+    start: 0x7FFC30
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7FFC30, asm, file_217]
+      - [0x7FFCE0, data, file_217_data]
+
+  # File 218: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_218
+    type: code
+    start: 0x8001F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8001F0, asm, file_218]
+      - [0x800300, data, file_218_data]
+
+  # File 219: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_219
+    type: code
+    start: 0x8007B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8007B0, asm, file_219]
+      - [0x8008E0, data, file_219_data]
+
+  # File 220: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_220
+    type: code
+    start: 0x800A80
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x800A80, asm, file_220]
+      - [0x800CD0, data, file_220_data]
+
+  # File 221: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_221
+    type: code
+    start: 0x800DC0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x800DC0, asm, file_221]
+      - [0x801010, data, file_221_data]
+
+  # File 222: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_222
+    type: code
+    start: 0x801070
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x801070, asm, file_222]
+      - [0x801140, data, file_222_data]
+
+  # File 223: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_223
+    type: code
+    start: 0x801D40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x801D40, asm, file_223]
+      - [0x801F30, data, file_223_data]
+
+  # File 224: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_224
+    type: code
+    start: 0x8028B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8028B0, asm, file_224]
+      - [0x802A90, data, file_224_data]
+
+  # File 225: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_225
+    type: code
+    start: 0x802E70
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x802E70, asm, file_225]
+      - [0x803030, data, file_225_data]
+
+  # File 226: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_226
+    type: code
+    start: 0x8033F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8033F0, asm, file_226]
+      - [0x8035C0, data, file_226_data]
+
+  # File 227: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_227
+    type: code
+    start: 0x803900
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x803900, asm, file_227]
+      - [0x803BB0, data, file_227_data]
+
+  # File 228: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_228
+    type: code
+    start: 0x804610
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x804610, asm, file_228]
+      - [0x8047E0, data, file_228_data]
+
+  # File 229: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_229
+    type: code
+    start: 0x804E60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x804E60, asm, file_229]
+      - [0x805020, data, file_229_data]
+
+  # File 230: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_230
+    type: code
+    start: 0x805470
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x805470, asm, file_230]
+      - [0x805610, data, file_230_data]
+
+  # File 231: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_231
+    type: code
+    start: 0x805C40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x805C40, asm, file_231]
+      - [0x805E30, data, file_231_data]
+
+  # File 232: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_232
+    type: code
+    start: 0x806CD0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x806CD0, asm, file_232]
+      - [0x806E90, data, file_232_data]
+
+  # File 233: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_233
+    type: code
+    start: 0x807440
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x807440, asm, file_233]
+      - [0x807670, data, file_233_data]
+
+  # File 234: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_234
+    type: code
+    start: 0x807FB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x807FB0, asm, file_234]
+      - [0x808710, data, file_234_data]
+
+  # File 235: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_235
+    type: code
+    start: 0x80ADE0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80ADE0, asm, file_235]
+      - [0x80AF60, data, file_235_data]
+
+  # File 236: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_236
+    type: code
+    start: 0x80B0A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80B0A0, asm, file_236]
+      - [0x80B2C0, data, file_236_data]
+
+  # File 237: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_237
+    type: code
+    start: 0x80B3B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80B3B0, asm, file_237]
+      - [0x80B5F0, data, file_237_data]
+
+  # File 238: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_238
+    type: code
+    start: 0x80B690
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80B690, asm, file_238]
+      - [0x80B740, data, file_238_data]
+
+  # File 239: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_239
+    type: code
+    start: 0x80C140
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80C140, asm, file_239]
+      - [0x80C1F0, data, file_239_data]
+
+  # File 240: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_240
+    type: code
+    start: 0x80CC20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80CC20, asm, file_240]
+      - [0x80CCF0, data, file_240_data]
+
+  # File 241: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_241
+    type: code
+    start: 0x80CE20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80CE20, asm, file_241]
+      - [0x80CEC0, data, file_241_data]
+
+  # File 242: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_242
+    type: code
+    start: 0x80D030
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80D030, asm, file_242]
+      - [0x80D3D0, data, file_242_data]
+
+  # File 243: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_243
+    type: code
+    start: 0x80F2D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x80F2D0, asm, file_243]
+      - [0x80FA30, data, file_243_data]
+
+  # File 244: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_244
+    type: code
+    start: 0x8117D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8117D0, asm, file_244]
+      - [0x812130, data, file_244_data]
+
+  # File 245: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_245
+    type: code
+    start: 0x813340
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x813340, asm, file_245]
+      - [0x813550, data, file_245_data]
+
+  # File 246: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_246
+    type: code
+    start: 0x813640
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x813640, asm, file_246]
+      - [0x813820, data, file_246_data]
+
+  # File 247: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_247
+    type: code
+    start: 0x8138F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8138F0, asm, file_247]
+      - [0x813EC0, data, file_247_data]
+
+  # File 248: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_248
+    type: code
+    start: 0x817420
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x817420, asm, file_248]
+      - [0x817DC0, data, file_248_data]
+
+  # File 249: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_249
+    type: code
+    start: 0x81AE60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81AE60, asm, file_249]
+      - [0x81B0E0, data, file_249_data]
+
+  # File 250: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_250
+    type: code
+    start: 0x81BCB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81BCB0, asm, file_250]
+      - [0x81BEC0, data, file_250_data]
+
+  # File 251: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_251
+    type: code
+    start: 0x81BFA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81BFA0, asm, file_251]
+      - [0x81C420, data, file_251_data]
+
+  # File 252: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_252
+    type: code
+    start: 0x81C5A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81C5A0, asm, file_252]
+      - [0x81C630, data, file_252_data]
+
+  # File 253: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_253
+    type: code
+    start: 0x81C660
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81C660, asm, file_253]
+      - [0x81C6F0, data, file_253_data]
+
+  # File 254: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_254
+    type: code
+    start: 0x81C720
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81C720, asm, file_254]
+      - [0x81C7B0, data, file_254_data]
+
+  # File 255: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_255
+    type: code
+    start: 0x81C7E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81C7E0, asm, file_255]
+      - [0x81C870, data, file_255_data]
+
+  # File 256: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_256
+    type: code
+    start: 0x81C8A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81C8A0, asm, file_256]
+      - [0x81C930, data, file_256_data]
+
+  # File 257: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_257
+    type: code
+    start: 0x81C960
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81C960, asm, file_257]
+      - [0x81CA20, data, file_257_data]
+
+  # File 258: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_258
+    type: code
+    start: 0x81CA90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81CA90, asm, file_258]
+      - [0x81CB40, data, file_258_data]
+
+  # File 259: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_259
+    type: code
+    start: 0x81CC20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81CC20, asm, file_259]
+      - [0x81CCB0, data, file_259_data]
+
+  # File 260: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_260
+    type: code
+    start: 0x81CCE0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81CCE0, asm, file_260]
+      - [0x81CD70, data, file_260_data]
+
+  # File 261: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_261
+    type: code
+    start: 0x81CDA0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81CDA0, asm, file_261]
+      - [0x81CE30, data, file_261_data]
+
+  # File 262: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_262
+    type: code
+    start: 0x81CE70
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81CE70, asm, file_262]
+      - [0x81CFB0, data, file_262_data]
+
+  # File 263: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_263
+    type: code
+    start: 0x81D130
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81D130, asm, file_263]
+      - [0x81D870, data, file_263_data]
+
+  # File 264: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_264
+    type: code
+    start: 0x81DC00
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81DC00, asm, file_264]
+      - [0x81DD10, data, file_264_data]
+
+  # File 265: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_265
+    type: code
+    start: 0x81E420
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E420, asm, file_265]
+      - [0x81E4C0, data, file_265_data]
+
+  # File 266: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_266
+    type: code
+    start: 0x81E530
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E530, asm, file_266]
+      - [0x81E5E0, data, file_266_data]
+
+  # File 267: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_267
+    type: code
+    start: 0x81E620
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E620, asm, file_267]
+      - [0x81E6A0, data, file_267_data]
+
+  # File 268: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_268
+    type: code
+    start: 0x81E700
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E700, asm, file_268]
+      - [0x81E780, data, file_268_data]
+
+  # File 269: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_269
+    type: code
+    start: 0x81E7B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E7B0, asm, file_269]
+      - [0x81E830, data, file_269_data]
+
+  # File 270: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_270
+    type: code
+    start: 0x81E910
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E910, asm, file_270]
+      - [0x81E9A0, data, file_270_data]
+
+  # File 271: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_271
+    type: code
+    start: 0x81E9D0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81E9D0, asm, file_271]
+      - [0x81EA90, data, file_271_data]
+
+  # File 272: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_272
+    type: code
+    start: 0x81EB20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81EB20, asm, file_272]
+      - [0x81EBE0, data, file_272_data]
+
+  # File 273: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_273
+    type: code
+    start: 0x81EC90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81EC90, asm, file_273]
+      - [0x81ED40, data, file_273_data]
+
+  # File 274: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_274
+    type: code
+    start: 0x81EE60
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81EE60, asm, file_274]
+      - [0x81EF00, data, file_274_data]
+
+  # File 275: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_275
+    type: code
+    start: 0x81F030
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F030, asm, file_275]
+      - [0x81F0E0, data, file_275_data]
+
+  # File 276: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_276
+    type: code
+    start: 0x81F210
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F210, asm, file_276]
+      - [0x81F2B0, data, file_276_data]
+
+  # File 277: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_277
+    type: code
+    start: 0x81F3B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F3B0, asm, file_277]
+      - [0x81F480, data, file_277_data]
+
+  # File 278: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_278
+    type: code
+    start: 0x81F540
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F540, asm, file_278]
+      - [0x81F5F0, data, file_278_data]
+
+  # File 279: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_279
+    type: code
+    start: 0x81F690
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F690, asm, file_279]
+      - [0x81F740, data, file_279_data]
+
+  # File 280: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_280
+    type: code
+    start: 0x81F810
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F810, asm, file_280]
+      - [0x81F8C0, data, file_280_data]
+
+  # File 281: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_281
+    type: code
+    start: 0x81F970
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81F970, asm, file_281]
+      - [0x81FA10, data, file_281_data]
+
+  # File 282: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_282
+    type: code
+    start: 0x81FB90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81FB90, asm, file_282]
+      - [0x81FC40, data, file_282_data]
+
+  # File 283: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_283
+    type: code
+    start: 0x81FD90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81FD90, asm, file_283]
+      - [0x81FE30, data, file_283_data]
+
+  # File 284: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_284
+    type: code
+    start: 0x81FEB0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x81FEB0, asm, file_284]
+      - [0x81FF60, data, file_284_data]
+
+  # File 285: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_285
+    type: code
+    start: 0x820060
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820060, asm, file_285]
+      - [0x820110, data, file_285_data]
+
+  # File 286: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_286
+    type: code
+    start: 0x8201E0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8201E0, asm, file_286]
+      - [0x820280, data, file_286_data]
+
+  # File 287: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_287
+    type: code
+    start: 0x820340
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820340, asm, file_287]
+      - [0x8203E0, data, file_287_data]
+
+  # File 288: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_288
+    type: code
+    start: 0x8204A0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8204A0, asm, file_288]
+      - [0x820540, data, file_288_data]
+
+  # File 289: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_289
+    type: code
+    start: 0x8205C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8205C0, asm, file_289]
+      - [0x820660, data, file_289_data]
+
+  # File 290: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_290
+    type: code
+    start: 0x820730
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820730, asm, file_290]
+      - [0x8207D0, data, file_290_data]
+
+  # File 291: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_291
+    type: code
+    start: 0x820870
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820870, asm, file_291]
+      - [0x820910, data, file_291_data]
+
+  # File 292: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_292
+    type: code
+    start: 0x8209C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8209C0, asm, file_292]
+      - [0x820A60, data, file_292_data]
+
+  # File 293: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_293
+    type: code
+    start: 0x820B10
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820B10, asm, file_293]
+      - [0x820BB0, data, file_293_data]
+
+  # File 294: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_294
+    type: code
+    start: 0x820C70
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820C70, asm, file_294]
+      - [0x820D10, data, file_294_data]
+
+  # File 295: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_295
+    type: code
+    start: 0x820E10
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x820E10, asm, file_295]
+      - [0x820EB0, data, file_295_data]
+
+  # File 296: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_296
+    type: code
+    start: 0x821000
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821000, asm, file_296]
+      - [0x8210D0, data, file_296_data]
+
+  # File 297: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_297
+    type: code
+    start: 0x821180
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821180, asm, file_297]
+      - [0x821230, data, file_297_data]
+
+  # File 298: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_298
+    type: code
+    start: 0x821300
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821300, asm, file_298]
+      - [0x8213B0, data, file_298_data]
+
+  # File 299: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_299
+    type: code
+    start: 0x8214F0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8214F0, asm, file_299]
+      - [0x8215A0, data, file_299_data]
+
+  # File 300: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_300
+    type: code
+    start: 0x821640
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821640, asm, file_300]
+      - [0x8216E0, data, file_300_data]
+
+  # File 301: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_301
+    type: code
+    start: 0x8217C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8217C0, asm, file_301]
+      - [0x821870, data, file_301_data]
+
+  # File 302: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_302
+    type: code
+    start: 0x821930
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821930, asm, file_302]
+      - [0x8219D0, data, file_302_data]
+
+  # File 303: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_303
+    type: code
+    start: 0x821A90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821A90, asm, file_303]
+      - [0x821B30, data, file_303_data]
+
+  # File 304: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_304
+    type: code
+    start: 0x821BF0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821BF0, asm, file_304]
+      - [0x821C90, data, file_304_data]
+
+  # File 305: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_305
+    type: code
+    start: 0x821D40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821D40, asm, file_305]
+      - [0x821DF0, data, file_305_data]
+
+  # File 306: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_306
+    type: code
+    start: 0x821F10
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x821F10, asm, file_306]
+      - [0x822310, data, file_306_data]
+
+  # File 307: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_307
+    type: code
+    start: 0x8229B0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8229B0, asm, file_307]
+      - [0x822A50, data, file_307_data]
+
+  # File 308: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_308
+    type: code
+    start: 0x822B40
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x822B40, asm, file_308]
+      - [0x822BF0, data, file_308_data]
+
+  # File 309: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_309
+    type: code
+    start: 0x822C90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x822C90, asm, file_309]
+      - [0x822D70, data, file_309_data]
+
+  # File 310: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_310
+    type: code
+    start: 0x822E90
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x822E90, asm, file_310]
+      - [0x822F40, data, file_310_data]
+
+  # File 311: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_311
+    type: code
+    start: 0x823000
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x823000, asm, file_311]
+      - [0x8230B0, data, file_311_data]
+
+  # File 313: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_313
+    type: code
+    start: 0x823160
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x823160, asm, file_313]
+      - [0x8235C0, data, file_313_data]
+
+  # File 314: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_314
+    type: code
+    start: 0x823850
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x823850, asm, file_314]
+      - [0x823E90, data, file_314_data]
+
+  # File 315: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_315
+    type: code
+    start: 0x824590
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x824590, asm, file_315]
+      - [0x824960, data, file_315_data]
+
+  # File 316: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_316
+    type: code
+    start: 0x824D00
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x824D00, asm, file_316]
+      - [0x8251A0, data, file_316_data]
+
+  # File 317: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_317
+    type: code
+    start: 0x825860
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x825860, asm, file_317]
+      - [0x825E60, data, file_317_data]
+
+  # File 318: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_318
+    type: code
+    start: 0x8263C0
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x8263C0, asm, file_318]
+      - [0x8267C0, data, file_318_data]
+
+  # File 319: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_319
+    type: code
+    start: 0x826D20
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x826D20, asm, file_319]
+      - [0x827050, data, file_319_data]
+
+  # File 320: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_320
+    type: code
+    start: 0x827420
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x827420, asm, file_320]
+      - [0x827470, data, file_320_data]
+
+  # File 321: relocated on load.
+  # Load window from the table at 0x27700.
+  - name: file_321
+    type: code
+    start: 0x827510
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x827510, asm, file_321]
+      - [0x828200, data, file_321_data]
 
   # File 322: relocated on load.
   # Load window from the table at 0x27700.
@@ -858,7 +4173,7 @@ segments:
       - [0x895EA0, asm, file_326]
       - [0x8ACD50, data, file_326_data]
 
-  - name: gap_26
+  - name: gap_2
     type: bin
     start: 0x8AE3C0
 
