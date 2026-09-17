@@ -91,38 +91,7 @@ _Putfld = 0x80019CE0;
 _VirtualToPhysicalTask = 0x8000F9A0;
 __allocParam = 0x800151B0;
 __cosf = 0x8001CD30;
-__ll_lshift = 0x80012564;
-__ll_mod = 0x800126B8;
-__ll_rshift = 0x80012754;
-__osAiDeviceBusy = 0x800209C0;
-__osDequeueThread = 0x80010660;
-__osDevMgrMain = 0x80018B40;
-__osEnqueueAndYield = 0x8001037C;
-__osEnqueueThread = 0x8001047C;
-__osGetSR = 0x800127F0;
-__osInsertTimer = 0x8001BC88;
-__osPackRequestData = 0x80011940;
-__osPfsRequestData = 0x8001E510;
-__osPopThread = 0x800104C4;
-__osProbeTLB = 0x80013D80;
-__osResetGlobalIntMask = 0x8001C3F0;
-__osSetCompare = 0x8001C050;
-__osSetGlobalIntMask = 0x8001BE10;
-__osSetSR = 0x800127E0;
-__osSetTimerIntr = 0x8001BC14;
-__osSiDeviceBusy = 0x8001B020;
-__osSpDeviceBusy = 0x8001AFF0;
-__osSpGetStatus = 0x800201B0;
-__osSpRawReadIo = 0x80012DA0;
-__osSpRawStartDma = 0x80012BA0;
-__osSpRawWriteIo = 0x80020150;
-__osSpSetStatus = 0x800201A0;
-__osTimerInterrupt = 0x8001BA9C;
-__osTimerServicesInit = 0x8001BA10;
-__osViInit = 0x8001C8C0;
 __sinf = 0x8000F740;
-__ull_divremi = 0x80012658;
-__ull_rshift = 0x800124C0;
 _allocatePVoice = 0x80011EA0;
 _bcopy = 0x8001C060;
 _bnkfPatchInst = 0x80011C60;
@@ -207,17 +176,59 @@ init_lpfilter = 0x80015A40;
 ldiv = 0x8001FE20;
 lldiv = 0x8001FD20;
 memcpy = 0x8001ABB0;
-osEPiRawReadIo = 0x8001E6C0;
-osEPiRawWriteIo = 0x8001EFF0;
-osMapTLB = 0x8000FC90;
-osMapTLBRdb = 0x8001E860;
-osPfsInit = 0x80020570;
-osPfsIsPlug = 0x8001E370;
-osPiRawReadIo = 0x80012460;
-osPiRawStartDma = 0x80018FD0;
-osUnmapTLBAll = 0x8001A9A0;
-osYieldThread = 0x8001E8C0;
 sprintf = 0x80019C84;
 strchr = 0x8001AC04;
 strlen = 0x8001ABDC;
 
+
+// NOTE: a name is only safe to apply if the runtime implements
+// <name>_recomp, or if N64Recomp will not rename it at all. Both
+// reimplemented_funcs AND ignored_funcs cause the _recomp rename, and a
+// renamed function the runtime does not supply is an undefined symbol at
+// link time. 41 byte-matched names were withdrawn for that reason; left
+// anonymous they are simply recompiled as ordinary code.
+
+// Recovered once tools/gen_runtime_impls.py replaced the hand-maintained list
+// of runtime-implemented functions. That list had drifted and was missing 25
+// names, so valid matches were being rejected as unimplemented.
+//
+// osYieldThread and osCreateMesgQueue matter most here: the runtime already
+// intercepts osSendMesg/osRecvMesg and the thread scheduler, so leaving the
+// yield and the queue constructor recompiled let the game manage thread and
+// queue state the scheduler never saw, and every game thread ended up parked
+// in wait_for_resumed with nothing left to resume it.
+//
+// osMapTLB and osUnmapTLBAll were stubbed by address until now; the runtime
+// fork implements both, so they are intercepted instead.
+
+osGetThreadPri = 0x8001B320;
+osCreateMesgQueue = 0x8001AC50;
+osContGetQuery = 0x800193E4;
+osYieldThread = 0x8001E8C0;
+osMapTLB = 0x8000FC90;
+osUnmapTLBAll = 0x8001A9A0;
+osPfsInit = 0x80020570;
+osPfsIsPlug = 0x8001E370;
+__ll_lshift = 0x80012564;
+__ull_rshift = 0x800124C0;
+
+// Raw SI DMA, identified structurally rather than by byte match: GGA's copy
+// only matches MNSG's at ~28%, but it is the same 0xAC bytes and touches
+// exactly SI_DRAM_ADDR / PIF_ADDR_RD64B / PIF_ADDR_WR64B / SI_STATUS. GGA's
+// controller layer calls it directly instead of going through osCont*, and
+// the recompiled body would fault on the SI registers, so it is intercepted
+// by the joybus implementation added to the runtime's cont.cpp.
+__osSiRawStartDma = 0x80012C30;
+
+// The VI framebuffer getters. osViSwapBuffer is intercepted, so the runtime
+// owns which buffer is current, but these two were left recompiled and read
+// the game's own __osViCurr/__osViNext globals at 0x8003BBF0/0x8003BBF4 --
+// which the intercepted swap never updates. The game therefore drew using a
+// stale framebuffer pointer, which showed up as split and offset logos.
+//
+// The byte match is exact but ambiguous between the two, since they differ
+// only by the struct offset they load and the matcher masks immediates.
+// Disambiguated by which global each one touches: in both games the pair is
+// adjacent with Curr in the lower word, matching MNSG's 0x8007A300/0x8007A304.
+osViGetCurrentFramebuffer = 0x800209F0;
+osViGetNextFramebuffer = 0x80012840;

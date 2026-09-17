@@ -110,9 +110,12 @@ def main() -> int:
     ap.add_argument("--safe-names", type=Path, required=True,
                     help="names the runtime actually implements as <name>_recomp")
     ap.add_argument("-o", "--output", type=Path, help="write renames here")
-    ap.add_argument("--min-size", type=lambda v: int(v, 0), default=0x30,
-                    help="below this size a masked match is not trusted; "
-                         "exact bytes are required instead")
+    ap.add_argument("--min-size", type=lambda v: int(v, 0), default=0,
+                    help="below this size require exact bytes rather than a masked "
+                         "match. Defaults to 0: the one-to-one check below is "
+                         "the real guard, and a size floor wrongly rejects small "
+                         "routines whose signature is nonetheless unique, such "
+                         "as osGetThreadPri at 0x18 bytes.")
     ap.add_argument("--all", action="store_true",
                     help="also report matches outside the safe set (not applied)")
     args = ap.parse_args()

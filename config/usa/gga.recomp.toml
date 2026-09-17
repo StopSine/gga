@@ -20,14 +20,30 @@ bss_section_suffix = "_bss"
 # Mapping file 5 removed three stubs whose only problem was calling into it.
 #  - two jump tables N64Recomp cannot size
 stubs = [
+    # Reads the PI domain-1 config registers (PI_BSD_DOM1_LAT/PWD/PGS/RLS at
+    # 0xA4600014..0x20). MMIO is not modelled, so N64Recomp lowers these to
+    # RDRAM accesses far outside the 8 MB buffer and the process faults. The
+    # runtime owns the PI, so the read is vestigial.
+    "func_800189FC_195FC",
     "func_8000FD50_10950",
     "func_800104D4_110D4",
     "func_80024478_25078",
     "func_8002549C_2609C",
     "func_80025A00_26600",
     "func_80024470_25070",
-    "func_08001794_660634",
     "func_800E9E5C_5A507C",
+    "func_80013D80_14980",
+    "func_8001C050_1CC50",
+    "func_8001E860_1F460",
+    # Video interface initialisation (0x8001C8C0). Zeroes a VI context via
+    # bzero, then reads VI_CURRENT_REG at 0xA4400010 and programs the VI.
+    # Same problem as the PI reads above: MMIO is lowered to an RDRAM access
+    # far outside the 8 MB buffer, so it faults. RT64 owns video output, so
+    # the game programming the VI itself is vestigial.
+    #
+    # Naming it does not help. The runtime has no __osViInit implementation,
+    # and the plain osViInit spelling is in neither reimplemented_funcs nor
+    # ignored_funcs, so it would be recompiled as real code and fault anyway.
 ]
 
 ignored = []
