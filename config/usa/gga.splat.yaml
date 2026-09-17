@@ -772,6 +772,27 @@ segments:
     type: bin
     start: 0x7EDDB0
 
+  # File 183: relocated on load, like the others, but mostly data -- only four
+  # `jr $ra` in 0x59E0 bytes, so the code-density heuristic in
+  # tools/gen_overlay_segments.py classified the whole file as data and it was
+  # never disassembled. The game loads it into the overlay window and calls
+  # offset 0, which left the window's entry resolving to whichever overlay was
+  # registered there previously.
+  - name: file_183
+    type: code
+    start: 0x7EF220
+    vram: 0x08000000
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: ovl
+    subsegments:
+      - [0x7EF220, asm, file_183]
+      - [0x7EF720, data, file_183_data]
+
+  - name: gap_25b
+    type: bin
+    start: 0x7F4C00
+
   # File 322: relocated on load.
   # Load window from the table at 0x27700.
   - name: file_322

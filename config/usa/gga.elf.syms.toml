@@ -18659,6 +18659,40 @@ functions = [
 ]
 
 [[section]]
+name = ".file_183"
+rom = 0x007EF220
+vram = 0x08000000
+size = 0x59E0
+
+relocs = [
+    { type = "R_MIPS_HI16", vram = 0x08000060, target_vram = 0x08000BD8 },
+    { type = "R_MIPS_LO16", vram = 0x08000074, target_vram = 0x08000BD8 },
+    { type = "R_MIPS_HI16", vram = 0x08000084, target_vram = 0x08000C1C },
+    { type = "R_MIPS_HI16", vram = 0x08000088, target_vram = 0x0800100C },
+    { type = "R_MIPS_LO16", vram = 0x08000094, target_vram = 0x0800100C },
+    { type = "R_MIPS_LO16", vram = 0x08000098, target_vram = 0x08000C1C },
+    { type = "R_MIPS_HI16", vram = 0x08000194, target_vram = 0x08002020 },
+    { type = "R_MIPS_LO16", vram = 0x080001A8, target_vram = 0x08002020 },
+    { type = "R_MIPS_HI16", vram = 0x080001B8, target_vram = 0x08002034 },
+    { type = "R_MIPS_LO16", vram = 0x080001C4, target_vram = 0x08002034 },
+    { type = "R_MIPS_HI16", vram = 0x08000304, target_vram = 0x08004518 },
+    { type = "R_MIPS_LO16", vram = 0x08000318, target_vram = 0x08004518 },
+    { type = "R_MIPS_HI16", vram = 0x08000328, target_vram = 0x0800452C },
+    { type = "R_MIPS_LO16", vram = 0x08000334, target_vram = 0x0800452C },
+    { type = "R_MIPS_HI16", vram = 0x08000430, target_vram = 0x080054A0 },
+    { type = "R_MIPS_LO16", vram = 0x08000444, target_vram = 0x080054A0 },
+    { type = "R_MIPS_HI16", vram = 0x08000454, target_vram = 0x080054F8 },
+    { type = "R_MIPS_LO16", vram = 0x08000460, target_vram = 0x080054F8 },
+]
+
+functions = [
+    { name = "func_08000000_7EF220", vram = 0x08000000, size = 0x130 },
+    { name = "func_080003D0_7EF5F0", vram = 0x080003D0, size = 0x124 },
+    { name = "func_08000130_7EF350", vram = 0x08000130, size = 0x170 },
+    { name = "func_080002A0_7EF4C0", vram = 0x080002A0, size = 0x130 },
+]
+
+[[section]]
 name = ".file_322"
 rom = 0x00831C30
 vram = 0x08000000

@@ -25,6 +25,10 @@ stubs = [
     # RDRAM accesses far outside the 8 MB buffer and the process faults. The
     # runtime owns the PI, so the read is vestigial.
     "func_800189FC_195FC",
+    # The interrupt dispatcher: reads COP0 Cause (register 13) to find which
+    # interrupt fired. N64Recomp models only Status, and there are no interrupts
+    # to dispatch in a recompilation -- the runtime delivers the events directly
+    # -- so this stays stubbed on purpose. It touches SI and AI registers.
     "func_8000FD50_10950",
     "func_800104D4_110D4",
     "func_80024478_25078",
