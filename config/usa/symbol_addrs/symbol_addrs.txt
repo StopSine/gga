@@ -27,6 +27,13 @@ func_8000FD50_10950 = 0x8000FD50; // size:0x62C
 // 0x80002058.
 func_80001F94_2B94 = 0x80001F94; // size:0xCC
 
+// A switch whose eleven cases splat made into separate functions, because each
+// case is four instructions ending in `jr $ra`. The jump table at 0x0800C58C
+// then pointed entirely outside the 0x3C the function was given, so N64Recomp
+// could not size it and refused to recompile the function at all. Widening it
+// to cover the cases (0x08001794..0x08001884) makes it an ordinary switch.
+func_08001794_660634 = 0x08001794; // size:0xF0
+
 // ---------------------------------------------------------------------------
 // libultra names recovered by byte-matching against MNSG (tools/match_libultra.py).
 //

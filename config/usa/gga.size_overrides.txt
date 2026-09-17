@@ -34,3 +34,15 @@ func_8000FD50_10950 0x62C
 # Reached only once a formatted Controller Pak exists, which is why it stayed
 # hidden until a real save was loaded.
 func_80001F94_2B94 0xCC
+
+# A switch, split into twelve pieces: the dispatcher plus one function per case,
+# because each case is four instructions ending in `jr $ra`. Its jump table at
+# 0x0800C58C therefore pointed entirely outside the function, N64Recomp could
+# not determine the table's size, and it failed the whole function -- which is
+# a hard error, so regeneration did not complete at all.
+#
+# This was previously worked around by patching N64Recomp to treat such a table
+# as an indirect tail call. That was wrong: it is a real switch, and the table
+# looked external only because the function was too small. Widening it to
+# 0x08001794..0x08001884 fixes it with a stock recompiler.
+func_08001794_660634 0xF0
