@@ -108,3 +108,61 @@ Writing the patch needs these decompiled well enough to name the arguments:
 
 Note that only 40 of the 2577 files are relocatable overlays; the rest are raw
 data or fixed-address code. See `tools/gen_overlay_segments.py`.
+
+## The load-address table (`D_80026B00`)
+
+A second table sits immediately before the Nisitenma-Ichigo signature, at VRAM
+`0x80026B00` / ROM `0x27700`, running `8 * 2577 = 0x5088` bytes and ending at
+ROM `0x2C788`, right where the signature begins. Each 8-byte record is a
+`(vram_start, vram_end)` pair for the corresponding file, indexed by
+`(file_id - 1) * 8`.
+
+This is the authoritative answer to where every file loads, and it removes the
+need to infer overlay addresses from `jal` targets:
+
+| `vram_start` | meaning | files |
+|--------------|---------|-------|
+| `0x08000000` | relocatable overlay; relocated on load | 371 |
+| real KSEG0   | fixed address, loaded to one specific window | 8 |
+
+Of the 371 relocatable files, 47 contain code (`jr $ra` density); the rest are
+data. `tools/gen_overlay_segments.py` currently finds 40 of those 47 by
+heuristic, and every one of its 40 has `vram_start == 0x08000000` in this
+table, so the heuristic was sound but incomplete.
+
+The eight fixed-address files:
+
+| file | window | size |
+|------|--------|------|
+| 1 | `0x800C7310..0x800C7B10` | `0x800` |
+| 3 | `0x8036A000..0x8038F800` | `0x25800` |
+| 4 | `0x8038F800..0x80400000` | `0x70800` |
+| 5 | `0x800C7B10..0x801738A0` | `0xABD90` |
+| 6 | `0x80342080..0x8036A000` | `0x27F80` |
+| 7 | `0x801738A0..0x8017F0E0` | `0xB840` |
+| 8 | `0x801738A0..0x801B7D50` | `0x444B0` |
+| 9 | `0x801738A0..0x8019E810` | `0x2AF70` |
+
+Files 7, 8 and 9 share the window at `0x801738A0`, so they are mutually
+exclusive in RAM -- the same arrangement as MNSG, where 8 sections share
+`0x801CB460`. They need `exclusive_ram_id` if they are ever split as segments.
+
+Mapping file 5 would resolve four of the remaining stubs: the calls to
+`func_800D05E0`, `func_800D3E64`, `func_800D3FF0` and `func_800D41AC` all land
+inside `0x800C7B10..0x801738A0`.
+
+`vram_end - vram_start` equals the decompressed size recorded in
+`config/usa/rommy.yaml` for 1763 of 2577 files; the remainder are entries for
+files that are never loaded, or whose window is a larger buffer than the file.
+
+## Loader signature
+
+`func_80003E50_4A50(u32 file_id, void *dest)`
+
+- `$a0` — file id, 1-based. Rejected unless `0 < file_id < 0xA11` (2577, the
+  exact file-table entry count); returns 0 when out of range.
+- `$a1` — destination buffer, kept in `$s0` across the call.
+- Table entries are read as `entry[file_id-1]` (start) and `entry[file_id]`
+  (end) off the signature base, masked with `0x7FFFFFFF`, and the size is their
+  difference. The compression flag is bit 31 of the file's *own* entry, which
+  is re-loaded unmasked at `0x80003EF4` before the `bgez` test.
