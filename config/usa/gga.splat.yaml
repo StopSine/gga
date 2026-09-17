@@ -64,11 +64,71 @@ segments:
       - [0x1050, asm, main]
 
   # Everything after the resident image. Segments come from the engine's own
-  # per-file load table at VRAM 0x80026B00 (see docs/overlay_loader.md).
-  # Relocatable overlays only, conservative code/data boundary.
+  # per-file load table at VRAM 0x80026B00 (see docs/overlay_loader.md):
+  # vram_start 0x08000000 is a relocatable overlay, anything else a fixed
+  # window. Files sharing a window are mutually exclusive and share a ram id.
+  # Conservative code/data boundary: the last `jr $ra`, which keeps jump
+  # tables (whose entries decode as `j` to addresses outside the file) inside
+  # the data subsegment.
   - name: gap_0
     type: bin
     start: 0x26630
+
+  # File 5: loaded to a fixed window at 0x800C7B10.
+  # Load window from the table at 0x27700.
+  - name: file_5
+    type: code
+    start: 0x582D30
+    vram: 0x800C7B10
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: win_800C7B10
+    subsegments:
+      - [0x582D30, asm, file_5]
+      - [0x5B58D0, data, file_5_data]
+
+  # File 7: loaded to a fixed window at 0x801738A0.
+  # Load window from the table at 0x27700.
+  - name: file_7
+    type: code
+    start: 0x5CAEE0
+    vram: 0x801738A0
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: win_801738A0
+    subsegments:
+      - [0x5CAEE0, asm, file_7]
+      - [0x5CD2B0, data, file_7_data]
+
+  # File 8: loaded to a fixed window at 0x801738A0.
+  # Load window from the table at 0x27700.
+  - name: file_8
+    type: code
+    start: 0x5D6300
+    vram: 0x801738A0
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: win_801738A0
+    subsegments:
+      - [0x5D6300, asm, file_8]
+      - [0x609800, data, file_8_data]
+
+  # File 9: loaded to a fixed window at 0x801738A0.
+  # Load window from the table at 0x27700.
+  - name: file_9
+    type: code
+    start: 0x61A700
+    vram: 0x801738A0
+    subalign: 16
+    overlay: yes
+    exclusive_ram_id: win_801738A0
+    subsegments:
+      - [0x61A700, asm, file_9]
+      - [0x641BC0, data, file_9_data]
+
+  - name: gap_1
+    type: bin
+    start: 0x645630
 
   # File 15: relocated on load.
   # Load window from the table at 0x27700.
@@ -122,7 +182,7 @@ segments:
       - [0x66C270, asm, file_18]
       - [0x672EB0, data, file_18_data]
 
-  - name: gap_1
+  - name: gap_2
     type: bin
     start: 0x674220
 
@@ -139,7 +199,7 @@ segments:
       - [0x67A480, asm, file_20]
       - [0x68ADA0, data, file_20_data]
 
-  - name: gap_2
+  - name: gap_3
     type: bin
     start: 0x68DBF0
 
@@ -156,7 +216,7 @@ segments:
       - [0x694680, asm, file_22]
       - [0x69C9A0, data, file_22_data]
 
-  - name: gap_3
+  - name: gap_4
     type: bin
     start: 0x69DCB0
 
@@ -173,7 +233,7 @@ segments:
       - [0x6B0910, asm, file_26]
       - [0x6B8E60, data, file_26_data]
 
-  - name: gap_4
+  - name: gap_5
     type: bin
     start: 0x6B9F60
 
@@ -242,7 +302,7 @@ segments:
       - [0x6F5070, asm, file_34]
       - [0x6F8080, data, file_34_data]
 
-  - name: gap_5
+  - name: gap_6
     type: bin
     start: 0x6F8D90
 
@@ -324,7 +384,7 @@ segments:
       - [0x71C620, asm, file_41]
       - [0x724CE0, data, file_41_data]
 
-  - name: gap_6
+  - name: gap_7
     type: bin
     start: 0x7252D0
 
@@ -341,7 +401,7 @@ segments:
       - [0x728360, asm, file_47]
       - [0x72DAC0, data, file_47_data]
 
-  - name: gap_7
+  - name: gap_8
     type: bin
     start: 0x72DD80
 
@@ -358,7 +418,7 @@ segments:
       - [0x731230, asm, file_52]
       - [0x734750, data, file_52_data]
 
-  - name: gap_8
+  - name: gap_9
     type: bin
     start: 0x7349A0
 
@@ -375,7 +435,7 @@ segments:
       - [0x73AD90, asm, file_62]
       - [0x73D0B0, data, file_62_data]
 
-  - name: gap_9
+  - name: gap_10
     type: bin
     start: 0x73D160
 
@@ -392,7 +452,7 @@ segments:
       - [0x746FE0, asm, file_77]
       - [0x74AC10, data, file_77_data]
 
-  - name: gap_10
+  - name: gap_11
     type: bin
     start: 0x74B010
 
@@ -409,7 +469,7 @@ segments:
       - [0x74D4B0, asm, file_80]
       - [0x74F000, data, file_80_data]
 
-  - name: gap_11
+  - name: gap_12
     type: bin
     start: 0x74F1F0
 
@@ -426,7 +486,7 @@ segments:
       - [0x7531D0, asm, file_85]
       - [0x7550A0, data, file_85_data]
 
-  - name: gap_12
+  - name: gap_13
     type: bin
     start: 0x7551E0
 
@@ -469,7 +529,7 @@ segments:
       - [0x764380, asm, file_98]
       - [0x767770, data, file_98_data]
 
-  - name: gap_13
+  - name: gap_14
     type: bin
     start: 0x767A90
 
@@ -486,7 +546,7 @@ segments:
       - [0x76AC50, asm, file_102]
       - [0x7700D0, data, file_102_data]
 
-  - name: gap_14
+  - name: gap_15
     type: bin
     start: 0x770E80
 
@@ -503,7 +563,7 @@ segments:
       - [0x771A50, asm, file_104]
       - [0x773000, data, file_104_data]
 
-  - name: gap_15
+  - name: gap_16
     type: bin
     start: 0x7731A0
 
@@ -520,7 +580,7 @@ segments:
       - [0x775710, asm, file_108]
       - [0x77C120, data, file_108_data]
 
-  - name: gap_16
+  - name: gap_17
     type: bin
     start: 0x77CB40
 
@@ -563,7 +623,7 @@ segments:
       - [0x7876A0, asm, file_123]
       - [0x788AB0, data, file_123_data]
 
-  - name: gap_17
+  - name: gap_18
     type: bin
     start: 0x788D60
 
@@ -580,7 +640,7 @@ segments:
       - [0x78D840, asm, file_126]
       - [0x790DC0, data, file_126_data]
 
-  - name: gap_18
+  - name: gap_19
     type: bin
     start: 0x7914C0
 
@@ -597,7 +657,7 @@ segments:
       - [0x793830, asm, file_128]
       - [0x797440, data, file_128_data]
 
-  - name: gap_19
+  - name: gap_20
     type: bin
     start: 0x797F00
 
@@ -614,7 +674,7 @@ segments:
       - [0x79A870, asm, file_130]
       - [0x7A01E0, data, file_130_data]
 
-  - name: gap_20
+  - name: gap_21
     type: bin
     start: 0x7A1A80
 
@@ -644,7 +704,7 @@ segments:
       - [0x7A6960, asm, file_133]
       - [0x7AD6B0, data, file_133_data]
 
-  - name: gap_21
+  - name: gap_22
     type: bin
     start: 0x7AE790
 
@@ -661,7 +721,7 @@ segments:
       - [0x7BFDB0, asm, file_141]
       - [0x7C3BE0, data, file_141_data]
 
-  - name: gap_22
+  - name: gap_23
     type: bin
     start: 0x7C45A0
 
@@ -678,7 +738,7 @@ segments:
       - [0x7E5B80, asm, file_176]
       - [0x7E84A0, data, file_176_data]
 
-  - name: gap_23
+  - name: gap_24
     type: bin
     start: 0x7E8760
 
@@ -708,7 +768,7 @@ segments:
       - [0x7EBC80, asm, file_179]
       - [0x7ED610, data, file_179_data]
 
-  - name: gap_24
+  - name: gap_25
     type: bin
     start: 0x7EDDB0
 
@@ -777,7 +837,7 @@ segments:
       - [0x895EA0, asm, file_326]
       - [0x8ACD50, data, file_326_data]
 
-  - name: gap_25
+  - name: gap_26
     type: bin
     start: 0x8AE3C0
 

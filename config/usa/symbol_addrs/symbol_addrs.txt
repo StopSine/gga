@@ -221,12 +221,3 @@ sprintf = 0x80019C84;
 strchr = 0x8001AC04;
 strlen = 0x8001ABDC;
 
-// ---------------------------------------------------------------------------
-// Cross-section reference target.
-//
-// With more overlays mapped, one references data inside another. splat emits
-// such targets as local D_ labels which are not exported, so the link fails.
-// segment: is required because every overlay claims vram 0x08000000, so the
-// address alone does not say which segment owns the symbol; it is recovered
-// from the ROM offset splat embeds in its own label name.
-D_08007300 = 0x08007300; // segment:file_15

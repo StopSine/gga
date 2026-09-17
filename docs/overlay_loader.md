@@ -166,3 +166,42 @@ files that are never loaded, or whose window is a larger buffer than the file.
   (end) off the signature base, masked with `0x7FFFFFFF`, and the size is their
   difference. The compression flag is bit 31 of the file's *own* entry, which
   is re-loaded unmasked at `0x80003EF4` before the `bgez` test.
+
+## Segment generation: what works
+
+`tools/gen_overlay_segments.py` reads the load table and emits 51 code
+segments -- 47 relocatable overlays plus files 5, 7, 8 and 9 in their fixed
+windows. Two settings matter, and getting them wrong is not obvious:
+
+**`--conservative` (code/data boundary).** The code region ends at the last
+`jr $ra`. An earlier version extended it to the furthest control-flow target
+inside the file, reasoning that a branch target beyond the boundary would land
+in the data subsegment where splat emits no label. That is true, but those
+particular labels were *cross-section* and belong to the fix below. Extending
+the boundary instead swept jump tables into the code region: a table's entries
+decode as `j` instructions whose targets sit outside the file (file_8's table
+at offset 0x33648 yields targets like 0x8C0004E0, outside RDRAM), and each
+becomes a bogus 8-byte function that N64Recomp cannot recompile. That inflated
+the stub list past 60 without ever completing. The conservative boundary leaves
+those tables in data, where they belong.
+
+**Segment-qualified `symbol_addrs`.** Overlays branch into the fixed-window
+files, and file 5 reaches into overlay space. splat emits such targets as local
+`.L` / `D_` labels which are not exported, so the link fails. Declaring them in
+`symbol_addrs` fixes it, but only with a `segment:` attribute -- every overlay
+claims vram 0x08000000, so an address alone does not identify the owning
+segment. The segment is recoverable from the ROM offset splat embeds in its own
+label names. Neither `type:label` nor an unqualified entry works.
+
+Note that declaring a mid-function branch target with `type:func` splits the
+containing function, which shows up afterwards as "Unhandled branch". Four of
+the 21 stubs in the 51-segment configuration are that artefact and could be
+recovered with size overrides.
+
+Results, for reference:
+
+| segments | sections | functions | emitted | stubs |
+|----------|----------|-----------|---------|-------|
+| 40 overlays | 42 | 2,419 | 2,337 | 10 |
+| 47 overlays | 49 | 2,630 | 2,548 | 10 |
+| 47 + files 5/7/8/9 | 53 | 4,666 | 4,585 | 21 |

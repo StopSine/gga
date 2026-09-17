@@ -20,3 +20,8 @@ context.c
 
 # Manifest files
 rommy.yaml 
+
+# Generated linker scripts are ignored above, but this one is hand-written
+# and the ELF build needs it: it defines cross-section reference targets
+# that splat emits as unexported local labels.
+!config/usa/gga.undefined_syms.ld

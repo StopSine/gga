@@ -1,62 +1,33 @@
-# N64Recomp config for Goemon's Great Adventure (USA) - resident image only.
+# N64Recomp config for Goemon's Great Adventure (USA).
 #
-# Overlays are absent: they need a relocation table, which only a linked ELF
-# provides (ld --emit-relocs). Roughly 44% of the game's code lives in them.
-#
-# NOTE: paths resolve relative to this file's directory, not the CWD.
+# Symbols come from the linked ELF via --dump-context (see gga.dump_context.toml),
+# so overlay sections carry relocations. Paths resolve relative to this file.
 
 [input]
 entrypoint = 0x80000400
-output_func_path = "C:/Users/Blair/AppData/Local/Temp/claude/c--Users-Blair-Documents-Development-GGARecomp-Goemon64Recomp/02684c35-ffc5-44df-a27e-06ab6b290d18/scratchpad/ggafuncs"
-symbols_file_path = "gga.syms.toml"
+# Relative to this file: lib/gga/config/usa -> the repository root.
+output_func_path = "../../../../RecompiledFuncs"
+symbols_file_path = "gga.elf.syms.toml"
 rom_file_path = "baserom.decompressed.z64"
+relocatable_sections_path = "gga.overlays.txt"
 bss_section_suffix = "_bss"
 
 [patches]
-# Every stub below is tracked debt, not a fix. Each should be replaced by
-# runtime interception once libultra names are recovered (N64Recomp's
-# reimplemented_funcs matching is name-based, and GGA's splat symbols are
-# anonymous), or by real code once overlays are mapped.
+# Tracked debt, each to become runtime interception or real code:
+#  - libultra routines N64Recomp does not model: COP0 registers other than
+#    Status, and the cache instruction
+#  - a call into 0x8400103C (RSP IMEM), still unmapped
+# Mapping file 5 removed three stubs whose only problem was calling into it.
+#  - two jump tables N64Recomp cannot size
 stubs = [
-    # --- calls into unmapped overlay code -------------------------------
-    # These reach func_800D05E0/3E64/3FF0/41AC (an overlay at a fixed slot
-    # around 0x800D0000) and 0x8400103C, which is outside RDRAM. N64Recomp
-    # treats an unresolved jal as fatal.
-    "func_80000F10_1B10",
-    "func_80001294_1E94",
-    "func_80001A24_2624",
-
-    # Branches to 0x84001064 - KSEG0 for physical 0x04001064, i.e. RSP IMEM.
-    # Adjacent to func_80024478_25078 (same CPU/RSP init block).
+    "func_8000FD50_10950",
+    "func_800104D4_110D4",
+    "func_80024478_25078",
+    "func_8002549C_2609C",
+    "func_80025A00_26600",
     "func_80024470_25070",
-
-    # --- libultra OS kernel: COP0 registers N64Recomp does not model -----
-    # It implements only COP0_Status ($12); every other register and all of
-    # tlbwi/tlbp/tlbr/eret are unhandled. These are TLB management, exception
-    # handling (Cause/EPC/BadVAddr), the Count timer and CPU init - all owned
-    # by the runtime in a static recompilation, which has no virtual memory.
-    # Upstream reached the same conclusion for MNSG: PR #40 "no-tlb", then
-    # 117fe6f "Remove tlb.cpp as the stubs are handled by N64ModernRuntime".
-    "func_8000FC90_10890",   # tlbwi; Index/EntryLo0/EntryLo1/PageMask/EntryHi
-    "func_8000FD50_10950",   # BadVAddr/Compare/Cause/EPC - exception handler
-    "func_800104D4_110D4",   # EPC + eret - exception return
-    "func_80013D80_14980",   # tlbp/tlbr - TLB probe/read
-    "func_80014A50_15650",   # Count - timer read
-    "func_8001A9A0_1B5A0",   # tlbwi - TLB write
-    "func_8001C050_1CC50",   # Compare
-    "func_8001E860_1F460",   # tlbwi - TLB write
-    "func_80024478_25078",   # CPU init (also calls unmapped overlay code)
-    "func_8002549C_2609C",   # CPU init
-    "func_80025A00_26600",   # CPU init
-
-    # --- libultra cache management --------------------------------------
-    # N64Recomp implements `break` but not `cache` or `sync`. These are the
-    # osInvalDCache / osWritebackDCache family; with no emulated cache they
-    # are no-ops, and the runtime supplies them.
-    "func_80012150_12D50",
-    "func_8001AC80_1B880",
-    "func_8001AD00_1B900",
-    "func_800204E0_210E0",
+    "func_08001794_660634",
+    "func_800E9E5C_5A507C",
 ]
 
 ignored = []
