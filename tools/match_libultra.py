@@ -197,7 +197,7 @@ def main() -> int:
 
     if args.all and held:
         print("\nheld names (byte-matched but not runtime-implemented):")
-        for t, r in sorted(held.items(), key=lambda kv: kv[1])[:25]:
+        for t, r in sorted(held.items(), key=lambda kv: kv[1]):
             print(f"  {r:<28} <- {t}")
 
     return 0
