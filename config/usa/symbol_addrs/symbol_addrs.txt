@@ -259,3 +259,77 @@ osViGetNextFramebuffer = 0x80012840;
 // and the game never polled buttons -- it queried the controller once and then
 // sent nothing. Letting the game's own init run means the whole stack is
 // consistent, talking to the joybus implementation in the runtime.
+
+
+// ---------------------------------------------------------------------------
+// Named symbols
+// ---------------------------------------------------------------------------
+//
+// Names for routines whose behaviour has been established, so the disassembly
+// carries the knowledge rather than it living only in commit messages. These
+// reach a build through the ELF and --dump-context, not through asm/, so adding
+// one changes nothing until the symbols are regenerated.
+//
+// When they are regenerated, anything in patches/ that names a function by its
+// old func_<vram>_<rom> form stops resolving. gga.patches.toml sets
+// strict_patch_mode, so that fails loudly rather than silently. Symbols the
+// patches currently reference are therefore left unnamed and listed at the end.
+//
+// CAVEAT: splat 0.36.3 applies only some of these. objpool_free_all,
+// objnode_create_child, objnode_attach_child and actor_init_from_spawn take
+// effect; objpool_register, objpool_alloc, scenegraph_draw_node,
+// scene_emit_camera_and_scissor and gfx_viewport are ignored, with splat
+// exiting 0 and reporting nothing. It depends on the address rather than the
+// name -- declaring 0x800D4A58 under a different name is ignored too -- and is
+// not explained by duplicate declarations, the size overrides above, the type
+// attribute, gga.undefined_syms.ld, or a stale cache. The declarations are kept
+// because they document what the routines are either way.
+
+// The display object system: a pool of fixed-size nodes, each with a draw
+// callback, walked as a tree.
+//
+// objpool_register(class, callback, elem_size, elem_count, context) fills a
+// 0x1C-byte entry in objpool_table, allocating elem_count * elem_size, and
+// returns the entry index. The scene pool is registered with elem_size 0x78.
+objpool_register = 0x800D4A58; // type:func
+objpool_alloc = 0x800D4CEC; // type:func
+objpool_free_all = 0x800D4C24;
+
+// objnode_create_child(parent, type) allocates a node of that type and links it
+// under parent, returning it, or NULL if either step fails. Reproduced exactly
+// in a patch and run, so the contract is confirmed rather than inferred.
+objnode_create_child = 0x800D4D7C;
+objnode_attach_child = 0x800D4FF0;
+
+// scenegraph_draw_node(dl, node) draws node when bit 1 of its flag halfword is
+// set, by calling the type's entry in scenegraph_draw_callbacks, then recurses
+// over the child at +0x08 and the sibling at +0x10, threading the display list
+// pointer through and returning it.
+scenegraph_draw_node = 0x800D48F4; // type:func
+
+// Emits the camera and clip setup for a scene: guPerspective with a hardcoded
+// 4:3 aspect, guLookAtHilite, and a G_SETSCISSOR built from four halfwords the
+// node carries at +0x60..0x66, skipped when all four are zero. Registered as
+// the scene pool's draw callback; never called directly.
+scene_emit_camera_and_scissor = 0x800D786C; // type:func
+
+// actor_init_from_spawn(actor, spawn) copies the type to +0x21, the position to
+// +0x30/0x34/0x38 and the definition pointer to +0x24, zeroes the motion fields
+// at +0x3C..0x50, and ORs the low two bits of the definition's byte at +0x11
+// into the actor flags at +0x28.
+actor_init_from_spawn = 0x80197264;
+
+// The viewport the RSP is given: vscale and vtrans are both (640, 480, 511),
+// which is a half extent of (160, 120) centred on (160, 120) -- the whole
+// 320x240 framebuffer. Worth naming because the scissor is inset from it, so
+// the two disagreeing is what letterboxes the game.
+gfx_viewport = 0x80108990; // type:Vp size:0x10
+
+// Left unnamed while patches/ references them by their generated names:
+//   func_800D45A0_58F7C0   per-frame scene render, emits the graphics context
+//                          scissor; reached only as a registered callback
+//   func_800D48B4_58FAD4   registers that callback
+//   func_800DEC40_599E60   sets the graphics context scissor and a scene flag
+//   func_800D8CA0_593EC0   sets or clears bit 1 of a 30-byte flag entry
+//   D_800881C0             graphics context, scissor at +0x14..0x1A
+//   D_80108C50_5C3E70      static display list for the building entry fade
