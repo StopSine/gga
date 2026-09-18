@@ -275,15 +275,35 @@ osViGetNextFramebuffer = 0x80012840;
 // strict_patch_mode, so that fails loudly rather than silently. Symbols the
 // patches currently reference are therefore left unnamed and listed at the end.
 //
-// CAVEAT: splat 0.36.3 applies only some of these. objpool_free_all,
-// objnode_create_child, objnode_attach_child and actor_init_from_spawn take
-// effect; objpool_register, objpool_alloc, scenegraph_draw_node,
-// scene_emit_camera_and_scissor and gfx_viewport are ignored, with splat
-// exiting 0 and reporting nothing. It depends on the address rather than the
-// name -- declaring 0x800D4A58 under a different name is ignored too -- and is
-// not explained by duplicate declarations, the size overrides above, the type
-// attribute, gga.undefined_syms.ld, or a stale cache. The declarations are kept
-// because they document what the routines are either way.
+// CAVEAT: splat 0.36.3 applies only some of these, exiting 0 and reporting
+// nothing for the rest. Applied: objpool_free_all, objnode_create_child,
+// objnode_attach_child, actor_init_from_spawn, scene_apply_scissor,
+// flag_entry_set_bit1, and gfx_context. Ignored: objpool_register,
+// objpool_alloc, scenegraph_draw_node, scene_emit_camera_and_scissor,
+// scene_render, scene_register_render, gfx_viewport and fade_display_list.
+//
+// It depends on the address rather than the name -- declaring 0x800D4A58 under
+// a different name is ignored too -- and is not explained by duplicate
+// declarations, the size overrides above, the type attribute,
+// gga.undefined_syms.ld, or a stale cache. gfx_context is the one data symbol
+// that took, and it is the one splat also emits into undefined_syms_auto.ld as
+// a cross-section reference, which may be the distinguishing factor.
+//
+// The declarations are kept because they document what the routines are either
+// way, and applying more of them later costs nothing.
+//
+// HAZARD when regenerating: the size:0xF0 override for func_08001794_660634 is
+// at 0x08001794, an overlay address, and every overlay links at 0x08000000, so
+// a bare address there is ambiguous across all 311 of them. splat resolved it
+// on the run that produced the committed symbols and did not on a later one,
+// giving that function 0x3C instead, which leaves its jump table unsizable and
+// makes N64Recomp refuse to recompile it:
+//
+//   Failed to determine size of jump table at 0x0800C58C
+//
+// The generated gga.elf.syms.toml was corrected by hand for that one entry.
+// Check it after any regeneration; the other four overrides, all at main-segment
+// addresses, applied correctly.
 
 // The display object system: a pool of fixed-size nodes, each with a draw
 // callback, walked as a tree.
@@ -333,3 +353,31 @@ gfx_viewport = 0x80108990; // type:Vp size:0x10
 //   func_800D8CA0_593EC0   sets or clears bit 1 of a 30-byte flag entry
 //   D_800881C0             graphics context, scissor at +0x14..0x1A
 //   D_80108C50_5C3E70      static display list for the building entry fade
+
+// Referenced by patches/, so renaming these requires updating the patch sources
+// in the same change.
+//
+// scene_render is the per frame scene pass: it publishes the camera position,
+// has the graphics context's scissor emitted, and walks the display object tree
+// through scenegraph_draw_node. Reached only as the callback that
+// scene_register_render installs.
+scene_render = 0x800D45A0; // type:func
+scene_register_render = 0x800D48B4; // type:func
+
+// Sets the graphics context scissor to one of two rectangles and sets or clears
+// bit 1 of a flag the live scene holds, selected by its argument. Reproduced
+// exactly in a patch and shipped.
+scene_apply_scissor = 0x800DEC40; // type:func
+
+// Sets or clears bit 1 of the first byte of a 30-byte entry. Named for what it
+// does rather than what it means, which is not established. Reproduced exactly
+// in a patch and shipped.
+flag_entry_set_bit1 = 0x800D8CA0; // type:func
+
+// Zeroed as 0x2C bytes at startup. Scissor at +0x14..0x1A as four halfwords,
+// a mode byte at +0x24. func_80004880_5480 emits G_SETSCISSOR from it.
+gfx_context = 0x800881C0; // type:u8 size:0x2C
+
+// Pipe sync, a mode change, a G_SETSCISSOR of 16, 8, 304, 232, then the
+// textured rect drawn over the screen when entering a building.
+fade_display_list = 0x80108C50; // type:Gfx size:0xF0
