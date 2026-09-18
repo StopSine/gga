@@ -3,13 +3,8 @@
 # Git for Windows ships with core.autocrlf=true, which hands Windows clones a
 # CRLF working tree. That breaks this repo under WSL/Linux: make chokes on \r
 # in recipes, and shebang scripts fail with "bad interpreter: ...^M".
-# It also silently mangled tools/ido-5.3/err.english.cc (44120 -> 45380 bytes).
 # Declaring it here fixes every clone without each person configuring anything.
 * text=auto eol=lf
-
-# Toolchain binaries with no file extension - never touch these.
-tools/ido-5.3/** binary
-tools/asm-processor/asm-processor binary
 
 # Binary assets.
 *.z64 binary
