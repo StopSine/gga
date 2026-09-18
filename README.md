@@ -1,6 +1,6 @@
 # Goemon's Great Adventure Disassembly
 
-Splat configuration, symbol files and tooling for Goemon's Great Adventure (USA), used by [Goemon64Recomp](https://github.com/StopSine/Goemon64Recomp) to statically recompile the game.
+Splat configuration, symbol files and tooling for Goemon's Great Adventure (USA), used by [GGA64Recomp](https://github.com/StopSine/GGA64Recomp) to statically recompile the game.
 
 This is **not** a decompilation. Nothing here is compiled from C: the game has no decompilation project, so the recompilation works from disassembly and symbol names instead. What this repository produces is a decompressed ROM, the split disassembly, and a linked ELF whose symbols and relocations the recompiler reads.
 
