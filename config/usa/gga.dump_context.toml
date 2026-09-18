@@ -4,7 +4,7 @@
 
 [input]
 entrypoint = 0x80000400
-output_func_path = "C:/Users/Blair/AppData/Local/Temp/claude/c--Users-Blair-Documents-Development-GGARecomp-Goemon64Recomp/02684c35-ffc5-44df-a27e-06ab6b290d18/scratchpad/ggafuncs_elf"
+output_func_path = "../../build/usa/dump_context_out"
 elf_path = "../../build/usa/gga.elf"
 relocatable_sections_path = "gga.overlays.txt"
 bss_section_suffix = "_bss"
