@@ -96,10 +96,19 @@ python lib/gga/tools/fix_zero_loads.py RecompiledFuncs
 fifteen took; the rest were dropped with splat exiting 0 and printing nothing.
 It follows the address, not the name — the same address under a different name
 is ignored too. Not caused by duplicate declarations, the size overrides, the
-`type` attribute, `gga.undefined_syms.ld`, or a stale cache. Always grep `asm/`
-to check, and expect to leave some symbols alone. The one data symbol that
-applied, `gfx_context`, is also the only one splat emits into
-`undefined_syms_auto.ld` as a cross-section reference, which may be why.
+`type` attribute, `gga.undefined_syms.ld`, or a stale cache. Expect to leave
+some symbols alone.
+
+**Check the dumps, not `asm/`.** Grepping `asm/` for a `glabel` is a valid
+check for a *function*, but it reports a false negative for a data symbol:
+`player_slots` produced no `dlabel` in `asm/` yet came out renamed in
+`data_dump.toml` and duly broke the patch build, which still said
+`D_800883A0`. The dumps are what the build actually reads, so confirm there:
+
+```bash
+grep -c '<new name>' lib/gga/config/usa/gga.elf.syms.toml \
+                     lib/gga/config/usa/gga.elf.datasyms.toml
+```
 
 **`type:data` is not valid.** splat wants one of its known types (`func`, `u8`,
 `s16`, `Vec3f`, …) or a custom type starting with a capital letter, so a

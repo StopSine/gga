@@ -278,9 +278,16 @@ osViGetNextFramebuffer = 0x80012840;
 // CAVEAT: splat 0.36.3 applies only some of these, exiting 0 and reporting
 // nothing for the rest. Applied: objpool_free_all, objnode_create_child,
 // objnode_attach_child, actor_init_from_spawn, scene_apply_scissor,
-// flag_entry_set_bit1, and gfx_context. Ignored: objpool_register,
+// flag_entry_set_bit1, gfx_context, and of the path and actor names added
+// later, path_local_to_world, actor_get_world_position, player_slot_occupied,
+// player_get_position and player_slots. Ignored: objpool_register,
 // objpool_alloc, scenegraph_draw_node, scene_emit_camera_and_scissor,
-// scene_render, scene_register_render, gfx_viewport and fade_display_list.
+// scene_render, scene_register_render, gfx_viewport, fade_display_list,
+// path_eval_point and path_eval_tangent.
+//
+// Verify against the generated dumps rather than asm/. player_slots applied
+// without producing any dlabel in asm/, so an asm/ grep called it dropped
+// when it had in fact renamed and was about to break the patch build.
 //
 // It depends on the address rather than the name -- declaring 0x800D4A58 under
 // a different name is ignored too -- and is not explained by duplicate
@@ -381,3 +388,79 @@ gfx_context = 0x800881C0; // type:u8 size:0x2C
 // Pipe sync, a mode change, a G_SETSCISSOR of 16, 8, 304, 232, then the
 // textured rect drawn over the screen when entering a building.
 fade_display_list = 0x80108C50; // type:Gfx size:0xF0
+
+// The path system, which is how GGA stores world positions. An actor does not
+// hold a world x/z: it holds a distance along a path at +0x30, a lateral offset
+// from that path at +0x38, and the path's id at +0x21. This is what makes the
+// game a 2.5D side-scroller -- movement is along a spline, not in a plane.
+//
+// path_local_to_world(path_id, along, lateral, &out_x, &out_z) resolves one.
+// The path table is at D_801094C0_5C46E0 + 0x20, indexed by id, 0xC ids; each
+// entry has a live flag at +0xE, its curve at +0xC and its total length at
+// +0x18. It passes (along, lateral) straight through when the id is 0, the
+// table pointer is null, the id is out of range or the entry is not live;
+// otherwise it clamps along to [0, length], evaluates the curve at
+// along / length, and offsets the result perpendicular to the tangent there by
+// lateral. Returns the clamped along value.
+path_local_to_world = 0x800E3158; // type:func
+
+// Evaluate a path's curve at a normalised parameter: the point, and the tangent
+// at that point. Both take (out_vec3, curve, t), and both are wrappers that
+// pick a segment and delegate -- to func_800E26DC_59D8FC and
+// func_800E2B9C_59DDBC respectively. Named for the role their one caller,
+// path_local_to_world, uses them in: the first result is a position, the second
+// is normalised and rotated 90 degrees to form the lateral offset direction.
+path_eval_point = 0x800E2900; // type:func
+path_eval_tangent = 0x800E2DFC; // type:func
+
+// actor_get_world_position(actor, &out_vec3) writes an actor's world position:
+// x and z come from path_local_to_world given the actor's path id, along and
+// lateral, and y is the actor's own +0x34 copied straight through.
+actor_get_world_position = 0x80198378; // type:func
+
+// player_slot_occupied(index) bounds-checks index against [0, 4) and returns
+// whether player_slots holds a non-null pointer for it.
+// player_get_position(player, &x, &y, &z) reads the sub-object at the player's
+// +0x22C and writes the three floats at its +0x14/0x18/0x1C. Already world
+// space -- unlike an actor, a player needs no path resolution here.
+player_slot_occupied = 0x8018B178; // type:func
+player_get_position = 0x8018B144; // type:func
+
+// Four pointers, one per player, null when the slot is empty.
+player_slots = 0x800883A0; // type:u8 size:0x10
+
+// Standard atan2f(y, x), and the atanf it calls for the ordinary case.
+atan2f = 0x800D23CC; // type:func
+atanf = 0x800D22C8; // type:func
+
+// The display object tree scenegraph_draw_node walks: root pointer, and the
+// callback table it indexes by a node's type at +0x02, stride 0x1C.
+scenegraph_root = 0x80172F00; // type:u8 size:0x4
+scenegraph_draw_callbacks = 0x80172F88; // type:u8 size:0x700
+
+// Returns a 7-bit outcode: one bit per plane, set when the corresponding value
+// exceeds 1e-5. Pure. Called only by the cutscene overlays.
+clip_outcode = 0x800C848C; // type:func
+
+// The path table is a display object created on first use;
+// path_table_callback is its pool callback, dispatching on mode as the others
+// do, with mode 1 destroying it and clearing the global.
+path_table_ensure_created = 0x800E24D0; // type:func
+path_table_callback = 0x800E2514; // type:func
+
+// player_within_radius(obj, radius) measures each occupied player slot against
+// obj->0x2C's position and returns the nearer one that is inside radius, as a
+// 1-based player number, or 0. Unlike the per-actor copies the radius is an
+// argument; tsuchikorobi (file_125) is the only caller, passing 90.0.
+player_within_radius = 0x8019E4EC; // type:func
+
+// Not named, because every overlay links at 0x08000000 and so an overlay
+// address cannot be declared unambiguously (see the HAZARD note above). Each
+// actor overlay carries its own byte-for-byte copy of a 59-line routine that
+// returns the distance from the actor to player n via actor_get_world_position
+// and player_get_position, plus a loop over the four slots returning the
+// nearest. An actor wakes when that distance falls under a radius held as an
+// immediate in the overlay's own code: 100.0 for the hellbat (file_172),
+// file_169 and file_178, 130.0 for file_173, 70.0 for the nuppe (file_174),
+// 80.0 for file_175 and the monoeye (file_176). patches/actor_range.c scales
+// the reported distance so those radii track the aspect ratio.
