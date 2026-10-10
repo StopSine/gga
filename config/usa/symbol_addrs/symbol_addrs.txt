@@ -1,4 +1,4 @@
-func_80000F10_1B10 = 0x80000F10; // size:0x384
+retrace_dispatch_thread = 0x80000F10; // type:func size:0x384
 
 func_800013F0_1FF0 = 0x800013F0; // size:0x484
 
@@ -267,5 +267,6 @@ player_within_radius = 0x8019E4EC; // type:func
 
 game_thread_main = 0x80001294; // type:func
 game_frame_update = 0x80001A24; // type:func
-retrace_dispatch_thread = 0x80000F10; // type:func
 
+
+sound_player_set_volume = 0x8000C710; // type:func

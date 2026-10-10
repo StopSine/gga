@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Entry passes (area 0)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88275</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Money (max 999)"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>rdram+88284</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"P1 lives (0-100, shown in game as this - 1)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88280</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"P1 HP (0-3)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88287</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"P1 armor (0-3)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88286</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"P2 lives (0-100)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8828E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"P2 HP (0-3)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8828D</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"P2 armor (0-3)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8828C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"P2 money (max 999)"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>rdram+88292</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"Chain pipe: money given (100 = bought)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88282</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"Chain pipe: NPC state (0/1/3)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8821A</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"P1 weapon upgrade (0 basic, 1 silver, 2 gold)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8828A</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"P2 weapon upgrade (0 basic, 1 silver, 2 gold)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88290</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"P1 held item"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88289</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"P2 held item"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88297</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"Costumes"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"Goemon equipped (0 = default)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88320</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"Goemon costume 1 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88327</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"Goemon costume 2 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88326</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"Goemon costume 3 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88325</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Ebismaru equipped (0 = default)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88324</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"Ebismaru costume 1 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8832B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26</ID>
+          <Description>"Ebismaru costume 2 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8832A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>27</ID>
+          <Description>"Ebismaru costume 3 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88329</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>28</ID>
+          <Description>"Sasuke equipped (0 = default)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88328</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"Sasuke costume 1 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8832F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"Sasuke costume 2 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8832E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"Sasuke costume 3 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8832D</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"Yae equipped (0 = default)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8832C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Yae costume 1 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88333</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"Yae costume 2 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88332</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Yae costume 3 owned"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88331</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Event flags (20 bytes from D_8008821C)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8821C</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"0x61D bit 0 - Lost N' Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"0x61D bit 2 - Ringbell Pass cleared"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"0x61C bit 7 - Lost'n Town: Mudtrotter"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88227</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"0x61C bit 6 - Lost'n Town: DJ"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88227</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"0x622 bit 3 - Lost'n Town: Iguana Man"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Map nodes (byte per node, 3 = open)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+882A8</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"Road: Home of the Wiseman to Lost'n Road"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882A9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"Lost'n Road"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882A8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>46</ID>
+          <Description>"Road: Lost N' Town to Ringbell Pass"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AF</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"Road: Lost N' Town to Digadig Gold Mine"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"Digadig Gold Mine"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AD</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"Ringbell Pass"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AC</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Map nodes, continued (1 = on the map, 3 = open)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+882B0</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"Road: Edo Checkpoint to Edo Castle"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B3</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"Edo Checkpoint gate artwork (visual only)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>54</ID>
+          <Description>"Home of the Wiseman enterable"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>53</ID>
+          <Description>"Lost'n Road enterable"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"Ringbell Pass enterable"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"Digadig Gold Mine enterable"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>52</ID>
+          <Description>"Lost N' Town enterable"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B7</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Save block base (pak 0x601)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+88208</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <LuaScript>--[[
+  Resolves the rdram base so every address above can be written as an offset.
+
+  The allocation moves each launch, so the base is read from the global
+  recomp_rdram_base that librecomp publishes at startup. Run this once after
+  attaching; it registers "rdram" as a symbol the entries resolve against.
+]]
+
+function setRdramBase()
+  local sym = "GGA64Recompiled.exe!recomp_rdram_base"
+  local addr = getAddressSafe(sym) or getAddressSafe("recomp_rdram_base")
+
+  if addr == nil then
+    local typed = inputQuery("rdram base",
+      "Symbol recomp_rdram_base not found.\nPaste the base the game logs at startup:", "")
+    if typed == nil then return end
+    unregisterSymbol("rdram")
+    registerSymbol("rdram", tonumber(typed, 16), true)
+    return
+  end
+
+  local base = readPointer(addr)
+  if base == nil or base == 0 then
+    showMessage("recomp_rdram_base is null - attach after the game has started.")
+    return
+  end
+
+  unregisterSymbol("rdram")
+  registerSymbol("rdram", base, true)
+end
+
+setRdramBase()
+</LuaScript>
+</CheatTable>

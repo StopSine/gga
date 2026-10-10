@@ -134,3 +134,87 @@ diff is unreadable until converted, hence the `tr -d '\r'` above.
 **`fix_zero_loads.py` is not optional.** A load targeting `$zero` is lowered as
 `0 = MEM_W(...)`, which does not compile. The pass rewrites those and fails if
 any survive.
+
+## Naming libultra
+
+A name in N64Recomp's `reimplemented_funcs` or `ignored_funcs`
+(`N64RecompSource/src/symbol_lists.cpp`) is renamed to `<name>_recomp` and **its
+body is never generated**. `reimplemented` means the runtime supplies the
+replacement; `ignored` means nothing does, so the call must disappear along with
+its caller.
+
+That makes naming a subtree, not a function, the unit of work: pick a root the
+runtime implements, name every interior function alongside it, and all the
+interior bodies drop together with nothing left to reference them. Naming half a
+subtree links against an undefined `<name>_recomp`, which is the failure to
+expect. After regenerating, the check is:
+
+```bash
+grep -rhoE "\b(os|__os|gu)[A-Za-z_0-9]*_recomp\b" RecompiledFuncs/ | sort -u
+```
+
+Every name it prints must be defined in `src/`, `patches/` or the runtime.
+`src/game/unknown_symbols.cpp` holds no-op definitions for the ones that are
+genuinely inert.
+
+### Recovering names from MNSG
+
+Both games are the same engine on the same SDK, so their libultra is
+byte-identical apart from addresses, and MNSG's symbols are named. Two matchers
+exploit that:
+
+* `tools/match_libultra.py` compares whole functions and needs a syms.toml for
+  both sides.
+* `tools/match_libultra_by_addr.py` needs only MNSG's `symbol_addrs.txt`, which
+  gives name to address and no sizes. It takes each GGA function's size and
+  compares that many bytes at each MNSG address, so identical routines still
+  match:
+
+```bash
+curl -sLo /tmp/mnsg_syms.txt https://raw.githubusercontent.com/klorfmorf/mnsg/main/config/usa/symbol_addrs/symbol_addrs.txt
+python lib/gga/tools/match_libultra_by_addr.py . /tmp/mnsg_syms.txt
+```
+
+Both mask address-bearing fields, which means they **cannot** tell apart
+routines that differ only in which device register they touch --
+`__osSiDeviceBusy`, `__osSpDeviceBusy` and `__osDpDeviceBusy` are one signature,
+as are the Si and Sp raw IO pairs. Those are reported as AMBIGUOUS and must be
+settled by reading the register out of the disassembly. Trust the register over
+the matcher.
+
+A no-match usually means the size differs between the two builds, not that the
+routine is absent; those still have to be identified structurally, from the call
+graph and the registers touched.
+
+### Arity, when the matchers fail
+
+None of the pak layer byte-matches, and prefix matching there is all false
+positives -- generic prologues agree for about eleven words, so anything below
+that threshold is noise and above it finds nothing. What settled it was counting
+arguments, because libultra's `osPfs*` signatures have nearly unique arities
+(`osPfsAllocateFile` takes seven, `osPfsDeleteFile` five, `osPfsFindFile` and
+`osPfsReadWriteFile` six).
+
+Read arity off the callee, not the call site. Take the frame size from the
+opening `addiu $sp, $sp, -N`; the caller's stack pointer is then `$sp + N`, its
+first four words are the `$a0`-`$a3` home slots, and a load at `$sp + N + 0x10`
+or beyond is argument five onwards. Anything below `N` is a local or a saved
+register. Counting `$aN` uses inside the body does not work -- every function of
+any size uses all four as scratch.
+
+The prologue also shows which arguments are real: a routine that spills `$a1`
+and `$a2` to their home slots and never touches `$a3` takes three.
+
+**The controller path is the worked example of why the unit is the subtree.**
+`osContInit` was once withheld on purpose: intercepting it alone replaced the
+function without establishing the state (`__osMaxControllers`, the PIF ram
+template) that GGA's own still-unnamed `osContStartReadData` read, so the poll
+block came out empty and the game queried the controller once and then sent
+nothing. That was a half-named subtree, not a reason the path could not be
+named.
+
+The whole path is named now -- `osContInit`, `osContStartReadData`,
+`osContGetReadData`, `osContStartQuery`, `osContGetQuery`, `__osMotorAccess`,
+`__osContRamRead`, `__osContRamWrite` -- so the runtime owns it end to end and
+nothing is left reading state the game no longer sets up. Naming any subset of
+it again would reproduce the original bug.
