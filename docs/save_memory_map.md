@@ -44,49 +44,89 @@ scanner reports a change at offset `0x88275`: same byte, different coordinates.
 
 `recomp_rdram_base` is a global published by librecomp at startup, so a debugger
 can resolve addresses without being told the base each launch. The Cheat Engine
-table at `lib/gga/tools/gga_save.CT` uses it.
+table at `lib/gga/tools/gga_progress.CT` uses it.
 
 ## Known fields
 
 | rdram offset | Guest | Pak | Size | Meaning |
 |---|---|---|---|---|
-| `0x8820B` | `0x80088208` | `0x600` | — | start of the save payload |
-| `0x8821A` | `0x80088219` | `0x611` | 1 | chain pipe NPC state, 0 not talked to, 1 talked to, 3 paid in full |
-| `0x8821F` | `0x8008821C` | `0x614` | 0x14 | event flag bitfield, 160 bits |
-| `0x88275` | `0x80088276` | `0x66E` | 1 | entry passes collected, area 0 |
-| `0x88280` | `0x80088283` | `0x67B` | 1 | player 1 lives, 0–100; the game shows this minus 1 |
-| `0x88282` | `0x80088281` | `0x679` | 1 | money given toward Goemon's chain pipe, 100 buys it |
+| `0x8820B` | `0x80088208` | `0x600` | - | start of the save payload |
+| `0x88210` | `0x80088213` | `0x60B` | 1 | quest flags: Obisumaru, Roadside guardian, Old woman, octopus |
+| `0x88211` | `0x80088212` | `0x60A` | 1 | quest flags: Beat Mania and Tomezo, Lost'n Town |
+| `0x88214` | `0x80088217` | `0x60F` | 1 | quest flags: Omatsu and Scarfman, Floating World Town |
+| `0x88215` | `0x80088216` | `0x60E` | 1 | quest flags: Blue, Green, Pink, Yellow Hiders |
+| `0x88216` | `0x80088215` | `0x60D` | 1 | quest flags: Tree Stump girl, Kensuke, Red and Black Hiders |
+| `0x88217` | `0x80088214` | `0x60C` | 1 | quest flags: Spook Village boss, Tree Stump child and girl |
+| `0x88218` | `0x8008821B` | `0x613` | 1 | quest flags: Tengu rice ball 3 |
+| `0x88219` | `0x8008821A` | `0x612` | 1 | quest flags: Iguana Men items given; Tengu rice balls 1 and 2 |
+| `0x8821A` | `0x80088219` | `0x611` | 1 | quest flags: Kenzo met and paid; Iguana Men items received |
+| `0x8821B` | `0x80088218` | `0x610` | 1 | quest flags: Obisumaru, Floating World Town and Wind Castle Wall |
+| `0x88224` | `0x80088227` | `0x61F` | 1 | entry pass bits: Mafu Island stage clears, hide and seek, Kensuke |
+| `0x88225` | `0x80088226` | `0x61E` | 1 | entry pass bits: Naruto Road, Iguana Man, guardian, old woman |
+| `0x88226` | `0x80088225` | `0x61D` | 1 | entry pass bits: Edo stage clears, octopus, Frog Mountain |
+| `0x88227` | `0x80088224` | `0x61C` | 1 | entry pass bits: Beat Mania bit 6, Tomezo bit 7 |
+| `0x88228` | `0x8008822B` | `0x623` | 1 | bit 0 Hungry Tengu pass, bit 3 Underwater Device |
+| `0x88229` | `0x8008822A` | `0x622` | 1 | bit 0 Underworld cleared, bit 2 Chain Pipe, bit 3 Iguana Man pass |
+| `0x8822A` | `0x80088229` | `0x621` | 1 | entry pass bits 0-3; castle cleared bits 5 Edo, 6 Ryugu, 7 Majin |
+| `0x8822B` | `0x80088228` | `0x620` | 1 | entry pass bits: Underworld stage clears, Scarfman, Omatsu |
+| `0x8823B` | `0x80088238` | `0x630` | 1 | bit 5 allows buying alternative costumes |
+| `0x88274` | `0x80088277` | `0x66F` | 1 | entry passes collected, Ryugu |
+| `0x88275` | `0x80088276` | `0x66E` | 1 | entry passes collected, Edo, also the total |
+| `0x88278` | `0x8008827B` | `0x673` | 1 | entry passes collected, Creep Village |
+| `0x88279` | `0x8008827A` | `0x672` | 1 | entry passes collected, Floating Castle |
+| `0x8827A` | `0x80088279` | `0x671` | 1 | entry passes collected, Underworld |
+| `0x8827B` | `0x80088278` | `0x670` | 1 | entry passes collected, Mafu Island |
+| `0x8827C` | `0x8008827E` | `0x676` | 2 | money given to Kensuke, max 3500; buys the Underwater Device |
+| `0x88280` | `0x80088283` | `0x67B` | 1 | player 1 lives, min 2 max 99, shown minus 1 |
+| `0x88281` | `0x80088282` | `0x67A` | 1 | player 1 character |
+| `0x88282` | `0x80088280` | `0x678` | 2 | money given to Kenzo, max 100; buys the Chain Pipe |
 | `0x88284` | `0x80088286` | `0x67E` | 2 | player 1 money, max 999; rdram is the LE pair, guest and pak the BE start |
-| `0x88286` | `0x80088285` | `0x67D` | 1 | player 1 armor, 0–3 |
-| `0x88287` | `0x80088284` | `0x67C` | 1 | player 1 HP, 0–3 |
-| `0x88289` | `0x8008828A` | `0x682` | 1 | player 1 held item |
-| `0x8828A` | `0x80088289` | `0x681` | 1 | player 1 weapon upgrade, 0 basic, 1 silver, 2 gold |
-| `0x8828C` | `0x8008828F` | `0x687` | 1 | player 2 armor, 0–3 |
-| `0x8828D` | `0x8008828E` | `0x686` | 1 | player 2 HP, 0–3 |
-| `0x8828E` | `0x8008828D` | `0x685` | 1 | player 2 lives, 0–100 |
-| `0x88290` | `0x80088293` | `0x68B` | 1 | player 2 weapon upgrade, 0 basic, 1 silver, 2 gold |
+| `0x88286` | `0x80088285` | `0x67D` | 1 | player 1 armor, max 3 |
+| `0x88287` | `0x80088284` | `0x67C` | 1 | player 1 HP |
+| `0x88289` | `0x8008828A` | `0x682` | 1 | player 1 held item, 0 none 1 rice 2 plum 3 fish |
+| `0x8828A` | `0x80088289` | `0x681` | 1 | player 1 weapon upgrade, 0 basic 1 silver 2 gold |
+| `0x8828C` | `0x8008828F` | `0x687` | 1 | player 2 armor, max 3 |
+| `0x8828D` | `0x8008828E` | `0x686` | 1 | player 2 HP |
+| `0x8828E` | `0x8008828D` | `0x685` | 1 | player 2 lives, min 2 max 99, shown minus 1 |
+| `0x8828F` | `0x8008828C` | `0x684` | 1 | player 2 character |
+| `0x88290` | `0x80088293` | `0x68B` | 1 | player 2 weapon upgrade, 0 basic 1 silver 2 gold |
 | `0x88292` | `0x80088290` | `0x688` | 2 | player 2 money, max 999; rdram is the LE pair, guest and pak the BE start |
-| `0x88297` | `0x80088294` | `0x68C` | 1 | player 2 held item |
-| `0x8823A` | `0x80088239` | `0x631` | 2 | costume owned bits, 3 per character, Goemon first |
-| `0x88320` | `0x80088323` | `0x71B` | 1 | Goemon equipped costume, 0 = default, bit 7 is a "new" marker |
-| `0x88327` | `0x80088324` | `0x71C` | 1 | Goemon costume 1 owned |
-| `0x88326` | `0x80088325` | `0x71D` | 1 | Goemon costume 2 owned |
-| `0x88325` | `0x80088326` | `0x71E` | 1 | Goemon costume 3 owned |
-| `0x88324` | `0x80088327` | `0x71F` | 1 | Ebismaru equipped costume, 0 = default, bit 7 is a "new" marker |
-| `0x8832B` | `0x80088328` | `0x720` | 1 | Ebismaru costume 1 owned |
-| `0x8832A` | `0x80088329` | `0x721` | 1 | Ebismaru costume 2 owned |
-| `0x88329` | `0x8008832A` | `0x722` | 1 | Ebismaru costume 3 owned |
-| `0x88328` | `0x8008832B` | `0x723` | 1 | Sasuke equipped costume, 0 = default, bit 7 is a "new" marker |
-| `0x8832F` | `0x8008832C` | `0x724` | 1 | Sasuke costume 1 owned |
-| `0x8832E` | `0x8008832D` | `0x725` | 1 | Sasuke costume 2 owned |
-| `0x8832D` | `0x8008832E` | `0x726` | 1 | Sasuke costume 3 owned |
-| `0x8832C` | `0x8008832F` | `0x727` | 1 | Yae equipped costume, 0 = default, bit 7 is a "new" marker |
-| `0x88333` | `0x80088330` | `0x728` | 1 | Yae costume 1 owned |
-| `0x88332` | `0x80088331` | `0x729` | 1 | Yae costume 2 owned |
-| `0x88331` | `0x80088332` | `0x72A` | 1 | Yae costume 3 owned |
-| `0x882A8` | `0x800882AB` | `0x6A3` | ? | map node array, one byte per node, 16 per world |
-| — | — | `0x604`–`0x607` | 4 | checksum over the payload |
-| — | — | `0x79A`+ | — | second volatile region, own checksum |
+| `0x88294` | `0x80088297` | `0x68F` | 1 | player 3 lives, min 2 max 99, shown minus 1 |
+| `0x88295` | `0x80088296` | `0x68E` | 1 | player 3 character |
+| `0x88297` | `0x80088294` | `0x68C` | 1 | player 2 held item, 0 none 1 rice 2 plum 3 fish |
+| `0x88298` | `0x8008829A` | `0x692` | 2 | player 3 money, max 999; rdram is the LE pair, guest and pak the BE start |
+| `0x8829A` | `0x80088299` | `0x691` | 1 | player 3 armor, max 3 |
+| `0x8829B` | `0x80088298` | `0x690` | 1 | player 3 HP |
+| `0x8829D` | `0x8008829E` | `0x696` | 1 | player 3 held item, 0 none 1 rice 2 plum 3 fish |
+| `0x8829E` | `0x8008829D` | `0x695` | 1 | player 3 weapon upgrade, 0 basic 1 silver 2 gold |
+| `0x882A0` | `0x800882A3` | `0x69B` | 1 | player 4 armor, max 3 |
+| `0x882A1` | `0x800882A2` | `0x69A` | 1 | player 4 HP |
+| `0x882A2` | `0x800882A1` | `0x699` | 1 | player 4 lives, min 2 max 99, shown minus 1 |
+| `0x882A3` | `0x800882A0` | `0x698` | 1 | player 4 character |
+| `0x882A4` | `0x800882A7` | `0x69F` | 1 | player 4 weapon upgrade, 0 basic 1 silver 2 gold |
+| `0x882A6` | `0x800882A4` | `0x69C` | 2 | player 4 money, max 999; rdram is the LE pair, guest and pak the BE start |
+| `0x882AB` | `0x800882A8` | `0x6A0` | 1 | player 4 held item, 0 none 1 rice 2 plum 3 fish |
+| `0x88314` | `0x80088317` | `0x70F` | 1 | bit 7 Sasuke unlocked |
+| `0x88319` | `0x8008831A` | `0x712` | 1 | bit 7 Yae unlocked |
+| `0x8831F` | `0x8008831C` | `0x714` | 1 | Spook Village, meet Wiseman |
+| `0x88320` | `0x80088323` | `0x71B` | 1 | Goemon equipped costume, 0 default, bit 7 is a "new" marker |
+| `0x88324` | `0x80088327` | `0x71F` | 1 | Ebisumaru equipped costume, 0 default, bit 7 is a "new" marker |
+| `0x88325` | `0x80088326` | `0x71E` | 1 | Goemon owns Turban, bit 0 |
+| `0x88326` | `0x80088325` | `0x71D` | 1 | Goemon owns Satchel, bit 0 |
+| `0x88327` | `0x80088324` | `0x71C` | 1 | Goemon owns Impact, bit 0 |
+| `0x88328` | `0x8008832B` | `0x723` | 1 | Sasuke equipped costume, 0 default, bit 7 is a "new" marker |
+| `0x88329` | `0x8008832A` | `0x722` | 1 | Ebisumaru owns Raccoon, bit 0 |
+| `0x8832A` | `0x80088329` | `0x721` | 1 | Ebisumaru owns Tights, bit 0 |
+| `0x8832B` | `0x80088328` | `0x720` | 1 | Ebisumaru owns Sumo belt, bit 0 |
+| `0x8832C` | `0x8008832F` | `0x727` | 1 | Yae equipped costume, 0 default, bit 7 is a "new" marker |
+| `0x8832D` | `0x8008832E` | `0x726` | 1 | Sasuke owns Fur coat, bit 0 |
+| `0x8832E` | `0x8008832D` | `0x725` | 1 | Sasuke owns Maid outfit, bit 0 |
+| `0x8832F` | `0x8008832C` | `0x724` | 1 | Sasuke owns Bloomers, bit 0 |
+| `0x88331` | `0x80088332` | `0x72A` | 1 | Yae owns Swimsuit, bit 0 |
+| `0x88332` | `0x80088331` | `0x729` | 1 | Yae owns Rabbit fur, bit 0 |
+| `0x88333` | `0x80088330` | `0x728` | 1 | Yae owns Kirameki Uniform, bit 0 |
+| `0x882A8` | `0x800882AB` | `0x6A3` | 0x1A | map node array, see Map nodes |
+| - | - | `0x604`-`0x607` | 4 | checksum, covers pak `0x600`-`0x730` |
 
 Money reads correctly in a debugger as a little-endian 2 byte value at offset
 `0x88284`, because the swizzle reverses the pair.
@@ -99,322 +139,279 @@ the single byte is never a limit.
 By guest address the fields are a regular 10 byte struct, one per player:
 
 ```
-base + 0   lives      (1 byte)
-base + 1   HP         (1 byte)
-base + 2   armor      (1 byte)
-base + 3   money      (2 bytes, big endian)
-base + 5   unknown    (1 byte)
-base + 6   weapon     (1 byte, upgrade level)
-base + 7   held item  (1 byte)
-base + 8   unknown    (2 bytes)
+base + 0   character  (1 byte)
+base + 1   lives      (1 byte, min 2, max 99, shown minus 1)
+base + 2   HP         (1 byte)
+base + 3   armor      (1 byte, max 3)
+base + 4   money      (2 bytes, big endian, max 999)
+base + 6   unknown    (1 byte)
+base + 7   weapon     (1 byte, upgrade level, max 2)
+base + 8   held item  (1 byte, 0 none, 1 rice, 2 plum, 3 fish)
+base + 9   unknown    (1 byte)
 ```
 
-Player 1 is based at guest `0x80088283` and player 2 at `0x8008828D`. Only these
-two are stored: players 3 and 4 are a completion reward with no UI of their own,
-so their state is not expected to persist. The 20 bytes between the end of
-player 2's block and the level status array at `0x800882AB` are unidentified, and
-are not a third and fourth player despite fitting two more strides exactly.
+Player 1 is based at guest `0x80088282`, and each later player is `0xA` further
+on. All four are stored. The 20 bytes after player 2, once read here as
+unidentified and explicitly ruled out as further players, are players 3 and 4:
+they fit two more strides exactly because that is what they are. Player 4's
+block runs to pak `0x6A1`, which accounts for the two bytes that read `00` just
+before Edo's access group.
+
+The struct was also listed here one byte short, starting at lives. The leading
+character byte shifts every field, so earlier notes using `base + 3` for money
+were describing `base + 4`.
 
 The swizzle scatters the struct in rdram, so the fields are not contiguous there
 and have to be read a byte at a time. Money is the exception: the 16 bit big
-endian value at guest `base + 3` lands as a little endian pair in rdram, which is
-why a debugger reads it correctly as 2 bytes at rdram `0x88284` for player 1 and
+endian value at `base + 4` lands as a little endian pair in rdram, which is why a
+debugger reads it correctly as 2 bytes at rdram `0x88284` for player 1 and
 `0x88292` for player 2.
 
 The counter at guest `0x80088276` is one of six, indexed by area. `func_800ED10C_5A832C`
 increments `counts[area]` and clamps against `D_8010AEB8_5C60D8`
 (`6, 14, 24, 32, 41, 44`, cumulative). Per-area counts are the adjacent table
-`D_8010AEC0_5C60E0` (`6, 8, 10, 8, 9, 3`). 44 passes over 6 areas.
+`D_8010AEC0_5C60E0` (`6, 8, 10, 8, 9, 3`). 44 passes over 6 areas, which matches
+the six count bytes the template lists.
 
-## Costumes
+## The save editor template
 
-Four playable characters with three costumes each. The authoritative store is a
-4 byte record per character, by guest address, base `0x80088323`, stride 4:
-
-```
-base + 0   equipped costume, 0 = default, 1-3 = that costume
-base + 1   costume 1 owned (0 or 1)
-base + 2   costume 2 owned
-base + 3   costume 3 owned
-```
-
-Slot order is Goemon, Ebismaru, Sasuke, Yae, each confirmed by buying a costume
-and diffing, except Yae which is what remains.
-
-Bit 7 of the equipped byte is set independently of the index, matching the
-"new item" markers seen elsewhere in the save.
-
-### Weapons
-
-The weapon byte is the upgrade level of whichever character that player is
-currently controlling: 0 basic, 1 silver, 2 gold. It is relative, not a global
-id. Player 1 controlling Goemon and player 2 controlling Ebismaru both read 0
-for their basic weapon.
-
-The game resolves it as an index into a shared weapon table where each character
-owns three consecutive entries, and does not range check it. Writing 3 or more
-therefore spills into the next character's weapons, which normal play cannot
-produce. Useful for probing the table, not a meaning the field carries.
-
-### The redundant bit field
-
-A 12 bit field starting at guest `0x80088239` mirrors ownership as three bits per
-character, in slot order, the bit index being the costume number minus one:
+RyudoSynbios/game-tools-collection carries a save editor template for Mystical
+Ninja 2 Starring Goemon, this game's European release:
 
 ```
-bits 0-2    Goemon
-bits 3-5    Ebismaru
-bits 6-8    Sasuke
-bits 9-11   Yae
+src/lib/templates/mystical-ninja-2-starring-goemon/saveEditor/template.ts
 ```
 
-Bits 0-7 are in `0x80088239` and bits 8-11 in `0x8008823A`. Confirmed by five
-purchases:
+It maps far more of the format than was recovered here by hand. Its offsets are
+relative to a 0x200 byte save slot:
 
-| Purchase | Record | Bit set |
-|---|---|---|
-| Goemon impact | costume 1 | 0 |
-| Goemon satchel | costume 2 | 1 |
-| Ebismaru tights | costume 2 | 4 |
-| Ebismaru raccoon | costume 3 | 5 |
-| Sasuke bloomers | costume 1 | 6 |
-
-Yae occupies bits 9-11. A save with all three of her costumes bought reads
-`0x0E` at `0x8008823A`, which is those three bits, matching her record.
-
-Record and bit field agree in every case checked, including a save decoded
-straight from the pak file. Either can be read.
-
-## The chain pipe NPC
-
-Goemon's chain pipe is bought by handing an NPC money across several visits.
-Two bytes track it, neither inside the player block or the event flag field:
-
-| Guest | Meaning |
-|---|---|
-| `0x80088281` | running total handed over, 100 completes the purchase |
-| `0x80088219` | NPC state: 0 not talked to, 1 talked to and short, 3 paid in full |
-
-State 2 has not been observed.
-
-Paying in full does not by itself grant the ability. Bit 2 of guest
-`0x8008822A`, location id 114, is what lets Goemon use the chain pipe, and
-setting it alone is enough. So the purchase writes three separate things: the
-running total, the NPC state, and an ability bit in the event field.
-
-For Archipelago the ability bit is the one to key on, since it is a flag like
-any other location. The counter and NPC state are the shop's own bookkeeping.
-
-## Event flags
-
-`D_8008821C` is a 20-byte bitfield reaching to the next symbol at `0x80088230`.
-Each pass-giving NPC owns one bit; clearing it lets that NPC hand out another
-pass, so the bit gates the script rather than the pickup. 160 bits for 44 passes
-means the block is a general event bitfield, not a dense per-pass array, and the
-passes are scattered through it.
-
-Level clears share this field with the entry passes, so one id space covers
-both. Ringbell Pass clearing set bit 2 of the byte whose bit 0 is Lost N' Road.
-
-A stable location identifier for Archipelago:
-
-```c
-location_id = (guest_flag_byte - 0x8008821C) * 8 + bit_index;   /* 0..159 */
+```
+pak   = template + 0x500
+guest = template + 0x88108
+rdram = guest ^ 3
 ```
 
-Keyed on the guest address rather than the rdram offset, so the id describes the
-game's own layout and matches what the mod sees through `MEM_B`.
+Reference it, do not copy from it. Its labels are used below.
 
-Confirmed so far:
+`lib/gga/tools/gga_progress.CT` is the one cheat table: the whole template plus
+everything mapped here, across players, passes, quests, costumes, castle
+progress and all six worlds.
 
-| rdram offset | Guest | Pak | Bit | id | Location |
-|---|---|---|---|---|---|
-| `0x88227` | `0x80088224` | `0x61C` | 6 | 70 | Lost'n Town: DJ |
-| `0x88227` | `0x80088224` | `0x61C` | 7 | 71 | Lost'n Town: Mudtrotter |
-| `0x88226` | `0x80088225` | `0x61D` | 0 | 72 | Lost N' Road |
-| `0x88226` | `0x80088225` | `0x61D` | 2 | 74 | Ringbell Pass cleared |
-| `0x88229` | `0x8008822A` | `0x622` | 2 | 114 | Goemon chain pipe ability |
-| `0x88229` | `0x8008822A` | `0x622` | 3 | 115 | Lost'n Town: Iguana Man |
+## Entry passes
+
+A count per world at template `0x16e`-`0x173`, pak `0x66E`-`0x673`: Edo, Ryugu,
+Mafu Island, Underworld, Floating Castle, Creep Village. The Edo byte doubles as
+the total.
+
+Individual passes are bits spread over template `0x11c`-`0x123`, pak
+`0x61C`-`0x623`. The level list calls Beat Mania the DJ and Tomezo the
+Mudtrotter. Every pass is enumerated in the cheat table.
+
+### Characters
+
+Yae joining in Otohime Town sets pak `0x623` bit 3, the Underwater Device, and
+pak `0x712` bit 7, the Yae unlocked bit, together. Unlocking Sasuke sets only
+pak `0x70F` bit 7 and touches no pass flag, so the swim unlock belongs to Yae
+rather than to the Wiseman event that also teaches Sasuke.
+
+Characters can be unlocked out of order, and the save records them
+independently: each has its own bit, Sasuke at pak `0x70F` bit 7 and Yae at pak
+`0x712` bit 7.
+
+Pak `0x609` is a separate character count that only ever rises. The game writes
+`max(current, index)` with Goemon and Ebisumaru as 1 and 2, Sasuke 3 and Yae 4,
+so it starts at `2`, goes to `3` for Sasuke and `4` for Yae. Unlocking Yae first
+takes it straight to `4` and unlocking Sasuke afterwards leaves it there. It is
+therefore a high water mark, not a roster, and the per character bits are the
+ones to read.
+
+The apworld keys its swim gate on `0x623` bit 3 rather than the Yae bit, because
+only the first is inside the 160 bit flag block the mod diffs; the Yae bit at
+pak `0x712` is well outside it.
 
 The flags are written by the script VM `func_800E7B34_5A2D54` itself, not by a
-flag-setter routine, so the address is a script operand. Nothing on the call
-path carries a location id — the only way to learn which flag belongs to which
-pass is to observe which bit changes.
+flag setter routine, so the address is a script operand and nothing on the call
+path carries a location id.
+
+### Location ids for the apworld
+
+```
+location_id = (guest_flag_byte - 0x8008821C) * 8 + bit_index
+```
+
+Keyed on the guest address so the id describes the game's own layout and matches
+what the mod sees through `MEM_B`. The template's labels give every id a name
+without having to collect each pass to find it.
+
+## Town quests and NPCs
+
+Template `0x10a`-`0x113`, pak `0x60A`-`0x613`, is a bitfield of quest and NPC
+state: who has been met, which missions are outstanding, the Iguana Men fetch
+quest items both received and given, the Tree Stump Village hide and seek
+Hiders, and the Creep Village rice balls. All of it is in the cheat table under
+"Town quests and NPCs".
+
+Pak `0x611` bit 0 is meeting Kenzo and bit 1 is the 100 coins given to him,
+which together are the chain pipe NPC state. The money itself is a 16 bit big
+endian value at template `0x178`.
 
 ### A quest in progress is visible in the save
 
-The same Mudtrotter run moved two bytes outside the flag block. Starting the
-quest wrote guest `0x80088212` (pak `0x60A`) from `0x00` to `0x60`, and finishing
-it cleared bit 3 of guest `0x80088215` (pak `0x60D`). Neither is a location, but
-either is a cheap way for the mod to tell that a quest is live and avoid
-reporting a flag mid-cutscene.
+Starting the Tomezo quest wrote pak `0x60A` to `0x60` and finishing it cleared
+bit 3 of pak `0x60D`. Neither is a location, but either is a cheap way for the
+mod to tell that a quest is live and avoid reporting a flag mid-cutscene.
 
 ### Do not map locations by clearing flags
 
 Clearing a bit does gate the NPC back on, but replaying the event is not clean.
-Zeroing `0x620` and re-talking to the DJ left the byte at `0x48` — bit 6 re-set
-as expected, plus bit 3, which the first collection's diff did not show.
+Zeroing `0x620` and re-talking to the DJ left the byte at `0x48`: bit 6 re-set as
+expected, plus bit 3, which the first collection's diff did not show. Map
+remaining passes by collecting each one naturally, once, with an F7/F8 cycle
+around it, or take the name from the template.
 
-Bit 3 of `0x620` is therefore unassigned: it was either set by the replay, or set
-by some later step after the first measurement had already been taken. Either
-way it is not evidence of a location.
+## Costumes
 
-Map the remaining passes by collecting each one naturally, once, with an F7/F8
-cycle around it.
+Each character has an equipped byte followed by three ownership bytes, bit 0 of
+each:
 
-## Map node status
-
-Offset `0x882A8` (guest `0x800882AB`) is an array of one byte per node on the
-overworld map, not one per level. A node reads `3` once it is open. On a level
-node that shows as the cleared tick in the level list; on a road between two
-levels it makes the road walkable. Zeroing a byte closes the node again.
-
-That is why a save with three levels cleared holds six bytes of `3`: the roads
-have entries too.
-
-Clearing a level and collecting its entry pass are separate state. Zeroing the
-pass flag at `0x61D` lets the pass be collected again but leaves the level
-cleared, so region logic for the apworld should key on this array rather than on
-pass count.
-
-The array runs past `0x882AF` into `0x882B0` and beyond. That region was first
-read as a second array holding `1` where the first held `3`, but passing the Edo
-Checkpoint drove two of its bytes from `00` straight to `03`, the same value the
-earlier nodes take. It is one array; `1` and `3` are different states of the
-same bit field, described below.
-
-### Identified nodes
-
-A save with Lost'n Road, Digadig Gold Mine and Ringbell Pass cleared reads:
-
-```
-guest 0x882AA-0x882AF   03 03 03 03 03 03
-guest 0x882B2-0x882B6   01 01 01 01 01
-```
-
-Each was identified by zeroing the byte and watching the map and level list:
-
-| rdram | guest | pak | Node |
-| --- | --- | --- | --- |
-Edo, `0x882A8`–`0x882B7`:
-
-| rdram | guest | pak | Node |
-| --- | --- | --- | --- |
-| `0x882A8` | `0x800882AB` | `0x6A3` | Lost'n Road cleared |
-| `0x882A9` | `0x800882AA` | `0x6A2` | road from Home of the Wiseman to Lost'n Road |
-| `0x882AA` | `0x800882A9` | `0x6A1` | unidentified, reads `00` |
-| `0x882AB` | `0x800882A8` | `0x6A0` | unidentified, reads `00` |
-| `0x882AC` | `0x800882AF` | `0x6A7` | Ringbell Pass cleared |
-| `0x882AD` | `0x800882AE` | `0x6A6` | Digadig Gold Mine cleared |
-| `0x882AE` | `0x800882AD` | `0x6A5` | road from Lost N' Town to Digadig Gold Mine |
-| `0x882AF` | `0x800882AC` | `0x6A4` | road from Lost N' Town to Ringbell Pass |
-| `0x882B0` | `0x800882B3` | `0x6AB` | Lost'n Road can be entered |
-| `0x882B1` | `0x800882B2` | `0x6AA` | Home of the Wiseman can be entered |
-| `0x882B2` | `0x800882B1` | `0x6A9` | unidentified, reads `00` |
-| `0x882B3` | `0x800882B0` | `0x6A8` | road from Edo Checkpoint to Edo Castle |
-| `0x882B4` | `0x800882B7` | `0x6AF` | Edo Checkpoint gate artwork, open or shut |
-| `0x882B5` | `0x800882B6` | `0x6AE` | Ringbell Pass can be entered |
-| `0x882B6` | `0x800882B5` | `0x6AD` | Digadig Gold Mine can be entered |
-| `0x882B7` | `0x800882B4` | `0x6AC` | Lost N' Town can be entered |
-
-Ryugu, from `0x882B8`:
-
-| rdram | guest | pak | Node |
-| --- | --- | --- | --- |
-| `0x882B8` | `0x800882BB` | `0x6B3` | road from Kappa Road to Ryugu Checkpoint |
-| `0x882B9` | `0x800882BA` | `0x6B2` | road from Kappa Road to Naruto Road |
-| `0x882BD` | `0x800882BE` | `0x6B6` | road from Kappa Road to Frog Mountain |
-| `0x882BE` | `0x800882BD` | `0x6B5` | road from Naruto Road to Otohime Town |
-| `0x882BF` | `0x800882BC` | `0x6B4` | road from Frog Mountain to Otohime Town |
-
-Kappa Road is a junction with three exits, so it owns three road bytes rather
-than one.
-
-In guest order the first six run in map order from the start of the game: the
-road the opening cutscene opens, the first level, the two roads out of Lost N'
-Town, then the two levels that fork off it. The index is a fixed node id, so it
-does not follow the order the player cleared things in.
-
-Walking out through the Lost N' Town gate sets both of its road nodes at once,
-so that fork opens as a unit rather than one branch at a time. Passing the Edo
-Checkpoint, a gate that wants five entry passes, likewise sets two nodes at
-once, but they are not equivalent: `0x882B3` is the road and controls whether
-the player can actually travel to Edo Castle, while `0x882B4` only decides
-whether the gate is drawn open or shut. They can disagree.
-
-Not every node is therefore a region. An apworld that keys reachability on this
-array has to skip the cosmetic entries, and the only way to tell them apart so
-far is to zero each one and try to walk.
-
-### Entering a level and clearing it are separate nodes
-
-A level owns two bytes in the array. One says whether it can be entered, the
-other whether it has been cleared, and they move independently:
-
-| Level | Enterable | Cleared |
+| Character | Equipped | Costumes |
 | --- | --- | --- |
-| Home of the Wiseman | `0x882B1` | none, it is a town |
-| Lost'n Road | `0x882B0` | `0x882A8` |
-| Ringbell Pass | `0x882B5` | `0x882AC` |
-| Digadig Gold Mine | `0x882B6` | `0x882AD` |
-| Lost N' Town | `0x882B7` | none, it is a town |
+| Goemon | `0x21b` | Impact, Satchel, Turban |
+| Ebisumaru | `0x21f` | Sumo belt, Tights, Raccoon |
+| Sasuke | `0x223` | Bloomers, Maid outfit, Fur coat |
+| Yae | `0x227` | Kirameki Uniform, Rabbit fur, Swimsuit |
 
-Setting bit 7 of the enterable byte locks the player out of a level they have
-already cleared. Region logic belongs on that byte; the cleared byte is a
-location check, not an access rule.
+Template `0x130` bit 5 allows buying alternative costumes at all. Sasuke is
+unlocked by `0x20f` bit 7 and Yae by `0x212` bit 7.
 
-So the array is the map graph rather than a level list: it holds road segments,
-level entrances, cleared markers and at least one purely cosmetic entry, all in
-one index space, and a given level does not occupy a fixed stride.
+## Map nodes
 
-### The array is blocked out per world
+Each world owns two parallel byte groups: an access group that gates travel to a
+node, and a cleared group that records having finished it. Zeroing an access
+byte closes the route; zeroing a cleared byte removes the tick from the level
+list. The values each group uses are below.
 
-Edo's nodes fill `0x882A8`–`0x882B7` exactly, sixteen bytes with three unused,
-and Ryugu's begin at `0x882B8`. If that block size holds, each world gets
-sixteen node slots whether or not it needs them, so a world's nodes can be found
-by its index without knowing how many the previous world used.
+Clearing a level and collecting its entry pass are separate state. Zeroing a
+pass flag lets the pass be collected again but leaves the level cleared, so
+region logic should key on the access group rather than on pass count.
 
-The three Edo bytes that stay at `00` are the slack in that block. `0x882B2` was
-probed directly and produced no visible change, which is what an unused slot
-should do.
+### Edo
 
-### The byte is a bit field
+| rdram | guest | pak | Node |
+| --- | --- | --- | --- |
+| `0x882A9` | `0x800882AA` | `0x6A2` | Lost'n Road access |
+| `0x882A8` | `0x800882AB` | `0x6A3` | Lost'n Town access |
+| `0x882AF` | `0x800882AC` | `0x6A4` | Ringbell Pass access |
+| `0x882AE` | `0x800882AD` | `0x6A5` | Digadig Gold Mine access |
+| `0x882AD` | `0x800882AE` | `0x6A6` | Edo Checkpoint access via Digadig |
+| `0x882AC` | `0x800882AF` | `0x6A7` | Edo Checkpoint access via Ringbell |
+| `0x882B3` | `0x800882B0` | `0x6A8` | Edo Castle access |
+| `0x882B1` | `0x800882B2` | `0x6AA` | Home of the Wiseman cleared |
+| `0x882B0` | `0x800882B3` | `0x6AB` | Lost'n Road cleared |
+| `0x882B7` | `0x800882B4` | `0x6AC` | Lost'n Town cleared |
+| `0x882B6` | `0x800882B5` | `0x6AD` | Digadig Gold Mine cleared |
+| `0x882B5` | `0x800882B6` | `0x6AE` | Ringbell Pass cleared |
+| `0x882B4` | `0x800882B7` | `0x6AF` | Edo Checkpoint doors open |
+| `0x882BB` | `0x800882B8` | `0x6B0` | Edo Castle cleared |
 
-| Bit | Meaning |
-| --- | --- |
-| 0 | the node exists on the map |
-| 1 | the node is open: a road is walkable, a level is cleared |
-| 7 | the node is locked, whatever bits 0 and 1 say |
+`0x6AF` is cosmetic: it decides whether the checkpoint gate is drawn open and
+disagreeing with the access bytes changes nothing about where the player can
+walk. Not every node is a region, so an apworld keying reachability on this
+array has to skip it.
 
-So `0x00` is a node the game has not placed yet, `0x01` one that is placed and
-reachable, `0x03` one that is open or cleared, and `0x81` one that is placed but
-locked. Setting bit 7 on a level's enterable byte is what blocks entry; that is
-how every entrance in the table above was identified.
+The Edo Checkpoint is a gate wanting five entry passes, and it has two access
+bytes because either approach road can open it. Walking out through the Lost N'
+Town gate sets both of its road nodes at once, so that fork opens as a unit.
 
-Bracketing a Lost'n Town NPC quest with F7/F8 showed the game setting bit 7 on
-every placed node when the quest started and clearing it again when the quest
-finished, so a quest locks the map for its duration. One node stayed unlocked
-throughout, `0x882B6`, the Digadig Gold Mine entrance, which is consistent with
-the quest sending the player there and nowhere else.
+The other five worlds follow the same shape; their offsets are in the template
+and in `gga_progress.CT`. Unverified in game.
+
+### A world opens on the fight after its boss
+
+The boss itself touches no node byte. The fight that follows sets pak `0x6B0`
+and the castle cleared bit at pak `0x621` bit 5, so region logic should key on
+the post-boss sequence rather than on the boss.
+
+Progress inside a castle is a counter, one per castle, consecutive in pak order
+from `0x709`. It reads `0x00` on entry, `0x01` once the first boss is down,
+which starts the castle at the second fight, and `0x02` once that is beaten.
+Writing `0x01` jumps straight to the second fight.
+
+| rdram | pak | Castle |
+| --- | --- | --- |
+| `0x88312` | `0x709` | Edo |
+| `0x88311` | `0x70A` | Ryugu |
+| `0x88310` | `0x70B` | Majin, by position |
+| `0x88317` | `0x70C` | Underworld, by position |
+| `0x88316` | `0x70D` | Dream, by position |
+
+Edo and Ryugu are the two seen; the rest follow the run and stop before the
+Sasuke unlock bit at pak `0x70F`.
+
+Two more bytes move alongside it and are unmapped: rdram `0x88309`, pak `0x702`,
+goes `0x01` to `0x81` on the boss then `0x81` to `0x80` during Impact, and rdram
+`0x8831B`, pak `0x710`, goes `0x00` to `0x80` on the boss and then holds.
+
+### Node values are a bit mask
+
+A node byte is never assigned, only ORed. `func_080000B0_64C8A0` is the generic
+setter and takes the world, the node index and the mask to OR:
+
+```
+base = 0x80090000 - 0x7DF8 = 0x80088208     the save payload base
+v0   = base + world offset + node index
+lbu  $t3, 0xA2($v0)
+or   $t4, $t3, $a2
+sb   $t4, 0xA2($v0)
+```
+
+`+0xA2` is the access group, matching pak `0x6A2`. So a byte accumulates bits
+from separate events rather than stepping through states, and an access byte
+reaches `0x03` in two steps by two different writers:
+
+| Bit | Writer | When |
+| --- | --- | --- |
+| 0 | `func_08001BAC_765F2C`, or the save initialiser on a new game | the level before it is cleared |
+| 1 | `func_080000B0_64C8A0` | the overworld map walks the route |
+| 2 | `func_8017DE38_624C98` | a castle is cleared, set together with bit 0 |
+
+Bit 0 reveals a node, bit 1 records the map having opened the route, and bit 2
+marks a castle cleared. Bit 1 always arrives second and from the map code, which
+is why a byte is briefly `0x01` or `0x05` before settling at `0x03` or `0x07`:
+the map animates the route appearing and writes when that finishes.
+
+Values seen: an access byte `0x01` then `0x03`, an ordinary level's cleared byte
+`0x01`, a castle's cleared byte `0x05` then `0x07` once the route either side of
+it is walked.
+
+Bit 7 means locked. A quest locks the map for its duration: starting one sets
+bit 7 on every placed node and finishing it clears them again, leaving only the
+node the quest sends you to unlocked. Writing bit 7 by hand blocks entry
+whichever group the byte belongs to, which is why it cannot be used to tell the
+groups apart.
 
 ## Known noise
 
-Bytes that move on their own, established with a control F7/F8 cycle that
-collected nothing:
+Bytes that move on their own:
 
 - `0x80088340`, `0x80088384`, `0x80088385` — change continuously
 - `0x8008836F`–`0x8008839A` — floats; `0x40DB0F49` is pi, so position and camera
-- `0x800882A9`–`0x800882BB` — bit 7 clearing across the run, looks like "new
-  item" markers being acknowledged
+- `0x800882A9`–`0x800882BB` — bit 7 across the node array is a quest locking the
+  map, not noise; see Map nodes
 
 ## Open questions
 
-- Whether a pass from a non-NPC source sets a flag here at all. If some do not,
-  those locations need a different key.
-- Where the other 42 pass flags
-  live. Discoverable by collecting passes and recording which bit moves.
-- The checksum algorithm at `0x604` is uncracked. Hooking the award function
-  avoids ever needing it.
+- Whether a pass from a non-NPC source sets a flag at all. If some do not, those
+  locations need a different key.
+- Whether the template's worlds past Edo match in game.
+- Whether pak `0x70B` to `0x70D` really are the Majin, Underworld and Dream
+  castle counters. Only Edo and Ryugu have been seen.
+- What the 4 byte groups from pak `0x79C` are. One appears per character
+  unlocked, each ending `0x80` with `0x17` in the third byte, inside the second
+  volatile region. Pak `0x7AA` moves with them and does fall, so unlike `0x609`
+  it is not a high water mark.
+- The checksum at pak `0x604` is uncracked, and the template gives its coverage
+  as slot `0x100`-`0x230`. Hooking the award function avoids ever needing it.
 
 ## Tooling
 

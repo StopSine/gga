@@ -270,3 +270,16 @@ game_frame_update = 0x80001A24; // type:func
 
 
 sound_player_set_volume = 0x8000C710; // type:func
+
+save_init_new_game = 0x800CFAE4; // type:func
+map_node_set_castle_cleared = 0x8017DE38; // type:func
+player_move_blocked = 0x80188D4C; // type:func
+
+// splat silently ignores these, so they keep their generated names:
+//   0x80185BC0 player update, calls the movement integrators
+//   0x801861F4 applies the move vector on a 2.5D path
+//   0x80194A58 adds the move vector to the position
+//   0x80194A8C copies the position into the render node
+//   0x801893CC dispatches the player state handler
+//   0x80176558 the hurt state handler
+//   0x80189D78 sets player health

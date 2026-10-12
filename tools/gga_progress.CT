@@ -1,0 +1,1773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1033</ID>
+      <Description>"Players"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1008</ID>
+          <Description>"Player 1"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1001</ID>
+              <Description>"Character"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88281</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1002</ID>
+              <Description>"Lives"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88280</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1003</ID>
+              <Description>"Health"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88287</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1004</ID>
+              <Description>"Armor"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88286</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1005</ID>
+              <Description>"Coins"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>rdram+88284</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1006</ID>
+              <Description>"Weapon level"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8828A</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1007</ID>
+              <Description>"Held item"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88289</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1016</ID>
+          <Description>"Player 2"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1009</ID>
+              <Description>"Character"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8828F</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1010</ID>
+              <Description>"Lives"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8828E</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1011</ID>
+              <Description>"Health"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8828D</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1012</ID>
+              <Description>"Armor"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8828C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1013</ID>
+              <Description>"Coins"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>rdram+88292</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1014</ID>
+              <Description>"Weapon level"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88290</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1015</ID>
+              <Description>"Held item"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88297</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1024</ID>
+          <Description>"Player 3"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1017</ID>
+              <Description>"Character"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88295</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1018</ID>
+              <Description>"Lives"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88294</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1019</ID>
+              <Description>"Health"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8829B</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1020</ID>
+              <Description>"Armor"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8829A</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1021</ID>
+              <Description>"Coins"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>rdram+88298</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1022</ID>
+              <Description>"Weapon level"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8829E</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1023</ID>
+              <Description>"Held item"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8829D</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1032</ID>
+          <Description>"Player 4"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1025</ID>
+              <Description>"Character"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+882A3</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1026</ID>
+              <Description>"Lives"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+882A2</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1027</ID>
+              <Description>"Health"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+882A1</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1028</ID>
+              <Description>"Armor"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+882A0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1029</ID>
+              <Description>"Coins"</Description>
+              <VariableType>2 Bytes</VariableType>
+              <Address>rdram+882A6</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1030</ID>
+              <Description>"Weapon level"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+882A4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1031</ID>
+              <Description>"Held item"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+882AB</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1040</ID>
+      <Description>"Entry pass counts"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1034</ID>
+          <Description>"Edo count"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88275</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1035</ID>
+          <Description>"Ryugu count"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88274</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1036</ID>
+          <Description>"Mafu Island count"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8827B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1037</ID>
+          <Description>"Underworld count"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+8827A</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1038</ID>
+          <Description>"Floating Castle count"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88279</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1039</ID>
+          <Description>"Creep Village count"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88278</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1085</ID>
+      <Description>"Entry pass flags"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1041</ID>
+          <Description>"Beat Mania"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88227</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1042</ID>
+          <Description>"Tomezo"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88227</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1043</ID>
+          <Description>"Stage Clear: Lost'n Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1044</ID>
+          <Description>"Stage Clear: Digadig Gold Mine"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1045</ID>
+          <Description>"Stage Clear: Ringbell Pass"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1046</ID>
+          <Description>"Obisumaru: Otohime Town"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1047</ID>
+          <Description>"Large octopus: Kappa Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1048</ID>
+          <Description>"Large octopus: Naruto Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1049</ID>
+          <Description>"Stage Clear: to Frog Mountain"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1050</ID>
+          <Description>"Stage Clear: Frog Mountain"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88226</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1051</ID>
+          <Description>"Stage Clear: Naruto Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1052</ID>
+          <Description>"Stage Clear: to Naruto Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1053</ID>
+          <Description>"Iguana Man: Frog Mountain"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1054</ID>
+          <Description>"Roadside guardian"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1055</ID>
+          <Description>"Old woman"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1056</ID>
+          <Description>"Fireworks Boss"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1057</ID>
+          <Description>"Iguana Men"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1058</ID>
+          <Description>"Stage Clear: Kokeshi Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88225</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1059</ID>
+          <Description>"Stage Clear: to Pochan Lake"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1060</ID>
+          <Description>"Stage Clear: to Spook Village"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1061</ID>
+          <Description>"Stage Clear: Pochan Lake"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1062</ID>
+          <Description>"Stage Clear: to Tomb Pass"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1063</ID>
+          <Description>"Hide and seek"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1064</ID>
+          <Description>"Okiku"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1065</ID>
+          <Description>"Girl"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1066</ID>
+          <Description>"Kensuke"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88224</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1067</ID>
+          <Description>"Stage Clear: Kaiware Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1068</ID>
+          <Description>"Stage Clear: Mokeke Forest"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1069</ID>
+          <Description>"Stage Clear: to Tree Stump Village"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1070</ID>
+          <Description>"Scarfman 1"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1071</ID>
+          <Description>"Obisumaru: Floating World Town"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1072</ID>
+          <Description>"Tagosaku"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1073</ID>
+          <Description>"Omatsu"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1074</ID>
+          <Description>"Scarfman 2"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822B</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1075</ID>
+          <Description>"Stage Clear: to Wind Castle Wall"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1076</ID>
+          <Description>"Stage Clear: Sky Garden"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1077</ID>
+          <Description>"Stage Clear: Wind Castle Wall"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1078</ID>
+          <Description>"Stage Clear: to Sky Garden"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1079</ID>
+          <Description>"Iguana Man: Lost'n Town"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1080</ID>
+          <Description>"Waterfall"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1081</ID>
+          <Description>"Admirative Tengu"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1082</ID>
+          <Description>"Hungry Tengu"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88228</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1083</ID>
+          <Description>"Stage Clear: to Mafu Checkpoint"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88228</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1084</ID>
+          <Description>"Stage Clear: to Underworld Checkpoint"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88228</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1136</ID>
+      <Description>"Town quests and NPCs"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1086</ID>
+          <Description>"Lost'n Town: Beat Mania mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1087</ID>
+          <Description>"Beat Mania's LP"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1088</ID>
+          <Description>"Beat Mania's Mic"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1089</ID>
+          <Description>"Beat Mania's Headphones"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1090</ID>
+          <Description>"Lost'n Town: Meet Beat Mania"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1091</ID>
+          <Description>"Lost'n Town: Tomezo mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1092</ID>
+          <Description>"Lost'n Town: Meet with Tomezo"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1093</ID>
+          <Description>"Otohime Town: Obisumaru mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88211</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1094</ID>
+          <Description>"Frog Mountain: Race against Obisumaru won"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1095</ID>
+          <Description>"Otohime Town: Meet with Obisumaru"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1096</ID>
+          <Description>"Spook Village: Roadside guardian mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1097</ID>
+          <Description>"Spook Village: Meet with Roadside guardian"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1098</ID>
+          <Description>"Spook Village: Old woman mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1099</ID>
+          <Description>"Spook Village: Meet with Old woman"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1100</ID>
+          <Description>"Large octopus defeated: Kappa Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88210</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1101</ID>
+          <Description>"Large octopus defeated: Naruto Road"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88217</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1102</ID>
+          <Description>"Spook Village: Meet with Boss"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88217</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1103</ID>
+          <Description>"Tree Stump Village: Meet with Child"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88217</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1104</ID>
+          <Description>"Tree Stump Village: Girl mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88217</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1105</ID>
+          <Description>"Tree Stump Village: Meet with Girl"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88216</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1106</ID>
+          <Description>"Tree Stump Village: Meet with Kensuke"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88216</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1107</ID>
+          <Description>"Tree Stump Village: Red Hider found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88216</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1108</ID>
+          <Description>"Tree Stump Village: Black Hider found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88216</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1109</ID>
+          <Description>"Tree Stump Village: Blue Hider found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88215</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1110</ID>
+          <Description>"Tree Stump Village: Green Hider found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88215</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1111</ID>
+          <Description>"Tree Stump Village: Pink Hider found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88215</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1112</ID>
+          <Description>"Tree Stump Village: Yellow Hider found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88215</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1113</ID>
+          <Description>"Floating World Town: Meet with Omatsu"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1114</ID>
+          <Description>"Floating World Town: Omatsu mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1115</ID>
+          <Description>"Floating World Town: Omatsu husband found"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1116</ID>
+          <Description>"Floating World Town: Scarfman asks for letter of introduction"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1117</ID>
+          <Description>"Floating World Town: Letter of introduction received"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1118</ID>
+          <Description>"Floating World Town: Meet with Scarfman"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1119</ID>
+          <Description>"Floating World Town: Scarfman mission 1 complete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1120</ID>
+          <Description>"Floating World Town: Scarfman mission 2 complete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88214</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1121</ID>
+          <Description>"Floating World Town: Obisumaru mission incomplete"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821B</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1122</ID>
+          <Description>"Wind Castle Wall: Race against Obisumaru won"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821B</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1123</ID>
+          <Description>"Floating World Town: Meet with Obisumaru"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821B</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1124</ID>
+          <Description>"Lost'n Town: Meet with Kenzo"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821A</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1125</ID>
+          <Description>"Lost'n Town: 100 Coins given to Kenzo"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821A</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1126</ID>
+          <Description>"Spook Village: Iguana Men - Video received"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821A</Address>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1127</ID>
+          <Description>"Spook Village: Iguana Men - Pencil received"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821A</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1128</ID>
+          <Description>"Spook Village: Iguana Men - Handkerchief received"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821A</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1129</ID>
+          <Description>"Spook Village: Iguana Men - Comic book received"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8821A</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1130</ID>
+          <Description>"Spook Village: Iguana Men - Video given"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88219</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1131</ID>
+          <Description>"Spook Village: Iguana Men - Pencil given"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88219</Address>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1132</ID>
+          <Description>"Spook Village: Iguana Men - Handkerchief given"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88219</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1133</ID>
+          <Description>"Creep Village: Rice ball given to hungry Tengu 1"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88219</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1134</ID>
+          <Description>"Creep Village: Rice ball given to hungry Tengu 2"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88219</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1135</ID>
+          <Description>"Creep Village: Rice ball given to hungry Tengu 3"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88218</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1149</ID>
+      <Description>"Progress and powers"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1137</ID>
+          <Description>"Edo Castle cleared"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1138</ID>
+          <Description>"Ryugu Castle cleared"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1139</ID>
+          <Description>"Majin Castle cleared"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8822A</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1140</ID>
+          <Description>"Underworld Castle cleared"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1141</ID>
+          <Description>"Chain Pipe power"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1142</ID>
+          <Description>"Underwater Device power"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88228</Address>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1143</ID>
+          <Description>"Mum design dish bought"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88229</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1144</ID>
+          <Description>"Allow buying alternative costumes"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+8823B</Address>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1145</ID>
+          <Description>"Sasuke unlocked"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88314</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1146</ID>
+          <Description>"Yae unlocked"</Description>
+          <VariableType>Binary</VariableType>
+          <Address>rdram+88319</Address>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1147</ID>
+          <Description>"Money given to Kenzo, chain pipe"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>rdram+88282</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1148</ID>
+          <Description>"Money given to Kensuke, underwater device"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>rdram+8827C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1300</ID>
+      <Description>"Castle progress (0 entry, 1 second fight, 2 done)"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1301</ID>
+          <Description>"Edo Castle"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88312</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1302</ID>
+          <Description>"Ryugu Castle"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88311</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1303</ID>
+          <Description>"Majin Castle (by position)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88310</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1304</ID>
+          <Description>"Underworld Castle (by position)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88317</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1305</ID>
+          <Description>"Dream Castle (by position)"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+88316</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1310</ID>
+      <Description>"Save block base (pak 0x600)"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>rdram+8820B</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1170</ID>
+      <Description>"Costumes"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1154</ID>
+          <Description>"Goemon"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1150</ID>
+              <Description>"Equipped"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88320</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1151</ID>
+              <Description>"Owns Impact"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88327</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1152</ID>
+              <Description>"Owns Satchel"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88326</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1153</ID>
+              <Description>"Owns Turban"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88325</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1159</ID>
+          <Description>"Ebisumaru"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1155</ID>
+              <Description>"Equipped"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88324</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1156</ID>
+              <Description>"Owns Sumo belt"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+8832B</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1157</ID>
+              <Description>"Owns Tights"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+8832A</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1158</ID>
+              <Description>"Owns Raccoon"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88329</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1164</ID>
+          <Description>"Sasuke"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1160</ID>
+              <Description>"Equipped"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+88328</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1161</ID>
+              <Description>"Owns Bloomers"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+8832F</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1162</ID>
+              <Description>"Owns Maid outfit"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+8832E</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1163</ID>
+              <Description>"Owns Fur coat"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+8832D</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1169</ID>
+          <Description>"Yae"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1165</ID>
+              <Description>"Equipped"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>rdram+8832C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1166</ID>
+              <Description>"Owns Kirameki Uniform"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88333</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1167</ID>
+              <Description>"Owns Rabbit fur"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88332</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1168</ID>
+              <Description>"Owns Swimsuit"</Description>
+              <VariableType>Binary</VariableType>
+              <Address>rdram+88331</Address>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1185</ID>
+      <Description>"Edo"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1171</ID>
+          <Description>"Lost'n Road - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882A9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1172</ID>
+          <Description>"Lost'n Road - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1173</ID>
+          <Description>"Lost'n Town - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882A8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1174</ID>
+          <Description>"Lost'n Town - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1175</ID>
+          <Description>"Ringbell Pass - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AF</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1176</ID>
+          <Description>"Ringbell Pass - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1177</ID>
+          <Description>"Digadig Gold Mine - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1178</ID>
+          <Description>"Digadig Gold Mine - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1179</ID>
+          <Description>"Home of the Wiseman - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1180</ID>
+          <Description>"Edo Checkpoint via Digadig - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AD</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1181</ID>
+          <Description>"Edo Checkpoint via Ringbell - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882AC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1182</ID>
+          <Description>"Edo Checkpoint doors open - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1183</ID>
+          <Description>"Edo Castle - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B3</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1184</ID>
+          <Description>"Edo Castle - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882BB</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1198</ID>
+      <Description>"Ryugu"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1186</ID>
+          <Description>"Kappa Road - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1187</ID>
+          <Description>"Naruto Road - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1188</ID>
+          <Description>"Naruto Road - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1189</ID>
+          <Description>"Frog Mountain - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882BD</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1190</ID>
+          <Description>"Frog Mountain - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1191</ID>
+          <Description>"Otohime Town via Frog Mountain - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882BF</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1192</ID>
+          <Description>"Otohime Town via Naruto Road - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882BE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1193</ID>
+          <Description>"Otohime Town - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1194</ID>
+          <Description>"Ryugu Checkpoint - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882B8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1195</ID>
+          <Description>"Ryugu Checkpoint doors open - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1196</ID>
+          <Description>"Ryugu Castle - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882BC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1197</ID>
+          <Description>"Ryugu Castle - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1213</ID>
+      <Description>"Mafu Island"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1199</ID>
+          <Description>"Kokeshi Road - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1200</ID>
+          <Description>"Maneater Road - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1201</ID>
+          <Description>"Maneater Road - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1202</ID>
+          <Description>"Pochan Lake - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882C8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1203</ID>
+          <Description>"Pochan Lake - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1204</ID>
+          <Description>"Tomb Pass - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882CF</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1205</ID>
+          <Description>"Tomb Pass - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1206</ID>
+          <Description>"Spook Village via Pochan Lake - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882CE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1207</ID>
+          <Description>"Spook Village via Tomb Pass - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882CC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1208</ID>
+          <Description>"Spook Village - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1209</ID>
+          <Description>"Mafu Checkpoint - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882CD</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1210</ID>
+          <Description>"Mafu Checkpoint doors open - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1211</ID>
+          <Description>"Majin Castle - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D3</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1212</ID>
+          <Description>"Majin Castle - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882DB</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1227</ID>
+      <Description>"Underworld"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1214</ID>
+          <Description>"Kaiware Road - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1215</ID>
+          <Description>"Mokeke Forest - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1216</ID>
+          <Description>"Mokeke Forest - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1217</ID>
+          <Description>"Wonder Valley - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882DF</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1218</ID>
+          <Description>"Wonder Valley - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1219</ID>
+          <Description>"Tree Stump Village - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882DE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1220</ID>
+          <Description>"Tree Stump Village - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1221</ID>
+          <Description>"Creep Village - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882D8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1222</ID>
+          <Description>"Creep Village - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882EB</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1223</ID>
+          <Description>"Underworld Checkpoint - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882DD</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1224</ID>
+          <Description>"Underworld Checkpoint doors open - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1225</ID>
+          <Description>"Underworld Castle - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882DC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1226</ID>
+          <Description>"Underworld Castle - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1240</ID>
+      <Description>"Floating Castle"</Description>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1228</ID>
+          <Description>"Cloud Fortress - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882F1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1229</ID>
+          <Description>"Wind Castle Wall - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1230</ID>
+          <Description>"Wind Castle Wall - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882F7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1231</ID>
+          <Description>"Sky Garden - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882E8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1232</ID>
+          <Description>"Sky Garden - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882F0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1233</ID>
+          <Description>"Floating World Town via Sky Garden - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882EF</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1234</ID>
+          <Description>"Floating World Town via Wind Castle - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882ED</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1235</ID>
+          <Description>"Floating World Town - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882F6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1236</ID>
+          <Description>"Floating Checkpoint - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882EE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1237</ID>
+          <Description>"Floating Checkpoint doors open - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882F5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1238</ID>
+          <Description>"Dream Castle - access"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882EC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1239</ID>
+          <Description>"Dream Castle - cleared"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>rdram+882F4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <LuaScript>--[[
+  Resolves the rdram base so every address above can be written as an offset.
+
+  The allocation moves each launch, so the base is read from the global
+  recomp_rdram_base that librecomp publishes at startup. Run this once after
+  attaching; it registers "rdram" as a symbol the entries resolve against.
+]]
+
+function setRdramBase()
+  local sym = "GGA64Recompiled.exe!recomp_rdram_base"
+  local addr = getAddressSafe(sym) or getAddressSafe("recomp_rdram_base")
+
+  if addr == nil then
+    local typed = inputQuery("rdram base",
+      "Symbol recomp_rdram_base not found.\nPaste the base the game logs at startup:", "")
+    if typed == nil then return end
+    unregisterSymbol("rdram")
+    registerSymbol("rdram", tonumber(typed, 16), true)
+    return
+  end
+
+  local base = readPointer(addr)
+  if base == nil or base == 0 then
+    showMessage("recomp_rdram_base is null - attach after the game has started.")
+    return
+  end
+
+  unregisterSymbol("rdram")
+  registerSymbol("rdram", base, true)
+end
+
+setRdramBase()
+
+</LuaScript>
+</CheatTable>
