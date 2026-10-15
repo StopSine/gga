@@ -1,0 +1,466 @@
+// Symbol name candidates for config/usa/symbol_addrs/symbol_addrs.txt — 233 routines, tables and RAM variables that
+// are not named there yet (checked against main as of 2026-10-12). Nothing reads this file: copy any lines you
+// want, under any name you prefer, or ignore it.
+// Each name comes from reading the disassembly; many were also tested in Project64 (changing the value or
+// patching the code and watching the result). Entries marked "Likely" are inferred, not tested. Function starts
+// were checked against the instructions. Overlay (0x08xxxxxx) and Impact-window addresses are left out.
+// Names are descriptive (what the code is seen to do), not original names.
+
+// Raw PI DMA (romOffset, dst, size).
+rom_dma_raw = 0x80001CF8; // type:func size:0x40
+// Writes the journal buffer out for journal_save (the game saves only to a Controller Pak in port 1).
+save_buffer_write = 0x800022FC; // type:func
+// Decompressor used by the file loader.
+file_decompress = 0x80002F40; // type:func size:0x594
+// A second file-loading entry next to file_load (arguments not documented).
+file_load_alt = 0x80003E04; // type:func
+// Primary loader (u32 file_id, void *dest); accepts 0 < id < 0xA11, decompresses when the table entry's bit 31 is set.
+file_load = 0x80003E50; // type:func size:0x1A0
+// Likely: (id, u32 *out) -> where file `id` is: plain file ids, and sub-file ids 0x8000-0x8808 through the range
+// table 0x8002E3DC and offset table 0x8002E49C; ids above 0x8808 give 0 (and *out = 0).
+file_locate = 0x800042F0; // type:func
+// Masked file-table accessors: start and end ROM offset of a file.
+file_rom_start = 0x80004474; // type:func
+file_rom_end = 0x8000449C; // type:func
+// PI manager thread: the only caller of osEPiRawStartDma.
+pi_manager_thread = 0x80010850; // type:func
+// Journal: load (dest, slot) copies 0x130 bytes back into 0x80088208; save (block, slot) copies them out, tidies the
+// four stat rows and writes through save_buffer_write; the script save native calls journal_save_from_script.
+journal_load = 0x800CFBC0; // type:func
+journal_save_from_script = 0x800CFB7C; // type:func
+journal_save = 0x800CFC64; // type:func
+// Unreferenced 3x3 matrix inverse and its determinant helper (only caller: the inverse). No jal, pointer or
+// address immediate reaches either; the range 0x800D2CD8..0x800D356C is used as free space by a four-player mod.
+mtx3_determinant = 0x800D2CD8; // type:func
+mtx3_invert = 0x800D318C; // type:func size:0x3E0
+// Controller pad updater: osContGetReadData, then copies each pad's {buttons, stick x, stick y} into the next slot
+// of the 64-entry input ring pad_ring (index pad_ring_index); held-frame counters are pad_hold_update's.
+pad_update = 0x800D878C; // type:func
+// Held-frame counters at pad_hold_frames (seen updating pad 0's).
+pad_hold_update = 0x800D8850; // type:func
+// Reader that game code uses to get a pad's held-frame counters.
+pad_get_hold_frames = 0x800D8A90; // type:func
+// (pad, frames_ago) -> buttons from the input ring.
+pad_ring_buttons = 0x800D8BD4; // type:func
+// (pad, frames_ago) -> stick x (s8) from the input ring.
+pad_ring_stick_x = 0x800D8C00; // type:func
+// (pad, frames_ago) -> stick y (s8) from the input ring.
+pad_ring_stick_y = 0x800D8C2C; // type:func
+// (pad, frames_ago) -> address of that ring entry.
+pad_ring_entry = 0x800D8C58; // type:func
+// (pad, buttons) -> the longest held-frame count among those buttons.
+pad_longest_hold = 0x800D8CF8; // type:func
+// Level change handler: calls level_load with its argument or, when negative, with current_level (0x80088344).
+level_change_handler = 0x800DA850; // type:func
+// Level change requests: (a0, level) and (a0, level, entrance, f32, x, y, z, ...); both write 0x80088344 and
+// install level_change_handler.
+level_change_request = 0x800DAB70; // type:func
+level_change_request_at = 0x800DAC10; // type:func
+// (world, node): back to the world map at that node; called by the exit handlers.
+map_return_to_node = 0x800DB068; // type:func
+// (levelIndex): loads a level.
+level_load = 0x800DB6A0; // type:func
+// (index, dst): fetches a model entry from file 0x0E.
+level_model_entry_get = 0x800DB7C8; // type:func
+// Level init routines, called by level modules with their placement list(s) as immediates.
+// Common form (model, a1, f32 x, f32 y; stack f32 z, list, count): one list at stack 0x14/0x18.
+level_init_one_list_a = 0x800DC010; // type:func
+level_init_one_list_b = 0x800DC1CC; // type:func
+level_init_one_list_c = 0x800DC2F4; // type:func
+// Same form plus a second list at stack 0x1C/0x20 (EDO 1-1 uses _b, EDO 1-2 _a, MAFUU 3-4-2 _c).
+level_init_two_lists_a = 0x800DC0A0; // type:func
+level_init_two_lists_b = 0x800DC25C; // type:func
+level_init_two_lists_c = 0x800DC38C; // type:func
+level_init_two_lists_d = 0x800DC5C0; // type:func
+level_init_two_lists_e = 0x800DCCDC; // type:func
+// Common form, one list, plus three floats at stack 0x1C/0x20/0x24.
+level_init_list_3f = 0x800DC42C; // type:func
+// Common form, one list; used by the towns (EDO TOWN).
+level_init_town = 0x800DC530; // type:func
+// List at stack 0x10/0x14 (HIROBA, 5ST BOSS-1/-2).
+level_init_list_sp10 = 0x800DC658; // type:func
+// List at stack 0x18/0x1C (3ST BOSS, 4ST BOSS).
+level_init_list_sp18 = 0x800DC138; // type:func
+// HUD day/night dial (ortho projection, matrix, dial model); only caller is inside hud_draw_panels.
+hud_day_night_dial = 0x800DDB78; // type:func
+// 2P drop-in: spawns P2 next to P1 (borrowing a life from P1 only when P2's row has none), holding the event lock.
+p2_dropin_spawn = 0x800DE7FC; // type:func
+// Cycles a character index modulo the available-character count 0x80088211 (minimum 2).
+character_index_cycle = 0x800DE99C; // type:func
+// 2P drop-in poll / "OK" prompt panel callback: Start on the partner pad lets P2 drop in while combined lives >= 2.
+p2_dropin_poll = 0x800DEA20; // type:func
+// Text: message-window task started by code 0xFFEC.
+message_window_task = 0x800E9010; // type:func
+// Glyph path: textbox_put_code(textbox, code) applies colour/size/spacing, dispatches 0xFFED..0xFFFE, otherwise draws
+// a glyph via textbox_glyph_draw -> textbox_glyph_add (at most 200 glyphs per box) and advances by the width table.
+textbox_glyph_add = 0x800E999C; // type:func
+textbox_glyph_draw = 0x800E9A44; // type:func
+textbox_put_code = 0x800E9B18; // type:func
+// Text interpreter task: reads one halfword per step, dispatches 0xFFE6..0xFFFF via text_code_jtbl.
+text_interpreter = 0x800E7F8C; // type:func
+// (n): returns bit n&7 of byte n>>3 of story_flags (0x80088212) for n < 800; bytes 100/101 go through the helper.
+story_flag_test = 0x800EBEC4; // type:func
+story_flag_ram_helper = 0x800EBF84; // type:func
+// Entry-pass event-script functions (k = world/checkpoint index).
+// threshold[k] - total
+passes_until_threshold = 0x800ECFA4; // type:func
+// running_total[k] - total
+passes_until_running_total = 0x800ED034; // type:func
+// world_max[k] - passes[k]
+passes_left_in_world = 0x800ED0C4; // type:func
+// adds a pass to world k (capped at the world maximum)
+pass_add = 0x800ED10C; // type:func
+// total passes collected
+passes_total = 0x800ED14C; // type:func
+// Script natives called by pointer from script data files 333/363: pak status -> script result, pak init, save.
+script_native_pak_status = 0x800EDCD8; // type:func
+script_native_pak_init = 0x800EDDE0; // type:func
+script_native_journal_save = 0x800EDE00; // type:func
+// (c, n): sets character c's costume byte (0x80088323 + 4c) to n and a byte n after it to 1.
+costume_set = 0x800EE498; // type:func
+// Script condition: result 1 when the six entry-pass bytes total >= 44.
+script_cond_all_passes = 0x800EE4E4; // type:func
+// Copies a hitbox's attack type (+0x60) from its collider descriptor.
+collider_copy_descriptor = 0x800F0850; // type:func
+// Pointer to the parent node that player_join_spawn spawns players under.
+player_parent_node_ptr = 0x80108B60; // type:u32
+// Static display list emitted by hud_draw_food before the food boxes, and before each P3/P4 panel copy.
+hud_dl_prefix = 0x80108B78; // type:Gfx
+// Static display list: the two yellow food-item boxes (P1/P2 food slots), top corners.
+hud_food_boxes_dl = 0x80108BD8; // type:Gfx
+// Seven text colours (white, black, grey, orange-red, blue, yellow, green), chosen by codes 0xFFF5..0xFFFB.
+text_colors = 0x80109860; // type:u8
+// Dialogue/caption font: 96 glyphs, 8x12 I4, 48 bytes each, glyph n = ASCII n+0x20.
+font_glyphs = 0x80109880; // type:u8 size:0x1200
+// One advance-width byte per glyph.
+font_widths = 0x8010AA80; // type:u8 size:0x60
+// Entry-pass tables, six values each (byte entries: six values in an 8-byte slot).
+// Checkpoint thresholds 5, 10, 17, 24, 30, 41.
+checkpoint_pass_thresholds = 0x8010AEB0; // type:u8 size:0x6
+// Running totals 6, 14, 24, 32, 41, 44.
+pass_running_totals = 0x8010AEB8; // type:u8 size:0x6
+// Per-world maxima 6, 8, 10, 8, 9, 3.
+passes_per_world = 0x8010AEC0; // type:u8 size:0x6
+// Text interpreter jump tables: state switch; control codes 0xFFE6..0xFFFE (index code+0x1A, 25 entries);
+// textbox codes 0xFFED..0xFFFE (index code+0x13, 18 entries); colours 0xFFF5..0xFFFB (index code+0x0B, 7 entries).
+text_state_jtbl = 0x8010DE78; // type:u32
+text_code_jtbl = 0x8010DE90; // type:u32 size:0x64
+textbox_code_jtbl = 0x8010E2A8; // type:u32 size:0x48
+text_color_jtbl = 0x8010E2F0; // type:u32 size:0x1C
+// Called from player_init: loads the character's two resources (guest bit picks the routine pair).
+player_load_character_resources = 0x80184BB4; // type:func
+// Fill the player's hurt amounts (+0x190 damage, +0x192 weapon loss) from the kind of what it touched
+// (kind 2 -> 1/1, kind 3 -> -1 = instant death).
+player_hurt_params_a = 0x801852C0; // type:func
+player_hurt_params_b = 0x80185798; // type:func
+// (pad, mask): held-frame count of a logical button through button_remap; == 1 means pressed this frame.
+pad_button_frames = 0x80185A60; // type:func
+// Fills button_remap (0x801A84B0) at runtime.
+button_remap_fill = 0x80185B28; // type:func
+// (player, damage, weaponLoss): armour first, then HP; without armour the weapon level drops by weaponLoss;
+// damage -1 = death. Returns 1 when the player died.
+player_apply_damage = 0x80189D78; // type:func
+// Pool callback of the player group node (created by player_spawn at 0x80088338+0x64).
+player_group_callback = 0x8018B770; // type:func
+// Death / lives handler; the only caller of player_despawn.
+player_death_handler = 0x8018B9D0; // type:func
+// Returns a reference player for player_join_spawn (failure -> the row's character is set to FF).
+player_get_reference = 0x8018C07C; // type:func
+// Code of the spawner task named "Enemy"; its node's +0x24 points at the level's spawn table (20-byte entries).
+enemy_spawner_task = 0x80196160; // type:func
+// Spawns an object by id (used for coin/food/cat drops and by level modules).
+object_spawn = 0x80197138; // type:func
+// (node): takes a hit; subtracts 1-3 from the HP byte node+0x2B by the hitbox's attack type (attack_type_damage_jtbl).
+enemy_take_hit = 0x8019AAA4; // type:func
+// Enemy drop (object a0, player a1, big-drop flag a2): reads the clock word 0x80088384 itself; dango / lucky cat / coins.
+enemy_drop_spawn = 0x8019D9BC; // type:func
+// 0x40-byte player spawn-record template copied by player_spawn_record_init.
+player_spawn_template = 0x801A8720; // type:u8 size:0x40
+// Per-character float copied to spawn record +0x2C (four characters, up to the next table).
+player_character_floats = 0x801A8760; // type:f32 size:0x10
+// Jump table of player_callback's 10 modes.
+player_callback_jtbl = 0x801B5E54; // type:u32 size:0x28
+// Name string "Enemy" of the spawner task.
+enemy_spawner_name = 0x801B6480; // type:asciz
+// Jump table of enemy_take_hit, attack types 2-31 (30 code pointers; each case subtracts 1, 2 or 3 from the HP byte).
+attack_type_damage_jtbl = 0x801B6A54; // type:u32 size:0x78
+// Title 1P/2P menu selection (picks the "1P"/"2P" voice).
+menu_player_count_choice = 0x80088201; // type:u8
+// Journal block: the 0x130 bytes journal_save / journal_load copy (stat rows, passes, flags, costumes, 4P flag).
+journal_block = 0x80088208; // type:u8 size:0x130
+// Character-unlock byte (GameShark "Have Sasuke/Yae" halfword 0x80088210) and the available-character count (2-4).
+character_unlock = 0x80088210; // type:u8
+character_count = 0x80088211; // type:u8
+// Story-flag bit array, 800 flags (story_flag_test).
+story_flags = 0x80088212; // type:u8 size:0x64
+// Entry passes collected per world, six groups (maxima 6/8/10/8/9/3 = 44).
+entry_passes = 0x80088276; // type:u8 size:0x6
+// Progress flags, one byte per map path/node: path = 0x800882AA + 0x10*world + path, node = 0x800882B2 + 0x10*world
+// + node; 1 = finished, 3 = path open / finished and shown.
+progress_flags = 0x800882AA; // type:u8 size:0x4E
+// Current costume per character, stride 4 (Goemon, Ebisumaru, Sasuke, Yae at +0/+4/+8/+C).
+character_costume = 0x80088323; // type:u8 size:0x10
+// Area timer: +1 per 512 frames, reset on area entry.
+area_timer = 0x80088342; // type:u8
+// +1 every 2 frames.
+counter_2frames = 0x80088343; // type:u8
+// Index of the current level in the level table (0x14 EDO 1-1, 0x19 EDO TOWN).
+current_level = 0x80088344; // type:s16
+// 2 while a dialogue or shop menu is open.
+dialogue_active = 0x8008834A; // type:u8
+// 1 while paused and during transitions and menus.
+play_stopped = 0x80088351; // type:u8
+// 1 while a doorway transition runs.
+doorway_transition = 0x80088354; // type:u8
+// Clock: hours in 16.16 fixed point modulo 24.0 (byte 0x80088385 = hour); written by the clock routine at 0x800CBAD0.
+clock = 0x80088384; // type:u32
+// Clock step per frame (0xAE observed).
+clock_step = 0x80088388; // type:u32
+// Pool of 0x80-byte task nodes (+0 = 0x00010100 in use, +4 name/function, +0x1C entry); live objects and players.
+task_pool = 0x80170000; // type:u8
+// Raw libultra controller read buffer, 6 bytes per pad (u16 buttons, s8 x, s8 y, u8 errno).
+pad_raw = 0x801732A0; // type:u8 size:0x18
+// Pointer to the event-script result slot (written by script_cond_all_passes).
+script_result_ptr = 0x801737E4; // type:u32
+// Story-flag bytes 100 and 101, kept in RAM only.
+story_flags_ram = 0x80173810; // type:u8 size:0x2
+// -- Resident code
+// load a file by id into a buffer: calls 0x80003ACC(id, buffer, 0) (the level, mesh and texture loaders use it)
+file_load_into = 0x80003A8C; // type:func
+// RAM address of a loaded file id (via the loaded-file table)
+file_address = 0x8000455C; // type:func
+// slot of a file id in the loaded-file table (-1 if not loaded)
+loaded_file_slot = 0x8000755C; // type:func
+// file id held by a loaded-file slot
+loaded_file_slot_id = 0x800074B8; // type:func
+// address held by a loaded-file slot
+loaded_file_slot_addr = 0x800074E8; // type:func
+// load sub-file / file a0 into a1; if it starts with 'PIC', decode the picture there
+pic_load = 0x800040D0; // type:func
+// read a sub-file (DMA) or an ordinary file into a buffer
+subfile_read = 0x80004250; // type:func
+// start the bit reader on a PIC image and parse its header
+pic_begin = 0x80005820; // type:func
+// decode by colour depth: 15 / 16 / 8 / 4 bits
+pic_decode = 0x80005888; // type:func
+// 15-bit pictures: clear, run the main loop, apply the transparent key
+pic_decode15 = 0x8000599C; // type:func
+// 16-bit pictures (mark bitmap + fill pass)
+pic_decode16 = 0x80005A80; // type:func
+// 8-bit pictures (palette, mark bitmap + fill pass)
+pic_decode8 = 0x80005B98; // type:func
+// 4-bit pictures (palette, mark bitmap + fill pass)
+pic_decode4 = 0x80005CC0; // type:func
+// read n palette entries (5-bit G, R, B + 1 bit -> RGBA5551)
+pic_read_palette = 0x80005E64; // type:func
+// header: PIC, key, comment, type, colour bits, width, height
+pic_read_header = 0x80005F50; // type:func
+// the 15-bit main loop: runs, colours, chains
+pic_loop15 = 0x8000619C; // type:func
+// follow a chain (2-bit codes) drawing one colour down the picture
+pic_chain15 = 0x80006314; // type:func
+// main loop of the 16/8/4-bit decoders, plotting into a mark bitmap
+pic_loop_marked = 0x80006458; // type:func
+// chain of the 16/8/4-bit decoders
+pic_chain_marked = 0x800065A0; // type:func
+// run length: n one-bits, then read(n) + 2^n - 1
+pic_read_length = 0x800066EC; // type:func
+// colour: cache index or new colour (15/16-bit), or a raw index
+pic_read_colour = 0x80006740; // type:func
+// the 128-entry move-to-front colour cache
+pic_cache_init = 0x800067BC; // type:func
+// store a new colour after the cache's current entry
+pic_cache_add = 0x8000683C; // type:func
+// fetch a cache entry and move it after the current one
+pic_cache_get = 0x80006900; // type:func
+pic_getpixel15 = 0x800069CC; // type:func
+// RGBA5551 into the buffer at *0x8008887C
+pic_plot15 = 0x80006A34; // type:func
+pic_plot16 = 0x80006B30; // type:func
+pic_getpixel8 = 0x80006BFC; // type:func
+pic_plot8 = 0x80006C28; // type:func
+pic_getpixel4 = 0x80006CC8; // type:func
+// nibble, high first, rows padded to even width
+pic_plot4 = 0x80006D50; // type:func
+// four lowercase hex digits after 'PIC' -> transparent colour
+pic_parse_key = 0x80006E24; // type:func
+// clear the pixels of the key colour (15-bit)
+pic_apply_key = 0x80006E9C; // type:func
+// MSB-first bit reader on a byte stream
+bits_init = 0x80007070; // type:func
+bits_read1 = 0x800070A0; // type:func
+// read n bits
+bits_read = 0x8000710C; // type:func
+// -- File 5 (engine)
+// the camera object's task function (node *0x801077A0)
+camera_task = 0x800C8AC8; // type:func
+// Likely: 15 modes on *0x801077A4, callback pair + 60-frame timer
+transition_mode_set = 0x800CD5E4; // type:func
+// request music id (first id 1 when 0x800883D6 is set); starts with a lui before its stack adjustment (jal target of 23 level modules)
+music_request = 0x800D9250; // type:func
+// load a level's model/collision entry of file 0x0E: mesh file, render grid, collision grid
+level_models_load = 0x800DB874; // type:func
+// Likely: a timed effect task with speed 100/x
+effect_task_create = 0x800DF5B0; // type:func
+// Likely: the entry's coarse render grid; loads the files its list names
+render_grid_setup = 0x800E2100; // type:func
+// compute a collision triangle's normal and plane distance on first use
+coll_triangle_plane = 0x800E3DC8; // type:func
+// segment against one collision triangle: 0 hit, 1 parallel, 2 out of 0..1, 3 outside
+coll_ray_triangle = 0x800E3EDC; // type:func
+// segment (start, move) against the collision grid -> nearest triangle, hit point, t
+coll_query = 0x800E42B0; // type:func
+// set up the level's collision grid from the 0x0E entry
+coll_grid_setup = 0x800E46F0; // type:func
+// convert the grid's pointers, mark every triangle's normal as not computed
+coll_grid_relocate = 0x800E4774; // type:func
+// -- File 8 (gameplay)
+// attack type of the hitbox at player+0x230 from the attack table
+player_attack_type_set = 0x801742D0; // type:func
+// store an attack type in a collider (+0x59)
+hitbox_set_attack = 0x8018A0D0; // type:func
+// stage sound for an actor (player struct, id): pan/attenuation from the camera
+actor_sound = 0x8018D068; // type:func
+// footstep id 0x500 -> the floor material's sound (table 0x801A87C0)
+footstep_sound = 0x8018D40C; // type:func
+// 100 * frame / length of the actor's animation
+anim_progress_percent = 0x80189614; // type:func
+// set flag 0x80 of +0x150 with a frame count at +0x160 (post-hit timer, Likely)
+player_timer80_set = 0x801896C4; // type:func
+player_timer80_active = 0x801896F4; // type:func
+// flag 0x100 with a count at +0x164
+player_timer100_set = 0x80189718; // type:func
+// the charged sub-weapon: spawn the shot, charge 3/3/5/5 coins
+subweapon_charged_step = 0x80193CD8; // type:func
+// -- Data and RAM
+// per file id {0x08000000, 0x08000000 + size}; a file that grows needs its end raised
+file_ram_sizes = 0x80026B00; // type:u32
+// the Nisitenma-Ichigo ROM file table as the loader reads it: a 16-byte header (ROM 0x2C784), then 2,577 big-endian
+// words from 0x8002BB94 (ROM 0x2C794), bit 31 = compressed
+file_table = 0x8002BB84; // type:u32
+// 47 x {u16 firstId; u16 containerFile} for ids 0x8000-0x8808
+subfile_ranges = 0x8002E3DC; // type:u16
+// offset of each sub-file in its container
+subfile_offsets = 0x8002E49C; // type:u32
+// per character 33 x 8 bytes {segment-11 pose pointer; u8 attack type}
+attack_table = 0x801A6DA0; // type:u8
+// 7 materials x 2 (players 1/3, 2/4)
+footstep_sounds = 0x801A87C0; // type:u16
+// per character x 6 stances
+subweapon_charge_frame = 0x801A8AC0; // type:f32
+// Likely vblanks per game frame (2 in stages); divides the day length
+frames_per_tick = 0x800881E4; // type:s8
+// 256 x 12 bytes {u16 file id; ...; u32 address}
+loaded_files = 0x80088890; // type:u8
+// the collision/rail manager task node (+0x20 grid header, +0x24 tested-triangle bytes)
+coll_manager = 0x801094C0; // type:u32
+// file 8: add delta to a player's coins (player obj a0, delta a1); clamps at 0, returns 1 if the result was >= 0.
+coins_add = 0x80189984; // type:func
+// file 8: coin cost per character (s32, Goemon/Ebisumaru/Sasuke/Yae) of the sub-weapon throw: -1, -1, -2, -2.
+subweapon_coin_cost = 0x801A8980; // type:s32 size:0x10
+// file 5: script native coins_add(delta, player number 1-based) used by shop purchases (args *0x801737D4/D8).
+script_coins_add = 0x800ED9D4; // type:func
+script_coins_add_impl = 0x800ED960; // type:func
+// file 5: camera setters used by level modules (camera object at *0x801077A0); names by the call, fields Likely.
+camera_set_param_s16 = 0x800CADE4; // type:func
+camera_set_vec3 = 0x800CAE18; // type:func
+camera_object_ptr = 0x801077A0; // type:u32
+// Coin cost of a charged sub-weapon per character (3 / 3 / 5 / 5; measured), charged once the throw animation passes
+// a per-character frame threshold.
+charged_coin_cost = 0x801A8990; // type:s32 size:0x10
+// Resident.
+// Likely: speaker-face task started by text code 0xFFE7 (names itself "faceRun", creates "sc_face").
+text_face_task = 0x800EBB50; // type:func
+// Likely: called by player_apply_damage with 0x88888888 / 0xAAAAAAAA / -1, which look like Rumble Pak patterns.
+pad_rumble_pattern = 0x80002CC8; // type:func
+// Likely: the clock object's callback (registered at 0x800CD370); the step/increment code 0x800CBA60..0x800CBAE8
+// lies inside its upstream splat extent.
+clock_object_callback = 0x800CB888; // type:func
+// Likely: called by EDO 1-1 as (0x518, 0x32, 0x33, 0x34, 0x35); 0x32..0x34 are the per-area ids then seen at 0x80088390.
+area_id_list_set = 0x800CDAD4; // type:func
+// File 8.
+// Likely: the defeat path, called by enemy_take_hit when the HP byte goes below 0 (the drop routine is next to it).
+enemy_defeat = 0x8019D748; // type:func
+// Likely: debug-menu code; target of the TCRF GameShark hook "j 0x801A3330" written at 0x800DFC00, inside file 8's window
+// and outside files 7 and 9.
+debug_menu_entry = 0x801A3330; // type:func
+// Likely: costume flag words; player init ORs costume_flag_table[costume] into player +0x154.
+costume_flag_table = 0x801A8770; // type:u32
+// RAM.
+// Likely: shop/menu dialogue state (went 00 -> 50 -> 40 -> 60 -> 40 -> 00 while buying).
+shop_menu_state = 0x80088237; // type:u8
+// Likely: one byte per area module, each read/written only by its own overlay (per-area progress/event state).
+area_module_state = 0x80088316; // type:u8 size:0xD
+// The stage camera used for the view (not the camera task node camera_object_ptr; field of view f32 at +0x30, eye +0x14..+0x1C, target +0x20..+0x28; tested by scaling the
+// field of view), reset on area changes; also the base of the runtime block (clock at +0x4C, player group node at
+// +0x64, player_slots at +0x68).
+stage_camera_ptr = 0x80088338; // type:u32
+// Likely: current level/scene data pointer, read by many modules.
+level_data_ptr = 0x8008833C; // type:u32
+// Likely: area parameters written by many area modules (type / music?).
+area_param_a = 0x80088347; // type:u8
+area_param_b = 0x8008834B; // type:u8
+// Likely: doorway-transition data (floats set when walking through a door, cleared after).
+doorway_data = 0x80088358; // type:u8 size:0x2C
+// Likely: an area parameter written by area modules (300 in town; a time limit or count?).
+area_param_word = 0x8008838C; // type:u32
+// Likely: per-area id list, six u16, cleared on leaving and refilled on entry.
+area_id_list = 0x80088390; // type:u16 size:0xC
+// Likely: camera or main-player object pointer next to player_slots, reset on area changes.
+main_object_ptr = 0x8008839C; // type:u32
+// Spawn a player under parent from a 0x40-byte record; rejects record->slot outside [0, 4).
+player_spawn = 0x8018A130; // type:func
+// Fill a spawn record from the template at 0x801A8720: slot at +0, character at +4.
+player_spawn_record_init = 0x8018A1BC; // type:func
+// Destroy player_slots[slot].
+player_despawn = 0x8018A21C; // type:func
+// Pool callback for player objects; mode 0 registers the slot, the destroy mode keeps or wipes
+// the stat row depending on the guest bit (0x100 in player +0x154).
+player_callback = 0x8018A270; // type:func
+player_init = 0x8018A5F8; // type:func
+// Pads 2 and 3: C-Right held + Start pressed -> player_join.
+player_join_poll = 0x8018C310; // type:func
+// Gates (multiplayer flag, 44 entry passes, spawn-failure byte, lower slots full), then picks
+// the first unused character.
+player_join = 0x8018C380; // type:func
+// Fresh stats + spawn as a guest next to a reference player.
+player_join_spawn = 0x8018C53C; // type:func
+// file 5 (fixed window 0x800C7B10): area-load spawners that walk all four stat rows.
+players_spawn_from_stats = 0x800DBCAC; // type:func
+players_spawn_from_stats_2 = 0x800DC774; // type:func
+// Four rows of 0xA bytes: character, lives, HP, armor, s16 coins, ?, weapon, food, ?.
+player_stats = 0x80088282; // type:u8 size:0x28
+// Per-slot character for non-guest players, 0xFF otherwise.
+player_slot_character = 0x800883B0; // type:u8 size:0x4
+// Non-zero switches pads 3/4 on (join allowed, their Start pauses). Incremented by overlay file_15.
+player_4p_flag = 0x80088333; // type:u8
+// Event lock: saved/set/restored by NPC and event overlays; joining is refused while non-zero.
+event_lock = 0x80088349; // type:u8
+// Held-frame counters, 0x1E bytes per pad, one halfword per button (C-Right +0x10, Start +0x1C).
+pad_hold_frames = 0x801736C0; // type:u8 size:0x78
+// Input ring: 64 entries x 16 bytes, each four pads x {u16 buttons, s8 x, s8 y}.
+pad_ring = 0x801732C0; // type:u8 size:0x400
+// Current entry of pad_ring (0..63).
+pad_ring_index = 0x801732B8; // type:u8
+// Logical -> physical button masks used by the gameplay input queries; filled at runtime.
+button_remap = 0x801A84B0; // type:u16 size:0x20
+// file 5: HUD (found 2026-10-13, Project64-tested with the loops raised to 4).
+// HUD object callback; mode 0 creates (coin counters +0x18 + 4*i, lives cache +0x32..+0x35), mode 3 draws.
+hud_callback = 0x800DE210; // type:func
+// Food boxes (G_DL 0x80108BD8) + food icons for panels 0 and 1.
+hud_draw_food = 0x800DDF64; // type:func
+// Bottom panels (G_DL 0x80108C50) + per-panel element loops (i < 2).
+hud_draw_panels = 0x800DDFC8; // type:func
+hud_food_icon = 0x800DD9F0; // type:func
+hud_health = 0x800DCF2C; // type:func
+hud_portrait = 0x800DD0B8; // type:func
+hud_weapon = 0x800DD83C; // type:func
+hud_lives = 0x800DD218; // type:func
+hud_coins = 0x800DDCE8; // type:func
+
+// camera view width and the co-op leash
+// (camera) -> visible width at the camera's target distance, from its field of view (+0x30) and the eye-target
+// distance. The co-op leash compares player distances against it, so a wider field of view widens the leash.
+camera_view_width = 0x800CF2F0; // type:func
+// Likely: the distance between two players' positions used by player_move_blocked (0x80188D4C, the co-op leash; leaf).
+coop_player_distance = 0x80188EE0; // type:func
